@@ -1,0 +1,20 @@
+html {
+  font-family: 'M PLUS 1p';
+}
+
+body {
+  margin: 0px;
+  background-color: #eeee;
+}
+
+header {
+  background-color: #8ac6d1;
+  margin: auto 0px;
+  padding: 10px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  color: #fffdf9;
+  margin: 0;
+}
