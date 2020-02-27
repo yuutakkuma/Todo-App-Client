@@ -1,7 +1,7 @@
-FROM node
-WORKDIR /usr/app/client
-COPY . .
+FROM node:slim
+WORKDIR /app
+COPY ./package.json ./yarn.lock /app/
 RUN yarn install
-USER reactapp
-RUN yarn run build
+COPY . .
+CMD [ "yarn", "start" ]
 EXPOSE 3000
