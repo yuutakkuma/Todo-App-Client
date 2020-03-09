@@ -1,3 +1,3 @@
 export interface Todo {
-  title: string;
+  title: string | undefined;
 }

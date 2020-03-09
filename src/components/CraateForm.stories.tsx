@@ -27,7 +27,7 @@ export const Create = () => {
 
   return (
     <div>
-      <CreateForm onAdd={todoAddHandler} />
+      <CreateForm onAdd={todoAddHandler} onTest={() => {}} />
       {test.map((todoItems, index) => {
         return (
           <List
