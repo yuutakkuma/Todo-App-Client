@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useCreateTodoMutation } from '../generated/graphql';
+import { TodoApp } from './TodoApp';
 
 type CreateProps = {
   onAdd: (title: string) => void;
+  onTest: () => void;
 };
 
 export const CreateForm: React.FC<CreateProps> = props => {
-  const [item, setItem] = useState({
-    title: ''
-  });
+  const [item, setItem] = useState({ title: '' });
+
+  const [createTodo] = useCreateTodoMutation();
 
   const addItem = (event: React.MouseEvent<HTMLButtonElement>) => {
     // 値を保存
@@ -15,9 +18,7 @@ export const CreateForm: React.FC<CreateProps> = props => {
       props.onAdd(item.title);
     }
     // 値をリセット
-    setItem({
-      title: ''
-    });
+    // setItem('');
 
     event.preventDefault();
   };
@@ -25,10 +26,11 @@ export const CreateForm: React.FC<CreateProps> = props => {
   // 値を更新するメソッド
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+    console.log(event.target);
 
-    setItem(prevValue => {
+    setItem(prevItem => {
       return {
-        ...prevValue,
+        ...prevItem,
         [name]: value
       };
     });
@@ -36,14 +38,24 @@ export const CreateForm: React.FC<CreateProps> = props => {
 
   return (
     <div>
-      <form>
+      <form
+        onSubmit={async event => {
+          event.preventDefault();
+          await createTodo({
+            variables: {
+              title: item.title
+            }
+          });
+          setItem({ title: '' });
+        }}
+      >
         <input
           name="title"
           placeholder="やること"
           onChange={handleChange}
-          value={item?.title}
+          value={item.title}
         />
-        <button onClick={addItem}>＋</button>
+        <button type="submit">＋</button>
       </form>
     </div>
   );
