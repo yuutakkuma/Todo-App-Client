@@ -29,10 +29,12 @@ export const TodoList = () => {
     }
   ]);
 
-  const sampleDeleteHandler = (id: number) => {
+  const sampleDeleteHandler = (id: string | undefined) => {
     setSample(prevSample => {
       return prevSample.filter((_, index) => {
-        return index !== id;
+        const x = index.toString();
+
+        return x !== id;
       });
     });
   };
@@ -40,10 +42,11 @@ export const TodoList = () => {
   return (
     <div>
       {sample.map((prevSmple, index) => {
+        const x = index.toString();
         return (
           <List
-            key={index}
-            id={index}
+            key={x}
+            id={x}
             title={prevSmple.title}
             onDelete={sampleDeleteHandler}
           />

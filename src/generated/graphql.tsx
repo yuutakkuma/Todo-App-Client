@@ -4,72 +4,79 @@ import * as ApolloReactHooks from '@apollo/react-hooks';
 export type Maybe<T> = T | null;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string,
-  String: string,
-  Boolean: boolean,
-  Int: number,
-  Float: number,
+  ID: string;
+  String: string;
+  Boolean: boolean;
+  Int: number;
+  Float: number;
 };
 
 export type CreateTodoInput = {
-  title: Scalars['String'],
+  title: Scalars['String'];
 };
 
 export type Mutation = {
-   __typename?: 'Mutation',
-  createTodo: Todo,
+  __typename?: 'Mutation';
+  createTodo: Todo;
+  deleteTodo: Scalars['Boolean'];
 };
 
-
 export type MutationCreateTodoArgs = {
-  input: CreateTodoInput
+  input: CreateTodoInput;
+};
+
+export type MutationDeleteTodoArgs = {
+  id: Scalars['ID'];
 };
 
 export type Query = {
-   __typename?: 'Query',
-  getTodoList?: Maybe<Array<Maybe<Todo>>>,
+  __typename?: 'Query';
+  getTodoList?: Maybe<Array<Maybe<Todo>>>;
 };
 
 export type Todo = {
-   __typename?: 'Todo',
-  id: Scalars['ID'],
-  title: Scalars['String'],
+  __typename?: 'Todo';
+  id: Scalars['ID'];
+  title: Scalars['String'];
 };
 
 export type CreateTodoMutationVariables = {
-  title: Scalars['String']
+  title: Scalars['String'];
 };
 
+export type CreateTodoMutation = { __typename?: 'Mutation' } & {
+  createTodo: { __typename?: 'Todo' } & Pick<Todo, 'id' | 'title'>;
+};
 
-export type CreateTodoMutation = (
-  { __typename?: 'Mutation' }
-  & { createTodo: (
-    { __typename?: 'Todo' }
-    & Pick<Todo, 'id' | 'title'>
-  ) }
-);
+export type DeleteTodoMutationVariables = {
+  id: Scalars['ID'];
+};
+
+export type DeleteTodoMutation = { __typename?: 'Mutation' } & Pick<
+  Mutation,
+  'deleteTodo'
+>;
 
 export type GetTodoListQueryVariables = {};
 
-
-export type GetTodoListQuery = (
-  { __typename?: 'Query' }
-  & { getTodoList: Maybe<Array<Maybe<(
-    { __typename?: 'Todo' }
-    & Pick<Todo, 'id' | 'title'>
-  )>>> }
-);
-
+export type GetTodoListQuery = { __typename?: 'Query' } & {
+  getTodoList: Maybe<
+    Array<Maybe<{ __typename?: 'Todo' } & Pick<Todo, 'id' | 'title'>>>
+  >;
+};
 
 export const CreateTodoDocument = gql`
-    mutation CreateTodo($title: String!) {
-  createTodo(input: {title: $title}) {
-    id
-    title
+  mutation CreateTodo($title: String!) {
+    createTodo(input: { title: $title }) {
+      id
+      title
+    }
   }
-}
-    `;
-export type CreateTodoMutationFn = ApolloReactCommon.MutationFunction<CreateTodoMutation, CreateTodoMutationVariables>;
+`;
+export type CreateTodoMutationFn = ApolloReactCommon.MutationFunction<
+  CreateTodoMutation,
+  CreateTodoMutationVariables
+>;
 
 /**
  * __useCreateTodoMutation__
@@ -88,26 +95,89 @@ export type CreateTodoMutationFn = ApolloReactCommon.MutationFunction<CreateTodo
  *   },
  * });
  */
-export function useCreateTodoMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateTodoMutation, CreateTodoMutationVariables>) {
-        return ApolloReactHooks.useMutation<CreateTodoMutation, CreateTodoMutationVariables>(CreateTodoDocument, baseOptions);
-      }
-export type CreateTodoMutationHookResult = ReturnType<typeof useCreateTodoMutation>;
-export type CreateTodoMutationResult = ApolloReactCommon.MutationResult<CreateTodoMutation>;
-export type CreateTodoMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateTodoMutation, CreateTodoMutationVariables>;
-export const GetTodoListDocument = gql`
-    query GetTodoList {
-  getTodoList {
-    id
-    title
-  }
+export function useCreateTodoMutation(
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    CreateTodoMutation,
+    CreateTodoMutationVariables
+  >
+) {
+  return ApolloReactHooks.useMutation<
+    CreateTodoMutation,
+    CreateTodoMutationVariables
+  >(CreateTodoDocument, baseOptions);
 }
-    `;
+export type CreateTodoMutationHookResult = ReturnType<
+  typeof useCreateTodoMutation
+>;
+export type CreateTodoMutationResult = ApolloReactCommon.MutationResult<
+  CreateTodoMutation
+>;
+export type CreateTodoMutationOptions = ApolloReactCommon.BaseMutationOptions<
+  CreateTodoMutation,
+  CreateTodoMutationVariables
+>;
+export const DeleteTodoDocument = gql`
+  mutation DeleteTodo($id: ID!) {
+    deleteTodo(id: $id)
+  }
+`;
+export type DeleteTodoMutationFn = ApolloReactCommon.MutationFunction<
+  DeleteTodoMutation,
+  DeleteTodoMutationVariables
+>;
+
+/**
+ * __useDeleteTodoMutation__
+ *
+ * To run a mutation, you first call `useDeleteTodoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteTodoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteTodoMutation, { data, loading, error }] = useDeleteTodoMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteTodoMutation(
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    DeleteTodoMutation,
+    DeleteTodoMutationVariables
+  >
+) {
+  return ApolloReactHooks.useMutation<
+    DeleteTodoMutation,
+    DeleteTodoMutationVariables
+  >(DeleteTodoDocument, baseOptions);
+}
+export type DeleteTodoMutationHookResult = ReturnType<
+  typeof useDeleteTodoMutation
+>;
+export type DeleteTodoMutationResult = ApolloReactCommon.MutationResult<
+  DeleteTodoMutation
+>;
+export type DeleteTodoMutationOptions = ApolloReactCommon.BaseMutationOptions<
+  DeleteTodoMutation,
+  DeleteTodoMutationVariables
+>;
+export const GetTodoListDocument = gql`
+  query GetTodoList {
+    getTodoList {
+      id
+      title
+    }
+  }
+`;
 
 /**
  * __useGetTodoListQuery__
  *
  * To run a query within a React component, call `useGetTodoListQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetTodoListQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useGetTodoListQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -118,12 +188,33 @@ export const GetTodoListDocument = gql`
  *   },
  * });
  */
-export function useGetTodoListQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetTodoListQuery, GetTodoListQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetTodoListQuery, GetTodoListQueryVariables>(GetTodoListDocument, baseOptions);
-      }
-export function useGetTodoListLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetTodoListQuery, GetTodoListQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetTodoListQuery, GetTodoListQueryVariables>(GetTodoListDocument, baseOptions);
-        }
+export function useGetTodoListQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    GetTodoListQuery,
+    GetTodoListQueryVariables
+  >
+) {
+  return ApolloReactHooks.useQuery<GetTodoListQuery, GetTodoListQueryVariables>(
+    GetTodoListDocument,
+    baseOptions
+  );
+}
+export function useGetTodoListLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    GetTodoListQuery,
+    GetTodoListQueryVariables
+  >
+) {
+  return ApolloReactHooks.useLazyQuery<
+    GetTodoListQuery,
+    GetTodoListQueryVariables
+  >(GetTodoListDocument, baseOptions);
+}
 export type GetTodoListQueryHookResult = ReturnType<typeof useGetTodoListQuery>;
-export type GetTodoListLazyQueryHookResult = ReturnType<typeof useGetTodoListLazyQuery>;
-export type GetTodoListQueryResult = ApolloReactCommon.QueryResult<GetTodoListQuery, GetTodoListQueryVariables>;
+export type GetTodoListLazyQueryHookResult = ReturnType<
+  typeof useGetTodoListLazyQuery
+>;
+export type GetTodoListQueryResult = ApolloReactCommon.QueryResult<
+  GetTodoListQuery,
+  GetTodoListQueryVariables
+>;

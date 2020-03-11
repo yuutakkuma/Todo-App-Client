@@ -1,51 +1,62 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Header } from './Header';
 import { CreateForm } from './CreateForm';
 import { List } from './List';
-import { Todo } from '../models/todo.model';
-import { useGetTodoListQuery, GetTodoListQuery } from '../generated/graphql';
+import {
+  useGetTodoListQuery,
+  useDeleteTodoMutation
+} from '../generated/graphql';
 
 export const TodoApp: React.FC = () => {
   const { data, loading } = useGetTodoListQuery({ pollInterval: 500 });
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [deleteTodo] = useDeleteTodoMutation();
 
-  if (!data || loading) {
-    return <div>loading...</div>;
-  }
-
-  const todoAddHandler = (title: string) => {
-    setTodos(prevItems => {
-      return [...prevItems, { title: title }];
+  // 削除するメソッド
+  const todoDeleteHandler = (id: string | undefined) => {
+    // idが存在しない場合はエラー
+    if (!id) {
+      return <div>error...</div>;
+    }
+    deleteTodo({
+      variables: {
+        id: id
+      }
     });
   };
 
-  const todoDeleteHandler = (id: number) => {
-    setTodos(prevTodos => {
-      return prevTodos.filter((_value: any, index: number) => {
-        return index !== id;
-      });
-    });
-  };
-
+  // Todoリストを表示するメソッド
   const todoList = () => {
-    const todos = data.getTodoList?.map(x => {
+    // データが無い、又はロード中の場合
+    if (!data || loading) {
+      return <div>loading...</div>;
+    }
+    // データを取得出来なかった場合
+    if (!data.getTodoList) {
+      return <div>データを取得出来ませんでした。</div>;
+    }
+
+    const todoList = data.getTodoList.map(x => {
+      // map出来なかった場合
+      if (!x) {
+        return <div>error...</div>;
+      }
       return (
         <List
-          key={x?.id}
-          id={x?.id}
-          title={x?.title}
+          key={x.id}
+          id={x.id}
+          title={x.title}
           onDelete={todoDeleteHandler}
         />
       );
     });
-    return todos;
+    return todoList;
   };
 
   return (
     <div>
       <Header />
-      <CreateForm onAdd={todoAddHandler} onTest={todoList} />
+      <CreateForm />
       {todoList()}
     </div>
   );
