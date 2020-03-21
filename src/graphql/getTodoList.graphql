@@ -1,6 +1,7 @@
 query GetTodoList {
   getTodoList {
     id
+    userId
     title
   }
 }
