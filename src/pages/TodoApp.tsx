@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Header } from './Header';
-import { CreateForm } from './CreateForm';
-import { List } from './List';
+import { Header } from '../components/Header';
+import { CreateForm } from '../components/CreateForm';
+import { List } from '../components/List';
 import {
   useGetTodoListQuery,
   useDeleteTodoMutation
