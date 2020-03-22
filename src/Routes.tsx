@@ -9,7 +9,7 @@ export const Routes: React.FC = () => {
     <BrowserRouter>
       <div>
         <Switch>
-          <Route exact path="/" component={TodoApp} />
+          <Route exact path="/Todo" component={TodoApp} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Register" component={Register} />
         </Switch>

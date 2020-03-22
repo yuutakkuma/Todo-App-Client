@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Header } from '../components/Header';
 import { CreateForm } from '../components/CreateForm';
 import { List } from '../components/List';
 import {
@@ -55,7 +54,6 @@ export const TodoApp: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <CreateForm />
       {todoList()}
     </div>
