@@ -1,16 +1,19 @@
 import React from 'react';
 
-import { Header } from './Header';
-import { CreateForm } from './CreateForm';
-import { List } from './List';
+import { CreateForm } from '../components/CreateForm';
+import { List } from '../components/List';
 import {
   useGetTodoListQuery,
   useDeleteTodoMutation
 } from '../generated/graphql';
 
 export const TodoApp: React.FC = () => {
-  const { data, loading } = useGetTodoListQuery({ pollInterval: 500 });
+  const { data, loading, error } = useGetTodoListQuery({ pollInterval: 500 });
   const [deleteTodo] = useDeleteTodoMutation();
+
+  if (error) {
+    return <div>再度ログインしてください。</div>;
+  }
 
   // 削除するメソッド
   const todoDeleteHandler = (id: string | undefined) => {
@@ -55,7 +58,6 @@ export const TodoApp: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <CreateForm />
       {todoList()}
     </div>

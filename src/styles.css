@@ -19,7 +19,7 @@ header h1 {
   margin: 0;
 }
 
-form {
+.todo-form {
   width: 50%;
   margin: 30px auto;
   padding: 10px;
@@ -29,7 +29,7 @@ form {
   display: flex;
 }
 
-form input {
+.todo-input {
   width: 80%;
   padding: 5px;
   border: none;
@@ -38,7 +38,7 @@ form input {
   color: #2d334a;
 }
 
-form button {
+.todo-btn {
   width: 50px;
   height: 50px;
   margin: 0 0 0 auto;
@@ -79,4 +79,37 @@ form button {
   cursor: pointer;
   border: none;
   outline: none;
+}
+
+.auth-form {
+  width: 30%;
+  margin: 30px auto;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.auth-form-inner {
+  text-align: center;
+}
+
+.auth-input {
+  width: 80%;
+  margin: 10px 0;
+  padding: 10px 0 10px 5px;
+  outline: none;
+  border-style: solid;
+  border-color: rgb(216, 216, 216);
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.auth-btn {
+  width: 81%;
+  margin: 10px 0;
+  padding: 10px 5px;
+  font-size: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }

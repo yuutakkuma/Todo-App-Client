@@ -19,26 +19,28 @@ export const CreateForm: React.FC = () => {
   };
 
   return (
-    <div>
-      <form
-        onSubmit={async event => {
-          event.preventDefault();
-          await createTodo({
-            variables: {
-              title: item.title
-            }
-          });
-          setItem({ title: '' });
-        }}
-      >
-        <input
-          name="title"
-          placeholder="やること"
-          onChange={handleChange}
-          value={item.title}
-        />
-        <button type="submit">＋</button>
-      </form>
-    </div>
+    <form
+      className="todo-form"
+      onSubmit={async event => {
+        event.preventDefault();
+        await createTodo({
+          variables: {
+            title: item.title
+          }
+        });
+        setItem({ title: '' });
+      }}
+    >
+      <input
+        className="todo-input"
+        name="title"
+        placeholder="やること"
+        onChange={handleChange}
+        value={item.title}
+      />
+      <button className="todo-btn" type="submit">
+        ＋
+      </button>
+    </form>
   );
 };
