@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLoginMutation } from '../generated/graphql';
 import { RouteComponentProps } from 'react-router-dom';
-import { setAccessToken } from '../accessToken';
 
 export const Login: React.FC<RouteComponentProps> = ({ history }) => {
   const [email, setEmail] = useState<string>('');
@@ -25,22 +24,13 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
       onSubmit={async event => {
         event.preventDefault();
 
-        const response = await login({
+        await login({
           variables: {
             email: email,
             password: password
           }
         });
-        console.log(response);
-
-        // typeof type guards
-        if (typeof response.data?.login?.accessToken === 'undefined') {
-          return <div>Type Error...</div>;
-        }
-
-        setAccessToken(response.data.login.accessToken);
-
-        // history.push('/Todo');
+        history.push('/Todo');
       }}
     >
       <div className="auth-form-inner">

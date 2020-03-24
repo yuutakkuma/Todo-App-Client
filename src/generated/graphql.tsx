@@ -20,17 +20,12 @@ export type LoginInput = {
   password: Scalars['String'],
 };
 
-export type LoginResponse = {
-   __typename?: 'LoginResponse',
-  accessToken: Scalars['String'],
-};
-
 export type Mutation = {
    __typename?: 'Mutation',
   createTodo?: Maybe<Scalars['Boolean']>,
   deleteTodo?: Maybe<Scalars['Boolean']>,
   register?: Maybe<Scalars['Boolean']>,
-  login?: Maybe<LoginResponse>,
+  login?: Maybe<Scalars['Boolean']>,
 };
 
 
@@ -120,10 +115,7 @@ export type LoginMutationVariables = {
 
 export type LoginMutation = (
   { __typename?: 'Mutation' }
-  & { login: Maybe<(
-    { __typename?: 'LoginResponse' }
-    & Pick<LoginResponse, 'accessToken'>
-  )> }
+  & Pick<Mutation, 'login'>
 );
 
 export type RegisterMutationVariables = {
@@ -235,9 +227,7 @@ export type GetTodoListLazyQueryHookResult = ReturnType<typeof useGetTodoListLaz
 export type GetTodoListQueryResult = ApolloReactCommon.QueryResult<GetTodoListQuery, GetTodoListQueryVariables>;
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
-  login(loginInput: {email: $email, password: $password}) {
-    accessToken
-  }
+  login(loginInput: {email: $email, password: $password})
 }
     `;
 export type LoginMutationFn = ApolloReactCommon.MutationFunction<LoginMutation, LoginMutationVariables>;

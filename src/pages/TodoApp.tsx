@@ -8,8 +8,12 @@ import {
 } from '../generated/graphql';
 
 export const TodoApp: React.FC = () => {
-  const { data, loading } = useGetTodoListQuery({ pollInterval: 500 });
+  const { data, loading, error } = useGetTodoListQuery({ pollInterval: 500 });
   const [deleteTodo] = useDeleteTodoMutation();
+
+  if (error) {
+    return <div>再度ログインしてください。</div>;
+  }
 
   // 削除するメソッド
   const todoDeleteHandler = (id: string | undefined) => {
