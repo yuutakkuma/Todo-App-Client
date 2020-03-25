@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLoginMutation } from '../generated/graphql';
 import { RouteComponentProps } from 'react-router-dom';
+import { setLogOutStatus } from '../logOutStatus';
 
 export const Login: React.FC<RouteComponentProps> = ({ history }) => {
   const [email, setEmail] = useState<string>('');
@@ -30,6 +31,7 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
             password: password
           }
         });
+        setLogOutStatus(false);
         history.push('/Todo');
       }}
     >

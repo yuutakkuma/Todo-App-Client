@@ -1,13 +1,19 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { useGetTodoListQuery, useLogOutMutation } from '../generated/graphql';
+import { useGetTodoListQuery } from '../generated/graphql';
 
 import { CreateForm } from '../components/CreateForm';
 import { List } from '../components/List';
+import { getLogOutStatus } from '../logOutStatus';
+import { LogOutButton } from '../components/LogOutButton';
 
 export const TodoApp: React.FC<RouteComponentProps> = ({ history }) => {
   const { data, loading, error } = useGetTodoListQuery({ pollInterval: 500 });
-  const [logOut] = useLogOutMutation();
+
+  let logoutStatus: boolean = getLogOutStatus();
+  if (logoutStatus === true) {
+    history.push('/Login');
+  }
 
   if (typeof data === 'undefined') {
     return <div>データを取得出来ませんでした。</div>;
@@ -33,17 +39,7 @@ export const TodoApp: React.FC<RouteComponentProps> = ({ history }) => {
 
   return (
     <div>
-      <button
-        className="logout-btn"
-        onClick={async () => {
-          const logout = await logOut();
-          if (logout) {
-            history.push('/Login');
-          }
-        }}
-      >
-        ログアウト
-      </button>
+      <LogOutButton />
       <CreateForm />
       {massage()}
       {data.getTodoList.map(x => {
