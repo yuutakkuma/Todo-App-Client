@@ -10,7 +10,11 @@ export const TodoApp: React.FC<RouteComponentProps> = ({ history }) => {
   const [logOut] = useLogOutMutation();
 
   if (typeof data === 'undefined') {
-    return <div>やることを追加しよう！</div>;
+    return <div>データを取得出来ませんでした。</div>;
+  }
+
+  if (!data.getTodoList) {
+    return <div>データを取得出来ませんでした。</div>;
   }
 
   if (loading) {
@@ -20,11 +24,12 @@ export const TodoApp: React.FC<RouteComponentProps> = ({ history }) => {
   if (error) {
     return <div>再度ログインしてください。</div>;
   }
-
-  // データを取得出来なかった場合
-  if (!data.getTodoList) {
-    return <div>データを取得出来ませんでした。</div>;
-  }
+  // リストが無い時のメッセージ
+  const massage = () => {
+    if (data.getTodoList?.length === 0) {
+      return <div className="massage">やることを追加しよう！</div>;
+    }
+  };
 
   return (
     <div>
@@ -40,6 +45,7 @@ export const TodoApp: React.FC<RouteComponentProps> = ({ history }) => {
         ログアウト
       </button>
       <CreateForm />
+      {massage()}
       {data.getTodoList.map(x => {
         // map出来なかった場合
         if (!x) {

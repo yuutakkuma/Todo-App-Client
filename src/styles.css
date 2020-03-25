@@ -52,6 +52,15 @@ header h1 {
   outline: none;
 }
 
+.massage {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 30px;
+  color: #8ac6d1;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
 .item-list {
   width: 50%;
   margin: 10px auto;
