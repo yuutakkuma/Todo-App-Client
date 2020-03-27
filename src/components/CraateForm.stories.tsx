@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CreateForm } from './CreateForm';
+import { CreateTodo } from './CreateTodo';
 
 export default {
   title: 'TodoCreate'
@@ -9,7 +9,7 @@ export default {
 export const Create = () => {
   return (
     <div>
-      <CreateForm />
+      <CreateTodo />
     </div>
   );
 };

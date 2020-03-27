@@ -18,6 +18,7 @@ export const List: React.FC<Props> = props => {
       <p className="item-name">{props.title}</p>
       <button
         className="delete-btn"
+        data-testid="delete-btn-test"
         onClick={() => {
           deleteTodo({
             variables: {
