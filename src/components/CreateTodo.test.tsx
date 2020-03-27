@@ -1,6 +1,5 @@
 import React from 'react';
 import { MockedProvider } from '@apollo/react-testing';
-import { gql } from 'apollo-boost';
 import {
   render,
   act,
@@ -8,17 +7,12 @@ import {
   waitForDomChange
 } from '@testing-library/react';
 import { CreateTodo } from './CreateTodo';
-
-const CREATE_TODO_MUTATION = gql`
-  mutation CreateTodo($title: String!) {
-    createTodo(input: { title: $title })
-  }
-`;
+import { CreateTodoDocument } from '../generated/graphql';
 
 const mocks = [
   {
     request: {
-      query: CREATE_TODO_MUTATION,
+      query: CreateTodoDocument,
       variables: {
         title: 'パンを買う'
       }

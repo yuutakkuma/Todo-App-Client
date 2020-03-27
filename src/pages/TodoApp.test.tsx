@@ -3,33 +3,18 @@ import {
   render,
   waitForDomChange,
   fireEvent,
-  act
+  act,
+  wait
 } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
 import { TodoApp } from './TodoApp';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import { gql } from 'apollo-boost';
-
-const GET_TODOLIST_QUERY = gql`
-  query GetTodoList {
-    getTodoList {
-      id
-      userId
-      title
-    }
-  }
-`;
-
-const CREATE_TODO_MUTATION = gql`
-  mutation CreateTodo($title: String!) {
-    createTodo(input: { title: $title })
-  }
-`;
+import { GetTodoListDocument, CreateTodoDocument } from '../generated/graphql';
 
 const mocks = [
   {
     request: {
-      query: GET_TODOLIST_QUERY,
+      query: GetTodoListDocument,
       variables: {
         id: '1',
         userId: '1',
@@ -42,7 +27,7 @@ const mocks = [
   },
   {
     request: {
-      query: CREATE_TODO_MUTATION,
+      query: CreateTodoDocument,
       variables: {
         title: 'たこ焼き買う'
       }
@@ -57,7 +42,7 @@ const mocks = [
 
 test('レンダリング', async () => {
   await act(async () => {
-    const { debug, getByPlaceholderText, getByTestId, getByText } = render(
+    const { debug, getByPlaceholderText, getByText, getByTestId } = render(
       <MockedProvider mocks={mocks}>
         <BrowserRouter>
           <Switch>
@@ -75,9 +60,9 @@ test('レンダリング', async () => {
       target: { value: 'たこ焼き買う' }
     });
     const todoButton = getByTestId('todo-btn-test');
-    fireEvent.click(todoButton);
+    await wait(async () => fireEvent.click(todoButton));
     debug();
-    // エラーになる
+    // エラーになる (なんでエラーになるんだろ。。。)
     getByText('Error...');
     debug();
     await waitForDomChange();
