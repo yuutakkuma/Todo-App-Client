@@ -42,18 +42,18 @@ test('レンダリング', () => {
 });
 
 test('Todo作成テスト', async () => {
-  const component = render(
+  const { getByPlaceholderText, getByTestId, debug } = render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <CreateTodo />
     </MockedProvider>
   );
-  const createTodoForm = component.getByPlaceholderText('やること');
+  const createTodoForm = getByPlaceholderText('やること');
   fireEvent.change(createTodoForm, {
     target: { value: 'パンを買う' }
   });
-  component.debug();
-  const todoButton = component.getByTestId('todo-btn-test');
+  debug();
+  const todoButton = getByTestId('todo-btn-test');
   fireEvent.click(todoButton);
   await waitForDomChange();
-  component.debug();
+  debug();
 });

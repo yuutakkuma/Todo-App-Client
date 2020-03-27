@@ -3,7 +3,10 @@ import {
   act,
   render,
   waitForElement,
-  createEvent
+  createEvent,
+  fireEvent,
+  waitForDomChange,
+  wait
 } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
 import { List } from './List';
@@ -37,7 +40,7 @@ const mocks = [
     request: {
       query: DELETE_TODO_MUTATION,
       variables: {
-        id: '1'
+        id: ['1', '2', '3']
       }
     },
     result: {
@@ -59,7 +62,7 @@ test('レンダリング', async () => {
 });
 
 test('Todoリストを表示して削除ボタンを起動する', async () => {
-  const component = render(
+  const { getByText, getByTestId, debug } = render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <List
         id={
@@ -79,9 +82,10 @@ test('Todoリストを表示して削除ボタンを起動する', async () => {
   );
   // 全て表示されてることを確かめる
   await waitForElement(async () => {
-    component.getByText('パンを食べる' + '洗濯物を干す' + '洗い物をする');
+    getByText('パンを食べる' + '洗濯物を干す' + '洗い物をする');
   });
   // 削除ボタン起動
-  const deleteButton = component.getByTestId('delete-btn-test');
+  const deleteButton = getByTestId('delete-btn-test');
   createEvent.click(deleteButton);
+  debug();
 });
