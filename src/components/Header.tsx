@@ -1,4 +1,5 @@
 import React from 'react';
+import { LogOutButton } from './LogOutButton';
 
 export const Header: React.FC = () => {
   return (
@@ -6,6 +7,7 @@ export const Header: React.FC = () => {
       <div>
         <h1>ToDo アプリ</h1>
       </div>
+      <LogOutButton />
     </header>
   );
 };
