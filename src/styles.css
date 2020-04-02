@@ -19,6 +19,10 @@ header h1 {
   margin: 0;
 }
 
+.main {
+  width: 100%;
+}
+
 .todo-form {
   width: 50%;
   margin: 30px auto;
@@ -52,7 +56,21 @@ header h1 {
   outline: none;
 }
 
-.item-list {
+.massage {
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 30px;
+  color: #8ac6d1;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.todolist-wrapper {
+  width: 100%;
+  margin: 10px auto;
+}
+
+.todolist-container {
   width: 50%;
   margin: 10px auto;
   padding: 10px;
@@ -62,7 +80,7 @@ header h1 {
   display: flex;
 }
 
-.item-name {
+.todo-name {
   width: 80%;
   font-size: 20px;
   color: #2d334a;

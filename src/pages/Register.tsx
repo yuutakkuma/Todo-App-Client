@@ -45,7 +45,6 @@ export const Register: React.FC<RouteComponentProps> = ({ history }) => {
           placeholder="userName"
           onChange={event => {
             setUserName(event.target.value);
-            console.log(event.target.value);
           }}
         />
         <input
@@ -54,7 +53,6 @@ export const Register: React.FC<RouteComponentProps> = ({ history }) => {
           placeholder="email"
           onChange={event => {
             setEmail(event.target.value);
-            console.log(event.target.value);
           }}
         />
         <input
@@ -64,7 +62,6 @@ export const Register: React.FC<RouteComponentProps> = ({ history }) => {
           placeholder="password"
           onChange={event => {
             setPassword(event.target.value);
-            console.log(event.target.value);
           }}
         />
         <button className="auth-btn" type="submit">
