@@ -1,18 +1,14 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import { useGetTodoListQuery } from '../generated/graphql';
 
 import { CreateTodo } from '../components/CreateTodo';
-import { getLogOutStatus } from '../logOutStatus';
 import { TodoList } from '../components/TodoList';
 import { Header } from '../components/Header';
 
-export const TodoApp: React.FC<RouteComponentProps> = ({ history }) => {
+export const TodoApp: React.FC = () => {
   const { data, loading, error } = useGetTodoListQuery({ pollInterval: 500 });
-
-  let logoutStatus: boolean = getLogOutStatus();
-  if (logoutStatus === true) {
-    history.push('/Login');
+  if (error) {
+    return <div>エラーです</div>;
   }
 
   return (

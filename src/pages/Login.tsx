@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
+import { LoginButton } from '../components/button/LoginButton';
 import { useLoginMutation } from '../generated/graphql';
-import { RouteComponentProps } from 'react-router-dom';
-import { setLogOutStatus } from '../logOutStatus';
+import { useHistory } from 'react-router-dom';
 
-export const Login: React.FC<RouteComponentProps> = ({ history }) => {
+export const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [login, { error }] = useLoginMutation();
-
-  if (error) {
-    return <div>Error...</div>;
-  }
+  const [login, { loading, error }] = useLoginMutation();
+  const history = useHistory();
 
   if (typeof email === 'undefined') {
     return <div>email type is undefined</div>;
@@ -19,27 +16,27 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
     return <div>password type is undefined</div>;
   }
 
+  if (error) return <div>ログインエラー</div>;
+
   return (
     <form
       className="auth-form"
       onSubmit={async event => {
         event.preventDefault();
-
         await login({
           variables: {
             email: email,
             password: password
           }
         });
-        setLogOutStatus(false);
-        history.push('/Todo');
+        history.push('/todo');
       }}
     >
       <div className="auth-form-inner">
         <input
           className="auth-input"
-          value={email}
           placeholder="email"
+          value={email}
           onChange={event => {
             setEmail(event.target.value);
           }}
@@ -47,15 +44,13 @@ export const Login: React.FC<RouteComponentProps> = ({ history }) => {
         <input
           className="auth-input"
           type="password"
-          value={password}
           placeholder="password"
+          value={password}
           onChange={event => {
             setPassword(event.target.value);
           }}
         />
-        <button className="auth-btn" type="submit">
-          ログイン
-        </button>
+        <LoginButton isLoginLoading={loading} />
       </div>
     </form>
   );

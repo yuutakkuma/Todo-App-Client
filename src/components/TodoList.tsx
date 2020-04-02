@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetTodoListQuery } from '../generated/graphql';
 import { ApolloError } from 'apollo-boost';
-import { TodoDeleteButton } from './TodoDeleteButton';
+import { TodoDeleteButton } from './button/TodoDeleteButton';
 
 interface Props {
   fetchData: GetTodoListQuery | undefined;
