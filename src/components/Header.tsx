@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogOutButton } from './LogOutButton';
+import { LogOutButton } from './button/LogOutButton';
 
 export const Header: React.FC = () => {
   return (
