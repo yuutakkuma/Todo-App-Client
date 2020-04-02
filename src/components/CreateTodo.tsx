@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
-import { TodoCreateButton } from './TodoCreateButton';
+import { useCreateTodoMutation } from '../generated/graphql';
+import { TodoCreateButton } from './button/TodoCreateButton';
 
 export const CreateTodo: React.FC = () => {
   const [item, setItem] = useState({ title: '' });
-  // 値を更新するメソッド
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-
-    setItem(prevItem => {
-      return {
-        ...prevItem,
-        [name]: value
-      };
-    });
-  };
+  const [createTodo, { loading }] = useCreateTodoMutation();
 
   return (
-    <form className="todo-form">
+    <form
+      className="todo-form"
+      onSubmit={async event => {
+        event.preventDefault();
+        await createTodo({
+          variables: {
+            title: item.title
+          }
+        });
+      }}
+    >
       <input
         className="todo-input"
         name="title"
         placeholder="やること"
-        onChange={handleChange}
         value={item.title}
+        onChange={event => {
+          setItem({
+            title: event.target.value
+          });
+        }}
       />
-      <TodoCreateButton todoTitle={item.title} />
+      <TodoCreateButton isCreateLoading={loading} />
     </form>
   );
 };
