@@ -12,7 +12,7 @@ export const TodoApp: React.FC = () => {
   }
 
   return (
-    <div className="main">
+    <div>
       <Header />
       <CreateTodo />
       <TodoList fetchData={data} loading={loading} error={error} />
