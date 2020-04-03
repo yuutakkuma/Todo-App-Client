@@ -1,10 +1,13 @@
 import React from 'react';
 import { useLogOutMutation } from '../../generated/graphql';
 import { useHistory } from 'react-router-dom';
+import { Loading } from '../Loading';
 
 export const LogOutButton: React.FC = () => {
   const history = useHistory();
-  const [logOut] = useLogOutMutation();
+  const [logOut, { loading }] = useLogOutMutation();
+
+  if (loading) return <Loading />;
 
   return (
     <button

@@ -7,15 +7,12 @@ import { Header } from '../components/Header';
 
 export const TodoApp: React.FC = () => {
   const { data, loading, error } = useGetTodoListQuery({ pollInterval: 500 });
-  if (error) {
-    return <div>エラーです</div>;
-  }
 
   return (
-    <div className="main">
+    <div>
       <Header />
       <CreateTodo />
-      <TodoList fetchData={data} loading={loading} error={error} />
+      <TodoList fetchData={data} isTodoListLoading={loading} error={error} />
     </div>
   );
 };

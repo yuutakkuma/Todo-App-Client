@@ -2,14 +2,15 @@ import React from 'react';
 import { Loading } from '../Loading';
 
 interface Props {
-  isLoginLoading: boolean;
+  isRegisterLoading: boolean;
 }
 
-export const LoginButton: React.FC<Props> = props => {
-  if (props.isLoginLoading) return <Loading />;
+export const RegisterButton: React.FC<Props> = props => {
+  if (props.isRegisterLoading) return <Loading />;
+
   return (
     <button className="auth-btn" type="submit">
-      ログイン
+      新規登録
     </button>
   );
 };

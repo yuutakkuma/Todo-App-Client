@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDeleteTodoMutation } from '../../generated/graphql';
+import { Loading } from '../Loading';
 
 interface Props {
   todoId: string;
@@ -11,7 +12,7 @@ export const TodoDeleteButton: React.FC<Props> = props => {
   if (error) {
     return <div>削除出来ませんでした。</div>;
   }
-  if (loading) return <div>ロード中...</div>;
+  if (loading) return <Loading />;
 
   return (
     <button

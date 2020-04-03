@@ -16,6 +16,7 @@ export const CreateTodo: React.FC = () => {
             title: item.title
           }
         });
+        setItem({ title: '' });
       }}
     >
       <input

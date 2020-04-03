@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { TodoApp } from './pages/TodoApp';
 import { Register } from './pages/Register';
-import { Login } from './pages/Login';
 import { Landing } from './pages/Landing';
 
 export const Routes: React.FC = () => {
@@ -11,7 +10,6 @@ export const Routes: React.FC = () => {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/todo" component={TodoApp} />
-        <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
       </Switch>
     </BrowserRouter>
