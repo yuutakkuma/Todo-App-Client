@@ -1,5 +1,5 @@
 import React from 'react';
-import { Login } from './Login';
+import { Login } from '../components/Login';
 import { useHistory } from 'react-router-dom';
 
 export const Landing: React.FC = () => {

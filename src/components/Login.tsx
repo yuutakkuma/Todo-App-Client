@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LoginButton } from '../components/button/LoginButton';
+import { LoginButton } from './button/LoginButton';
 import { useLoginMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 
