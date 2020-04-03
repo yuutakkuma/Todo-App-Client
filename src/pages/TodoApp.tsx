@@ -7,9 +7,6 @@ import { Header } from '../components/Header';
 
 export const TodoApp: React.FC = () => {
   const { data, loading, error } = useGetTodoListQuery({ pollInterval: 500 });
-  if (error) {
-    return <div>エラーです</div>;
-  }
 
   return (
     <div>
