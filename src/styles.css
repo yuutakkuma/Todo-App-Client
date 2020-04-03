@@ -73,9 +73,14 @@ header h1 {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
+.nickname {
+  margin: 0 30px;
+  color: #2d334a;
+}
+
 .todo-form {
   width: 50%;
-  margin: 30px auto;
+  margin: 10px auto 30px auto;
   padding: 10px;
   background-color: #fffdf9;
   border-radius: 10px;
