@@ -15,7 +15,7 @@ export const TodoApp: React.FC = () => {
     <div>
       <Header />
       <CreateTodo />
-      <TodoList fetchData={data} loading={loading} error={error} />
+      <TodoList fetchData={data} isTodoListLoading={loading} error={error} />
     </div>
   );
 };

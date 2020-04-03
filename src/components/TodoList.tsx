@@ -5,7 +5,7 @@ import { TodoDeleteButton } from './button/TodoDeleteButton';
 
 interface Props {
   fetchData: GetTodoListQuery | undefined;
-  loading: boolean;
+  isTodoListLoading: boolean;
   error: ApolloError | undefined;
 }
 
