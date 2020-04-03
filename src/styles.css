@@ -21,6 +21,40 @@ header h1 {
 
 .main {
   width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: #bfe8f0;
+}
+
+.main-container {
+  width: 50%;
+  position: relative;
+}
+
+.box {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.box-inner {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.main-text {
+  text-align: center;
+  color: #2d334a;
+}
+
+.move-btn {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
 .todo-form {
@@ -100,9 +134,9 @@ header h1 {
 }
 
 .auth-form {
-  width: 30%;
+  width: 50%;
   margin: 30px auto;
-  padding: 10px;
+  padding: 10px 0;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
