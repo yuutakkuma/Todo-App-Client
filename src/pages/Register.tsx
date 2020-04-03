@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useRegisterMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
+import { RegisterButton } from '../components/button/RegisterButton';
 
 export const Register: React.FC = () => {
   const history = useHistory();
   const [userName, setUserName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [register, { error }] = useRegisterMutation();
+  const [register, { loading, error }] = useRegisterMutation();
 
   if (error) {
     return <div>Error...</div>;
@@ -65,9 +66,7 @@ export const Register: React.FC = () => {
             setPassword(event.target.value);
           }}
         />
-        <button className="auth-btn" type="submit">
-          新規登録
-        </button>
+        <RegisterButton isRegisterLoading={loading} />
       </div>
     </form>
   );
