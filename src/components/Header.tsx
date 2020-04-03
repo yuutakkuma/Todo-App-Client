@@ -7,7 +7,9 @@ export const Header: React.FC = () => {
       <div>
         <h1>ToDo アプリ</h1>
       </div>
-      <LogOutButton />
+      <div className="logout-box">
+        <LogOutButton />
+      </div>
     </header>
   );
 };
