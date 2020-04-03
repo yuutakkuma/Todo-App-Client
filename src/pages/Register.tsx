@@ -37,7 +37,7 @@ export const Register: React.FC = () => {
             password: password
           }
         });
-        history.push('/Login');
+        history.push('/');
       }}
     >
       <div className="auth-form-inner">
