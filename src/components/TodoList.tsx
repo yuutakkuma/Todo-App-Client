@@ -1,6 +1,8 @@
 import React from 'react';
-import { GetTodoListQuery } from '../generated/graphql';
 import { ApolloError } from 'apollo-boost';
+import './componentStyle/TodoList.css';
+
+import { GetTodoListQuery } from '../generated/graphql';
 import { TodoDeleteButton } from './button/TodoDeleteButton';
 import { TodoListItem } from './TodoListItem';
 

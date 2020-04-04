@@ -29,7 +29,7 @@ export const Register: React.FC = () => {
 
   return (
     <div className="main">
-      <div className="box">
+      <div className="register-wrapper">
         <form
           className="register-form"
           onSubmit={async event => {
@@ -46,35 +46,33 @@ export const Register: React.FC = () => {
           }}
         >
           <div className="input-form-inner">
-            <div className="input-container">
-              <StringCount value={userName} />
-              <input
-                className="form-input"
-                value={userName}
-                placeholder="userName"
-                onChange={event => {
-                  setUserName(event.target.value);
-                }}
-              />
-              <input
-                className="form-input"
-                value={email}
-                placeholder="email"
-                onChange={event => {
-                  setEmail(event.target.value);
-                }}
-              />
-              <input
-                className="form-input"
-                type="password"
-                value={password}
-                placeholder="password"
-                onChange={event => {
-                  setPassword(event.target.value);
-                }}
-              />
-              <RegisterButton isRegisterLoading={loading} />
-            </div>
+            <StringCount value={userName} />
+            <input
+              className="form-input"
+              value={userName}
+              placeholder="userName"
+              onChange={event => {
+                setUserName(event.target.value);
+              }}
+            />
+            <input
+              className="form-input"
+              value={email}
+              placeholder="email"
+              onChange={event => {
+                setEmail(event.target.value);
+              }}
+            />
+            <input
+              className="form-input"
+              type="password"
+              value={password}
+              placeholder="password"
+              onChange={event => {
+                setPassword(event.target.value);
+              }}
+            />
+            <RegisterButton isRegisterLoading={loading} />
           </div>
         </form>
       </div>

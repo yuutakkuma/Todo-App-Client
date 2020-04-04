@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './componentStyle/CreateTodo.css';
+
 import { useCreateTodoMutation } from '../generated/graphql';
 import { TodoCreateButton } from './button/TodoCreateButton';
 

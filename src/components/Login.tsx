@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './componentStyle/Login.css';
+
 import { LoginButton } from './button/LoginButton';
 import { useLoginMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
@@ -20,7 +22,7 @@ export const Login: React.FC = () => {
 
   return (
     <form
-      className="auth-form"
+      className="login-form"
       onSubmit={async event => {
         event.preventDefault();
         await login({
@@ -32,9 +34,9 @@ export const Login: React.FC = () => {
         history.push('/todo');
       }}
     >
-      <div className="auth-form-inner">
+      <div className="login-form-inner">
         <input
-          className="auth-input"
+          className="login-input"
           placeholder="email"
           value={email}
           onChange={event => {
@@ -42,7 +44,7 @@ export const Login: React.FC = () => {
           }}
         />
         <input
-          className="auth-input"
+          className="login-input"
           type="password"
           placeholder="password"
           value={password}

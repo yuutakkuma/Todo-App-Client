@@ -1,0 +1,27 @@
+header {
+  background-color: #8ac6d1;
+  margin: auto 0px;
+  padding: 10px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+
+header h1 {
+  color: #fffdf9;
+  margin: 0;
+}
+
+.logout-box {
+  width: 10%;
+  margin: 0 0 0 auto;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  color: #2d334a;
+  border-radius: 5px;
+  background-color: #fffdf9;
+  cursor: pointer;
+}

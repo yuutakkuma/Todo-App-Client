@@ -1,6 +1,8 @@
 import React from 'react';
-import { Login } from '../components/Login';
 import { useHistory } from 'react-router-dom';
+import './pageStyle/Landing.css';
+
+import { Login } from '../components/Login';
 
 export const Landing: React.FC = () => {
   const history = useHistory();
@@ -17,7 +19,7 @@ export const Landing: React.FC = () => {
       <div className="main-container">
         <div className="box">
           <Login />
-          <div className="box-inner">
+          <div className="main-inner">
             <p className="main-text">又は</p>
             <button
               className="move-btn"

@@ -1,4 +1,4 @@
-.register-form {
+.login-form {
   width: 50%;
   margin: 20px auto;
   padding: 10px 0;
@@ -7,19 +7,15 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
-.register-wrapper {
-  width: 100%;
-}
-
-.input-form-inner {
+.login-form-inner {
   width: 80%;
   margin: 0 auto;
 }
 
-.form-input {
+.login-input {
   width: 100%;
-  margin: 5px auto;
-  padding: 10px 5px 10px 5px;
+  margin: 10px 0;
+  padding: 10px 0 10px 5px;
   outline: none;
   border-style: solid;
   border-color: rgb(216, 216, 216);
@@ -28,9 +24,9 @@
   box-sizing: border-box;
 }
 
-.register-btn {
+.login-btn {
   width: 100%;
-  margin: 5px auto;
+  margin: 10px 0;
   padding: 10px 5px;
   font-size: 15px;
   border-radius: 5px;
