@@ -12,11 +12,27 @@ header {
   margin: auto 0px;
   padding: 10px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
 }
 
 header h1 {
   color: #fffdf9;
   margin: 0;
+}
+
+.logout-box {
+  width: 10%;
+  margin: 0 0 0 auto;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  color: #2d334a;
+  border-radius: 5px;
+  background-color: #fffdf9;
+  cursor: pointer;
 }
 
 .main {
@@ -57,11 +73,16 @@ header h1 {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
+.nickname {
+  margin: 0 30px;
+  color: #2d334a;
+}
+
 .todo-form {
   width: 50%;
-  margin: 30px auto;
+  margin: 10px auto 30px auto;
   padding: 10px;
-  background-color: #fff;
+  background-color: #fffdf9;
   border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -82,7 +103,7 @@ header h1 {
   margin: 0 0 0 auto;
   border-radius: 50%;
   font-size: 30px;
-  color: #fff;
+  color: #fffdf9;
   background-color: #8ac6d1;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
@@ -108,7 +129,7 @@ header h1 {
   width: 50%;
   margin: 10px auto;
   padding: 10px;
-  background-color: #fff;
+  background-color: #fffdf9;
   border-radius: 10px;
   box-shadow: 0 1px 5px #ccc;
   display: flex;
@@ -125,7 +146,7 @@ header h1 {
   margin: 0 0 0 auto;
   border-radius: 10%;
   font-size: 10px;
-  color: #fff;
+  color: #fffdf9;
   background-color: #ffa259;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
@@ -135,9 +156,9 @@ header h1 {
 
 .auth-form {
   width: 50%;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 10px 0;
-  background-color: #fff;
+  background-color: #fffdf9;
   border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }

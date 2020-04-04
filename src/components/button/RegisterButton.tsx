@@ -9,7 +9,7 @@ export const RegisterButton: React.FC<Props> = props => {
   if (props.isRegisterLoading) return <Loading />;
 
   return (
-    <button className="auth-btn" type="submit">
+    <button className="register-btn" type="submit">
       新規登録
     </button>
   );
