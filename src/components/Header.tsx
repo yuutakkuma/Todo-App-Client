@@ -1,4 +1,6 @@
 import React from 'react';
+import './componentStyle/Header.css';
+
 import { LogOutButton } from './button/LogOutButton';
 
 export const Header: React.FC = () => {
