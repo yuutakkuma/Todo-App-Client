@@ -8,7 +8,7 @@ interface Props {
 export const LoginButton: React.FC<Props> = props => {
   if (props.isLoginLoading) return <Loading />;
   return (
-    <button className="auth-btn" type="submit">
+    <button className="login-btn" type="submit">
       ログイン
     </button>
   );
