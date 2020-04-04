@@ -7,6 +7,10 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
+.register-wrapper {
+  width: 100%;
+}
+
 .input-form-inner {
   width: 80%;
   margin: 0 auto;

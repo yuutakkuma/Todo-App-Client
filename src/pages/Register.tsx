@@ -29,7 +29,7 @@ export const Register: React.FC = () => {
 
   return (
     <div className="main">
-      <div className="box">
+      <div className="register-wrapper">
         <form
           className="register-form"
           onSubmit={async event => {
