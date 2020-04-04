@@ -8,10 +8,6 @@
 }
 
 .input-form-inner {
-  display: flex;
-}
-
-.input-container {
   width: 80%;
   margin: 0 auto;
 }
