@@ -1,4 +1,6 @@
 import React from 'react';
+import './componentStyle/HelloUser.css';
+
 import { MeQuery } from '../generated/graphql';
 import { ApolloError } from 'apollo-boost';
 import { Loading } from './Loading';
