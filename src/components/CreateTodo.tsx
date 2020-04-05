@@ -7,6 +7,8 @@ import { CharacterCount } from './CharacterCount';
 import { CreateTodoGqlError } from '../models/createTodoGqlError';
 
 let todoError: string;
+// エラーを表示するトリガー
+let reloadTrigger: boolean;
 
 export const CreateTodo: React.FC = () => {
   const [item, setItem] = useState({ title: '' });
@@ -17,6 +19,8 @@ export const CreateTodo: React.FC = () => {
     const errorObj = error.graphQLErrors.map(e => e.message);
     const errors: CreateTodoGqlError = errorObj[0] as any;
     todoError = errors.message[0].constraints.length;
+    // トリガーをfalseにする
+    reloadTrigger = false;
   }
 
   return (
@@ -32,11 +36,17 @@ export const CreateTodo: React.FC = () => {
             }
           });
           setItem({ title: '' });
+          // トリガーをtrueにする
+          reloadTrigger = true;
         } catch {}
       }}
     >
       <div className="todo-form-inner">
-        <CharacterCount value={item.title} error={todoError} />
+        <CharacterCount
+          value={item.title}
+          error={todoError}
+          reload={reloadTrigger}
+        />
         <input
           className="todo-input"
           name="title"

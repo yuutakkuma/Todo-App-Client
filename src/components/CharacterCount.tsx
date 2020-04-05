@@ -3,6 +3,7 @@ import React from 'react';
 interface Props {
   value: string;
   error: string;
+  reload: boolean;
 }
 
 export const CharacterCount: React.FC<Props> = props => {
@@ -16,7 +17,7 @@ export const CharacterCount: React.FC<Props> = props => {
 
   return (
     <p className="character" style={style}>
-      <span className="error">{props.error}</span>
+      {!props.reload ? <span className="error">{props.error}</span> : undefined}
       {count}/25
     </p>
   );
