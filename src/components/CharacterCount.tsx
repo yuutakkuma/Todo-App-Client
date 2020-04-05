@@ -2,21 +2,22 @@ import React from 'react';
 
 interface Props {
   value: string;
+  error: string;
 }
-let warning: string | undefined;
 
 export const CharacterCount: React.FC<Props> = props => {
   let style = {
-    color: 'blue',
-    margin: '0'
+    color: 'blue'
   };
   const count = props.value.trim().length;
-  if (count > 20) {
-    warning = 'ニックネームは20文字以下です。';
+  if (count > 25) {
     style.color = 'red';
-  } else {
-    warning = undefined;
   }
 
-  return <p style={style}>{[warning, count]}/20</p>;
+  return (
+    <p className="character" style={style}>
+      <span className="error">{props.error}</span>
+      {count}/25
+    </p>
+  );
 };
