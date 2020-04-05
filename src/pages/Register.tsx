@@ -4,6 +4,7 @@ import './pageStyle/Register.css';
 import { useRegisterMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 import { RegisterButton } from '../components/button/RegisterButton';
+import { RegisterGqlError } from '../models/registerGqlError';
 
 let nickNameError: string;
 let emailError: string;
@@ -18,12 +19,13 @@ export const Register: React.FC = () => {
 
   if (error) {
     // GraphQLErrorを取得
-    const obj = JSON.stringify(error.graphQLErrors.map(e => e.message));
-    const parsed = JSON.parse(obj);
+    const obj = error.graphQLErrors.map(e => e.message);
+    const errors: RegisterGqlError = obj[0] as any;
+
     // エラー内容を変数に代入
-    nickNameError = parsed[0].message[0].constraints.length;
-    emailError = parsed[0].message[1].constraints.isEmail;
-    passwordError = parsed[0].message[2].constraints.length;
+    nickNameError = errors.message[0].constraints.length;
+    emailError = errors.message[1].constraints.isEmail;
+    passwordError = errors.message[2].constraints.length;
   }
 
   return (

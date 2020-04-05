@@ -4,14 +4,9 @@ import './componentStyle/Login.css';
 import { LoginButton } from './button/LoginButton';
 import { useLoginMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
+import { loginGqlError } from '../models/loginGqlError';
 
-interface gqlError {
-  statusCode: number;
-  error: string;
-  message: string;
-}
-
-let errorMessage: gqlError;
+let errorMessage: loginGqlError;
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
