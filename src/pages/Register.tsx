@@ -8,23 +8,13 @@ import { CharacterCount } from '../components/CharacterCount';
 
 export const Register: React.FC = () => {
   const history = useHistory();
-  const [userName, setUserName] = useState<string>('');
+  const [nickName, setNickName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [register, { loading, error }] = useRegisterMutation();
 
   if (error) {
     return <div>Error...</div>;
-  }
-  if (typeof userName === 'undefined') {
-    return <div>userName type is undefined</div>;
-  }
-
-  if (typeof email === 'undefined') {
-    return <div>email type is undefined</div>;
-  }
-  if (typeof password === 'undefined') {
-    return <div>password type is undefined</div>;
   }
 
   return (
@@ -37,7 +27,7 @@ export const Register: React.FC = () => {
 
             await register({
               variables: {
-                userName: userName,
+                nickName: nickName,
                 email: email,
                 password: password
               }
@@ -46,13 +36,13 @@ export const Register: React.FC = () => {
           }}
         >
           <div className="input-form-inner">
-            <CharacterCount value={userName} />
+            <CharacterCount value={nickName} />
             <input
               className="form-input"
-              value={userName}
-              placeholder="userName"
+              value={nickName}
+              placeholder="ニックネーム"
               onChange={event => {
-                setUserName(event.target.value);
+                setNickName(event.target.value);
               }}
             />
             <input

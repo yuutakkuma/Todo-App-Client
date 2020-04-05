@@ -57,7 +57,7 @@ export type Query = {
 };
 
 export type RegisterInput = {
-  userName: Scalars['String'],
+  nickName: Scalars['String'],
   email: Scalars['String'],
   password: Scalars['String'],
 };
@@ -72,7 +72,7 @@ export type Todo = {
 export type User = {
    __typename?: 'User',
   id: Scalars['ID'],
-  userName: Scalars['String'],
+  nickName: Scalars['String'],
   email: Scalars['String'],
   loginStatus: Scalars['Boolean'],
 };
@@ -134,12 +134,12 @@ export type MeQuery = (
   { __typename?: 'Query' }
   & { me: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'userName' | 'email' | 'loginStatus'>
+    & Pick<User, 'id' | 'nickName' | 'email' | 'loginStatus'>
   )> }
 );
 
 export type RegisterMutationVariables = {
-  userName: Scalars['String'],
+  nickName: Scalars['String'],
   email: Scalars['String'],
   password: Scalars['String']
 };
@@ -309,7 +309,7 @@ export const MeDocument = gql`
     query Me {
   me {
     id
-    userName
+    nickName
     email
     loginStatus
   }
@@ -341,8 +341,8 @@ export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
 export const RegisterDocument = gql`
-    mutation Register($userName: String!, $email: String!, $password: String!) {
-  register(registerInput: {userName: $userName, email: $email, password: $password})
+    mutation Register($nickName: String!, $email: String!, $password: String!) {
+  register(registerInput: {nickName: $nickName, email: $email, password: $password})
 }
     `;
 export type RegisterMutationFn = ApolloReactCommon.MutationFunction<RegisterMutation, RegisterMutationVariables>;
@@ -360,7 +360,7 @@ export type RegisterMutationFn = ApolloReactCommon.MutationFunction<RegisterMuta
  * @example
  * const [registerMutation, { data, loading, error }] = useRegisterMutation({
  *   variables: {
- *      userName: // value for 'userName'
+ *      nickName: // value for 'nickName'
  *      email: // value for 'email'
  *      password: // value for 'password'
  *   },
