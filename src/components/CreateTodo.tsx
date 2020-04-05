@@ -4,16 +4,7 @@ import './componentStyle/CreateTodo.css';
 import { useCreateTodoMutation } from '../generated/graphql';
 import { TodoCreateButton } from './button/TodoCreateButton';
 import { CharacterCount } from './CharacterCount';
-
-interface CreateTodoGqlError {
-  message: [
-    {
-      constraints: {
-        length: string;
-      };
-    }
-  ];
-}
+import { CreateTodoGqlError } from '../models/createTodoGqlError';
 
 let todoError: string;
 
@@ -23,9 +14,9 @@ export const CreateTodo: React.FC = () => {
 
   if (error) {
     // GraphQLErrorを取得
-    const errorArry = error.graphQLErrors.map(e => e.message);
-    const errorObj: CreateTodoGqlError = errorArry[0] as any;
-    todoError = errorObj.message[0].constraints.length;
+    const errorObj = error.graphQLErrors.map(e => e.message);
+    const errors: CreateTodoGqlError = errorObj[0] as any;
+    todoError = errors.message[0].constraints.length;
   }
 
   return (
