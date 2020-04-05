@@ -8,8 +8,18 @@
   display: flex;
 }
 
+.todo-form-inner {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.character {
+  width: 100%;
+  margin: 0 0 0 5px;
+}
+
 .todo-input {
-  width: 80%;
+  width: 100%;
   padding: 5px;
   border: none;
   outline: none;
