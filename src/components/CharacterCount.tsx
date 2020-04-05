@@ -5,7 +5,7 @@ interface Props {
 }
 let warning: string | undefined;
 
-export const StringCount: React.FC<Props> = props => {
+export const CharacterCount: React.FC<Props> = props => {
   let style = {
     color: 'blue',
     margin: '0'
