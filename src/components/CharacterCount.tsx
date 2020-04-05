@@ -2,6 +2,7 @@ import React from 'react';
 
 interface Props {
   value: string;
+  error: string;
 }
 
 export const CharacterCount: React.FC<Props> = props => {
@@ -15,7 +16,8 @@ export const CharacterCount: React.FC<Props> = props => {
 
   return (
     <p className="character" style={style}>
-      {[count]}/25
+      <span className="error">{props.error}</span>
+      {count}/25
     </p>
   );
 };
