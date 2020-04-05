@@ -5,36 +5,45 @@ import { LoginButton } from './button/LoginButton';
 import { useLoginMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 
+interface gqlError {
+  statusCode: number;
+  error: string;
+  message: string;
+}
+
+let errorMessage: gqlError;
+
 export const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [login, { loading, error }] = useLoginMutation();
   const history = useHistory();
 
-  if (typeof email === 'undefined') {
-    return <div>email type is undefined</div>;
+  if (error) {
+    // GraphQLErrorを取得
+    const arry = error.graphQLErrors.map(e => e.message);
+    errorMessage = arry[0] as any;
   }
-  if (typeof password === 'undefined') {
-    return <div>password type is undefined</div>;
-  }
-
-  if (error) return <div>ログインエラー</div>;
 
   return (
     <form
       className="login-form"
       onSubmit={async event => {
         event.preventDefault();
-        await login({
-          variables: {
-            email: email,
-            password: password
-          }
-        });
-        history.push('/todo');
+
+        try {
+          await login({
+            variables: {
+              email: email,
+              password: password
+            }
+          });
+          history.push('/todo');
+        } catch {}
       }}
     >
       <div className="login-form-inner">
+        {error ? <p className="error">{errorMessage.message}</p> : undefined}
         <input
           className="login-input"
           placeholder="Eメール"
@@ -43,6 +52,7 @@ export const Login: React.FC = () => {
             setEmail(event.target.value);
           }}
         />
+        {/* {error ? <p className="error">{noPassword.message}</p> : undefined} */}
         <input
           className="login-input"
           type="password"
