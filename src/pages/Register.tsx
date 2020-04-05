@@ -4,7 +4,7 @@ import './pageStyle/Register.css';
 import { useRegisterMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 import { RegisterButton } from '../components/button/RegisterButton';
-import { StringCount } from '../components/StringCount';
+import { CharacterCount } from '../components/CharacterCount';
 
 export const Register: React.FC = () => {
   const history = useHistory();
@@ -46,7 +46,7 @@ export const Register: React.FC = () => {
           }}
         >
           <div className="input-form-inner">
-            <StringCount value={userName} />
+            <CharacterCount value={userName} />
             <input
               className="form-input"
               value={userName}
