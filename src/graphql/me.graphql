@@ -1,7 +1,7 @@
 query Me {
   me {
     id
-    userName
+    nickName
     email
     loginStatus
   }

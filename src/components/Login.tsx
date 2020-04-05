@@ -37,7 +37,7 @@ export const Login: React.FC = () => {
       <div className="login-form-inner">
         <input
           className="login-input"
-          placeholder="email"
+          placeholder="Eメール"
           value={email}
           onChange={event => {
             setEmail(event.target.value);
@@ -46,7 +46,7 @@ export const Login: React.FC = () => {
         <input
           className="login-input"
           type="password"
-          placeholder="password"
+          placeholder="パスワード"
           value={password}
           onChange={event => {
             setPassword(event.target.value);
