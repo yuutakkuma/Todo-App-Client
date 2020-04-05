@@ -13,3 +13,9 @@ body {
   display: flex;
   background-color: #bfe8f0;
 }
+
+.error {
+  margin: 0;
+  padding: 0;
+  color: red;
+}
