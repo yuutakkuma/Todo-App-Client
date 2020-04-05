@@ -4,7 +4,10 @@ import './pageStyle/Register.css';
 import { useRegisterMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 import { RegisterButton } from '../components/button/RegisterButton';
-import { CharacterCount } from '../components/CharacterCount';
+
+let nickNameError: string;
+let emailError: string;
+let passwordError: string;
 
 export const Register: React.FC = () => {
   const history = useHistory();
@@ -14,7 +17,13 @@ export const Register: React.FC = () => {
   const [register, { loading, error }] = useRegisterMutation();
 
   if (error) {
-    return <div>Error...</div>;
+    // GraphQLErrorを取得
+    const obj = JSON.stringify(error.graphQLErrors.map(e => e.message));
+    const parsed = JSON.parse(obj);
+    // エラー内容を変数に代入
+    nickNameError = parsed[0].message[0].constraints.length;
+    emailError = parsed[0].message[1].constraints.isEmail;
+    passwordError = parsed[0].message[2].constraints.length;
   }
 
   return (
@@ -25,18 +34,20 @@ export const Register: React.FC = () => {
           onSubmit={async event => {
             event.preventDefault();
 
-            await register({
-              variables: {
-                nickName: nickName,
-                email: email,
-                password: password
-              }
-            });
-            history.push('/todo');
+            try {
+              await register({
+                variables: {
+                  nickName: nickName,
+                  email: email,
+                  password: password
+                }
+              });
+              history.push('/todo');
+            } catch {}
           }}
         >
           <div className="input-form-inner">
-            <CharacterCount value={nickName} />
+            {error ? <p className="error">{nickNameError}</p> : undefined}
             <input
               className="form-input"
               value={nickName}
@@ -45,6 +56,7 @@ export const Register: React.FC = () => {
                 setNickName(event.target.value);
               }}
             />
+            {error ? <p className="error">{emailError}</p> : undefined}
             <input
               className="form-input"
               value={email}
@@ -53,6 +65,7 @@ export const Register: React.FC = () => {
                 setEmail(event.target.value);
               }}
             />
+            {error ? <p className="error">{passwordError}</p> : undefined}
             <input
               className="form-input"
               type="password"
