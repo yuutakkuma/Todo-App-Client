@@ -26,6 +26,7 @@ export const CreateTodo: React.FC = () => {
   return (
     <form
       className="todo-form"
+      autoComplete="off"
       onSubmit={async event => {
         event.preventDefault();
 
