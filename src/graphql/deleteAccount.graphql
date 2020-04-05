@@ -1,0 +1,13 @@
+mutation DeleteAccount(
+  $nickName: String!
+  $email: String!
+  $password: String!
+) {
+  deleteAccount(
+    deleteAccountInput: {
+      nickName: $nickName
+      email: $email
+      password: $password
+    }
+  )
+}

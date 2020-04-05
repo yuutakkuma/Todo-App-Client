@@ -15,6 +15,12 @@ export type CreateTodoInput = {
   title: Scalars['String'],
 };
 
+export type DeleteAccountInput = {
+  nickName: Scalars['String'],
+  email: Scalars['String'],
+  password: Scalars['String'],
+};
+
 export type LoginInput = {
   email: Scalars['String'],
   password: Scalars['String'],
@@ -27,6 +33,7 @@ export type Mutation = {
   register?: Maybe<Scalars['Boolean']>,
   login?: Maybe<Scalars['Boolean']>,
   logOut?: Maybe<Scalars['Boolean']>,
+  deleteAccount?: Maybe<Scalars['Boolean']>,
 };
 
 
@@ -49,9 +56,15 @@ export type MutationLoginArgs = {
   loginInput: LoginInput
 };
 
+
+export type MutationDeleteAccountArgs = {
+  deleteAccountInput: DeleteAccountInput
+};
+
 export type Query = {
    __typename?: 'Query',
   getTodoList?: Maybe<Array<Maybe<Todo>>>,
+  allTodoList?: Maybe<Array<Maybe<Todo>>>,
   getUsers?: Maybe<Array<Maybe<User>>>,
   me?: Maybe<User>,
 };
@@ -85,6 +98,18 @@ export type CreateTodoMutationVariables = {
 export type CreateTodoMutation = (
   { __typename?: 'Mutation' }
   & Pick<Mutation, 'createTodo'>
+);
+
+export type DeleteAccountMutationVariables = {
+  nickName: Scalars['String'],
+  email: Scalars['String'],
+  password: Scalars['String']
+};
+
+
+export type DeleteAccountMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deleteAccount'>
 );
 
 export type DeleteTodoMutationVariables = {
@@ -181,6 +206,38 @@ export function useCreateTodoMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type CreateTodoMutationHookResult = ReturnType<typeof useCreateTodoMutation>;
 export type CreateTodoMutationResult = ApolloReactCommon.MutationResult<CreateTodoMutation>;
 export type CreateTodoMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateTodoMutation, CreateTodoMutationVariables>;
+export const DeleteAccountDocument = gql`
+    mutation DeleteAccount($nickName: String!, $email: String!, $password: String!) {
+  deleteAccount(deleteAccountInput: {nickName: $nickName, email: $email, password: $password})
+}
+    `;
+export type DeleteAccountMutationFn = ApolloReactCommon.MutationFunction<DeleteAccountMutation, DeleteAccountMutationVariables>;
+
+/**
+ * __useDeleteAccountMutation__
+ *
+ * To run a mutation, you first call `useDeleteAccountMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteAccountMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteAccountMutation, { data, loading, error }] = useDeleteAccountMutation({
+ *   variables: {
+ *      nickName: // value for 'nickName'
+ *      email: // value for 'email'
+ *      password: // value for 'password'
+ *   },
+ * });
+ */
+export function useDeleteAccountMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteAccountMutation, DeleteAccountMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteAccountMutation, DeleteAccountMutationVariables>(DeleteAccountDocument, baseOptions);
+      }
+export type DeleteAccountMutationHookResult = ReturnType<typeof useDeleteAccountMutation>;
+export type DeleteAccountMutationResult = ApolloReactCommon.MutationResult<DeleteAccountMutation>;
+export type DeleteAccountMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteAccountMutation, DeleteAccountMutationVariables>;
 export const DeleteTodoDocument = gql`
     mutation DeleteTodo($id: ID!) {
   deleteTodo(id: $id)
