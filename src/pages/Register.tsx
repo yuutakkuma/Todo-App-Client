@@ -48,7 +48,7 @@ export const Register: React.FC = () => {
             <input
               className="form-input"
               value={email}
-              placeholder="email"
+              placeholder="Eメール"
               onChange={event => {
                 setEmail(event.target.value);
               }}
@@ -57,7 +57,7 @@ export const Register: React.FC = () => {
               className="form-input"
               type="password"
               value={password}
-              placeholder="password"
+              placeholder="パスワード"
               onChange={event => {
                 setPassword(event.target.value);
               }}
