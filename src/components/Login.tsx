@@ -52,7 +52,6 @@ export const Login: React.FC = () => {
             setEmail(event.target.value);
           }}
         />
-        {/* {error ? <p className="error">{noPassword.message}</p> : undefined} */}
         <input
           className="login-input"
           type="password"
