@@ -10,7 +10,7 @@ export const Routes: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/todo" component={TodoApp} />
+        <Route exact path="/home" component={TodoApp} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/deleteaccount" component={DeleteAccount} />
       </Switch>
