@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
+
 import { TodoListItem } from '../../components/TodoListItem';
 
 const todoItem = {

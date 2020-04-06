@@ -1,11 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
+
 import { CharacterCount } from '../../components/CharacterCount';
 
 const values = {
   twentyCharactersLess: 'クッキーを作る',
-  twentyOneCharactersMore: 'このニックネームは２１文字以上なので警告がでます。'
+  twentyOneCharactersMore:
+    'このタスクは２５文字以上入力されているので警告がでます。'
 };
 
 describe('CharacterCount', () => {
@@ -15,23 +17,27 @@ describe('CharacterCount', () => {
         <CharacterCount
           value={values.twentyCharactersLess}
           error={''}
+          reload={true}
+        />
+      </MockedProvider>
+    );
+
+    lessComponent.getByText('7/25');
+    // lessComponent.debug();
+  });
+
+  test('25文字以上', () => {
+    const moreComponent = render(
+      <MockedProvider>
+        <CharacterCount
+          value={values.twentyOneCharactersMore}
+          error={'1文字以上、25文字以下です。'}
           reload={false}
         />
       </MockedProvider>
     );
 
-    // lessComponent.debug();
-    lessComponent.getByText('7/25');
+    moreComponent.findByText('1文字以上、25文字以下です。28/25');
+    // moreComponent.debug();
   });
-
-  // test('21文字以上', () => {
-  //   const moreComponent = render(
-  //     <MockedProvider>
-  //       <CharacterCount value={values.twentyOneCharactersMore} />
-  //     </MockedProvider>
-  //   );
-
-  //   // moreComponent.debug();
-  //   moreComponent.getByText('ニックネームは20文字以下です。25/20');
-  // });
 });

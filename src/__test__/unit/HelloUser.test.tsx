@@ -1,9 +1,10 @@
 import React from 'react';
-import { MeQuery } from '../../generated/graphql';
 import { MockedProvider } from '@apollo/react-testing';
-import { HelloUser } from '../../components/HelloUser';
 import { render } from '@testing-library/react';
 import { ApolloError } from 'apollo-boost';
+
+import { MeQuery } from '../../generated/graphql';
+import { HelloUser } from '../../components/HelloUser';
 
 const data: MeQuery = {
   me: {

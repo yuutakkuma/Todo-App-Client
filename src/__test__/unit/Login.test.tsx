@@ -1,7 +1,8 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { render, fireEvent, RenderResult } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
-import { BrowserRouter, Route } from 'react-router-dom';
+
 import { Login } from '../../components/Login';
 
 const email = 'todoman@todo.com';
