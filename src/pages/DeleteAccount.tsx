@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import './pageStyle/DeleteAccount.css';
 
 import { useDeleteAccountMutation } from '../generated/graphql';
 import { loginGqlError } from '../models/loginGqlError';

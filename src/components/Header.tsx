@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
             <button
               className="deleteaccount-move-btn"
               type="button"
-              onClick={() => history.push('/')}
+              onClick={() => history.push('/deleteaccount')}
             >
               アカウント削除
             </button>
