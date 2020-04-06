@@ -5,6 +5,7 @@ import { useRegisterMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 import { RegisterButton } from '../components/button/RegisterButton';
 import { RegisterGqlError } from '../models/registerGqlError';
+import { Explanation } from '../components/explanation';
 
 let nickNameError: string;
 let emailError: string;
@@ -31,6 +32,13 @@ export const Register: React.FC = () => {
   return (
     <div className="main">
       <div className="register-wrapper">
+        <Explanation
+          value={
+            '新規登録するにはニックネーム、Eメール、パスワードを入力してください。'
+          }
+          buttonName={'戻る'}
+          history={'/'}
+        />
         <form
           className="register-form"
           onSubmit={async event => {
