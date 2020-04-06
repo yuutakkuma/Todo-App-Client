@@ -11,6 +11,29 @@
   width: 100%;
 }
 
+.register-container {
+  width: 50%;
+  margin: 0 auto;
+  padding: 5px;
+  display: flex;
+}
+
+.register-text {
+  text-align: center;
+}
+
+.back-btn-inner {
+  width: 15%;
+  margin: 0 0 0 auto;
+}
+
+.back-btn {
+  width: 100%;
+  margin: 15px auto;
+  background-color: #fffdf9;
+  border-radius: 5px;
+}
+
 .input-form-inner {
   width: 80%;
   margin: 0 auto;

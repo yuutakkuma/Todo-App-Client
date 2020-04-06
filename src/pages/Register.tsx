@@ -31,6 +31,16 @@ export const Register: React.FC = () => {
   return (
     <div className="main">
       <div className="register-wrapper">
+        <div className="register-container">
+          <p className="register-text">
+            新規登録するにはニックネーム、Eメール、パスワードを入力してください。
+          </p>
+          <div className="back-btn-inner">
+            <button className="back-btn" onClick={() => history.push('/')}>
+              戻る
+            </button>
+          </div>
+        </div>
         <form
           className="register-form"
           onSubmit={async event => {
