@@ -13,6 +13,7 @@
     "@types/react-dom": "^16.9.0",
     "apollo-boost": "^0.4.7",
     "graphql": "^14.6.0",
+    "lodash": "^4.17.15",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
@@ -54,6 +55,7 @@
     "@storybook/addons": "^5.3.14",
     "@storybook/preset-create-react-app": "^1.5.2",
     "@storybook/react": "^5.3.14",
+    "@types/lodash": "^4.14.149",
     "@types/react-router-dom": "^5.1.3"
   }
 }

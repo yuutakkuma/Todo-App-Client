@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './pageStyle/Register.css';
+import _ from 'lodash';
 
+import './pageStyle/Register.css';
 import { useRegisterMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 import { RegisterButton } from '../components/button/RegisterButton';
@@ -20,7 +21,7 @@ export const Register: React.FC = () => {
 
   if (error) {
     // GraphQLErrorを取得
-    const obj = error.graphQLErrors.map(e => e.message);
+    const obj = _.map(error.graphQLErrors, 'message');
     const errors: RegisterGqlError = obj[0] as any;
 
     // エラー内容を変数に代入
