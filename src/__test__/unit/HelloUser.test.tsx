@@ -1,14 +1,15 @@
 import React from 'react';
-import { MeQuery } from '../../generated/graphql';
 import { MockedProvider } from '@apollo/react-testing';
-import { HelloUser } from '../../components/HelloUser';
 import { render } from '@testing-library/react';
 import { ApolloError } from 'apollo-boost';
+
+import { MeQuery } from '../../generated/graphql';
+import { HelloUser } from '../../components/HelloUser';
 
 const data: MeQuery = {
   me: {
     id: '1',
-    userName: 'リラックマ',
+    nickName: 'リラックマ',
     email: 'rirakuma@rirakuma.com',
     loginStatus: true
   }

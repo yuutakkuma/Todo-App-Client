@@ -1,6 +1,7 @@
 import React from 'react';
 import { MockedProvider } from '@apollo/react-testing';
-import { render, act, fireEvent, RenderResult } from '@testing-library/react';
+import { render, fireEvent, RenderResult } from '@testing-library/react';
+
 import { CreateTodo } from '../../components/CreateTodo';
 
 let component: RenderResult;

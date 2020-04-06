@@ -1,9 +1,9 @@
 import React from 'react';
-
-import { TodoList } from '../../components/TodoList';
-import { GetTodoListQuery } from '../../generated/graphql';
 import { render } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
+
+import { GetTodoListQuery } from '../../generated/graphql';
+import { TodoList } from '../../components/TodoList';
 
 const title = {
   one: 'パンを買う',
