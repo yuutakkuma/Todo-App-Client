@@ -1,7 +1,8 @@
 import React from 'react';
 import { ApolloError } from 'apollo-boost';
-import './componentStyle/TodoList.css';
+import _ from 'lodash';
 
+import './componentStyle/TodoList.css';
 import { GetTodoListQuery } from '../generated/graphql';
 import { TodoDeleteButton } from './button/TodoDeleteButton';
 import { TodoListItem } from './TodoListItem';
@@ -25,7 +26,7 @@ export const TodoList: React.FC<Props> = props => {
 
   return (
     <div className="todolist-wrapper">
-      {props.fetchData.getTodoList.map(x => {
+      {_.map(_.orderBy(props.fetchData.getTodoList, 'id', 'desc'), x => {
         if (!x) return <div>Error...</div>;
         return (
           <div className="todolist-container" key={x.id}>

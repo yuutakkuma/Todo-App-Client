@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './componentStyle/CreateTodo.css';
+import _ from 'lodash';
 
+import './componentStyle/CreateTodo.css';
 import { useCreateTodoMutation } from '../generated/graphql';
 import { TodoCreateButton } from './button/TodoCreateButton';
 import { CharacterCount } from './CharacterCount';
@@ -16,7 +17,7 @@ export const CreateTodo: React.FC = () => {
 
   if (error) {
     // GraphQLErrorを取得
-    const errorObj = error.graphQLErrors.map(e => e.message);
+    const errorObj = _.map(error.graphQLErrors, 'message');
     const errors: CreateTodoGqlError = errorObj[0] as any;
     todoError = errors.message[0].constraints.length;
     // トリガーをfalseにする

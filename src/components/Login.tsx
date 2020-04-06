@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './componentStyle/Login.css';
+import _ from 'lodash';
 
+import './componentStyle/Login.css';
 import { LoginButton } from './button/LoginButton';
 import { useLoginMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
@@ -16,7 +17,7 @@ export const Login: React.FC = () => {
 
   if (error) {
     // GraphQLErrorを取得
-    const arry = error.graphQLErrors.map(e => e.message);
+    const arry = _.map(error.graphQLErrors, 'message');
     errorMessage = arry[0] as any;
   }
 
