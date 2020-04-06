@@ -9,7 +9,7 @@ export const DeleteAccountButton: React.FC<Props> = props => {
   if (props.isDeleteAccountLoading) return <Loading />;
 
   return (
-    <button className="login-btn" type="submit">
+    <button className="delete-account-btn" type="submit">
       アカウントを削除する
     </button>
   );

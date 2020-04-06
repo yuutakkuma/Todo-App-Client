@@ -22,9 +22,9 @@ export const DeleteAccount: React.FC = () => {
 
   return (
     <div className="main">
-      <div className="register-wrapper">
+      <div className="delete-account-wrapper">
         <form
-          className="register-form"
+          className="delete-account-form"
           onSubmit={async event => {
             event.preventDefault();
 
