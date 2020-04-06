@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  render,
-  act,
-  fireEvent,
-  waitForDomChange,
-  createEvent,
-  RenderResult
-} from '@testing-library/react';
+import { render, fireEvent, RenderResult } from '@testing-library/react';
 import { MockedProvider } from '@apollo/react-testing';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Login } from '../../components/Login';
@@ -27,8 +20,8 @@ beforeAll(() => {
 });
 describe('Login', () => {
   test('input入力', () => {
-    const inputEmail = component.getByPlaceholderText('email');
-    const inputPassword = component.getByPlaceholderText('password');
+    const inputEmail = component.getByPlaceholderText('Eメール');
+    const inputPassword = component.getByPlaceholderText('パスワード');
 
     fireEvent.change(inputEmail, { target: { value: email } });
     fireEvent.change(inputPassword, { target: { value: password } });

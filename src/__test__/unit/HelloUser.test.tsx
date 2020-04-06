@@ -8,7 +8,7 @@ import { ApolloError } from 'apollo-boost';
 const data: MeQuery = {
   me: {
     id: '1',
-    userName: 'リラックマ',
+    nickName: 'リラックマ',
     email: 'rirakuma@rirakuma.com',
     loginStatus: true
   }
