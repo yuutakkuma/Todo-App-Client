@@ -34,7 +34,7 @@ export const Login: React.FC = () => {
               password: password
             }
           });
-          history.push('/todo');
+          history.push('/home');
         } catch {}
       }}
     >
