@@ -6,6 +6,7 @@ import { LoginButton } from './button/LoginButton';
 import { useLoginMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 import { loginGqlError } from '../models/loginGqlError';
+import { TestUserButton } from './button/TestUserButton';
 
 let errorMessage: loginGqlError;
 
@@ -58,6 +59,7 @@ export const Login: React.FC = () => {
           }}
         />
         <LoginButton isLoginLoading={loading} />
+        <TestUserButton />
       </div>
     </form>
   );
