@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './pageStyle/DeleteAccount.css';
+import _ from 'lodash';
 
+import './pageStyle/DeleteAccount.css';
 import { useDeleteAccountMutation } from '../generated/graphql';
 import { loginGqlError } from '../models/loginGqlError';
 import { DeleteAccountButton } from '../components/button/DeleteAccountButton';
@@ -18,7 +19,7 @@ export const DeleteAccount: React.FC = () => {
 
   if (error) {
     // GraphQLErrorを取得
-    const arry = error.graphQLErrors.map(e => e.message);
+    const arry = _.map(error.graphQLErrors, 'message');
     errorMessage = arry[0] as any;
   }
 
