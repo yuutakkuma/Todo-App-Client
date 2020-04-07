@@ -19,11 +19,13 @@ export const TodoDeleteButton: React.FC<Props> = props => {
       className="delete-btn"
       type="button"
       onClick={async () => {
-        await todoDelete({
-          variables: {
-            id: props.todoId
-          }
-        });
+        try {
+          await todoDelete({
+            variables: {
+              id: props.todoId
+            }
+          });
+        } catch {}
       }}
     >
       DELETE
