@@ -48,7 +48,7 @@ export const Register: React.FC = () => {
             try {
               await register({
                 variables: {
-                  nickName: nickName,
+                  nickname: nickName,
                   email: email,
                   password: password
                 }

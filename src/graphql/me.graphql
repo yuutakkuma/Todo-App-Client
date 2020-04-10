@@ -1,8 +1,8 @@
 query Me {
   me {
     id
-    nickName
+    nickname
     email
-    loginStatus
+    loginstatus
   }
 }

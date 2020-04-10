@@ -24,7 +24,7 @@ export const HelloUser: React.FC<Props> = props => {
 
   return (
     <div className="nickname">
-      <h2>こんにちは{props.fetchData.me.nickName}さん</h2>
+      <h2>こんにちは{props.fetchData.me.nickname}さん</h2>
     </div>
   );
 };
