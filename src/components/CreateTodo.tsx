@@ -20,7 +20,7 @@ export const CreateTodo: React.FC = () => {
     const errorObj = _.map(error.graphQLErrors, 'message');
     const errors: CreateTodoGqlError = errorObj[0] as any;
     todoError = errors.message[0].constraints.length;
-    // トリガーをfalseにする
+    // エラーを表示させる
     reloadTrigger = true;
   }
 

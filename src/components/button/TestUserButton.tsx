@@ -1,10 +1,10 @@
 import React from 'react';
 import { Loading } from '../Loading';
-import { useLoginMutation } from '../../generated/graphql';
+import { useTestUserLoginMutation } from '../../generated/graphql';
 import { useHistory } from 'react-router-dom';
 
 export const TestUserButton: React.FC = () => {
-  const [testLogin, { loading, error }] = useLoginMutation();
+  const [testLogin, { loading, error }] = useTestUserLoginMutation();
   const history = useHistory();
   if (loading) return <Loading />;
   if (error) return <div>error...</div>;
