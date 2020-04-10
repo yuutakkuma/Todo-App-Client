@@ -17,7 +17,7 @@ export const CharacterCount: React.FC<Props> = props => {
 
   return (
     <p className="character" style={style}>
-      {!props.reload ? <span className="error">{props.error}</span> : undefined}
+      {props.reload ? <span className="error">{props.error}</span> : undefined}
       {count}/25
     </p>
   );
