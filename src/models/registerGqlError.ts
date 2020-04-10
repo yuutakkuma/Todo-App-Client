@@ -3,17 +3,13 @@ export interface RegisterGqlError {
     {
       constraints: {
         length: string;
-      };
-    },
-    {
-      constraints: {
         isEmail: string;
-      };
-    },
-    {
-      constraints: {
-        length: string;
       };
     }
   ];
+}
+
+export interface ConstraintsError {
+  length: string;
+  isEmail: string;
 }

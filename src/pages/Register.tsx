@@ -5,12 +5,13 @@ import './pageStyle/Register.css';
 import { useRegisterMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 import { RegisterButton } from '../components/button/RegisterButton';
-import { RegisterGqlError } from '../models/registerGqlError';
+import { RegisterGqlError, ConstraintsError } from '../models/registerGqlError';
 import { Explanation } from '../components/explanation';
 
-let nickNameError: string;
-let emailError: string;
-let passwordError: string;
+let nickNameError: string | undefined;
+let emailError: string | undefined;
+let passwordError: string | undefined;
+let arry: ConstraintsError;
 
 export const Register: React.FC = () => {
   const history = useHistory();
@@ -23,11 +24,22 @@ export const Register: React.FC = () => {
     // GraphQLErrorを取得
     const obj = _.map(error.graphQLErrors, 'message');
     const errors: RegisterGqlError = obj[0] as any;
+    // 発生したエラーの箇所に代入する
+    for (let i = 0; i < errors.message.length; i++) {
+      arry = errors.message[i].constraints;
 
-    // エラー内容を変数に代入
-    nickNameError = errors.message[0].constraints.length;
-    emailError = errors.message[1].constraints.isEmail;
-    passwordError = errors.message[2].constraints.length;
+      if (arry.length === 'ニックネームは1文字以上、20文字以下です。') {
+        nickNameError = arry.length;
+      }
+
+      if (arry.isEmail === 'Emailを入力してください。') {
+        emailError = arry.isEmail;
+      }
+
+      if (arry.length === 'パスワードは4文字以上、16文字以下です。') {
+        passwordError = arry.length;
+      }
+    }
   }
 
   return (
@@ -44,6 +56,10 @@ export const Register: React.FC = () => {
           className="register-form"
           onSubmit={async event => {
             event.preventDefault();
+            // エラーメッセージをリセット
+            nickNameError = undefined;
+            emailError = undefined;
+            passwordError = undefined;
 
             try {
               await register({
