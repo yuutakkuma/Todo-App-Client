@@ -7,7 +7,9 @@ import './styles.css';
 import { App } from './App';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri:
+    'https://blooming-atoll-62832.herokuapp.com/graphql' ||
+    'http://localhost:4000/graphql',
   credentials: 'include'
 });
 
