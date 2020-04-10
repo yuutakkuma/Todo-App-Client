@@ -6,7 +6,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     fetch(
-      'https://blooming-atoll-62832.herokuapp.com/refresh_token' ||
+      'https://blooming-atoll-62832.herokuapp.com/refresh_token/' ||
         'http://localhost:4000/refresh_token/',
       {
         method: 'POST',
