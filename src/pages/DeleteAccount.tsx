@@ -41,7 +41,7 @@ export const DeleteAccount: React.FC = () => {
             try {
               await deleteAccount({
                 variables: {
-                  nickName: nickName,
+                  nickname: nickName,
                   email: email,
                   password: password
                 }

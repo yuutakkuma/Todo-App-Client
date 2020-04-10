@@ -16,7 +16,7 @@ export type CreateTodoInput = {
 };
 
 export type DeleteAccountInput = {
-  nickName: Scalars['String'],
+  nickname: Scalars['String'],
   email: Scalars['String'],
   password: Scalars['String'],
 };
@@ -65,12 +65,12 @@ export type Query = {
    __typename?: 'Query',
   getTodoList?: Maybe<Array<Maybe<Todo>>>,
   allTodoList?: Maybe<Array<Maybe<Todo>>>,
-  getUsers?: Maybe<Array<Maybe<User>>>,
-  me?: Maybe<User>,
+  getUsers?: Maybe<Array<Maybe<Users>>>,
+  me?: Maybe<Users>,
 };
 
 export type RegisterInput = {
-  nickName: Scalars['String'],
+  nickname: Scalars['String'],
   email: Scalars['String'],
   password: Scalars['String'],
 };
@@ -82,12 +82,12 @@ export type Todo = {
   title: Scalars['String'],
 };
 
-export type User = {
-   __typename?: 'User',
+export type Users = {
+   __typename?: 'Users',
   id: Scalars['ID'],
-  nickName: Scalars['String'],
+  nickname: Scalars['String'],
   email: Scalars['String'],
-  loginStatus: Scalars['Boolean'],
+  loginstatus: Scalars['Boolean'],
 };
 
 export type CreateTodoMutationVariables = {
@@ -101,7 +101,7 @@ export type CreateTodoMutation = (
 );
 
 export type DeleteAccountMutationVariables = {
-  nickName: Scalars['String'],
+  nickname: Scalars['String'],
   email: Scalars['String'],
   password: Scalars['String']
 };
@@ -158,13 +158,13 @@ export type MeQueryVariables = {};
 export type MeQuery = (
   { __typename?: 'Query' }
   & { me: Maybe<(
-    { __typename?: 'User' }
-    & Pick<User, 'id' | 'nickName' | 'email' | 'loginStatus'>
+    { __typename?: 'Users' }
+    & Pick<Users, 'id' | 'nickname' | 'email' | 'loginstatus'>
   )> }
 );
 
 export type RegisterMutationVariables = {
-  nickName: Scalars['String'],
+  nickname: Scalars['String'],
   email: Scalars['String'],
   password: Scalars['String']
 };
@@ -207,8 +207,8 @@ export type CreateTodoMutationHookResult = ReturnType<typeof useCreateTodoMutati
 export type CreateTodoMutationResult = ApolloReactCommon.MutationResult<CreateTodoMutation>;
 export type CreateTodoMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateTodoMutation, CreateTodoMutationVariables>;
 export const DeleteAccountDocument = gql`
-    mutation DeleteAccount($nickName: String!, $email: String!, $password: String!) {
-  deleteAccount(deleteAccountInput: {nickName: $nickName, email: $email, password: $password})
+    mutation DeleteAccount($nickname: String!, $email: String!, $password: String!) {
+  deleteAccount(deleteAccountInput: {nickname: $nickname, email: $email, password: $password})
 }
     `;
 export type DeleteAccountMutationFn = ApolloReactCommon.MutationFunction<DeleteAccountMutation, DeleteAccountMutationVariables>;
@@ -226,7 +226,7 @@ export type DeleteAccountMutationFn = ApolloReactCommon.MutationFunction<DeleteA
  * @example
  * const [deleteAccountMutation, { data, loading, error }] = useDeleteAccountMutation({
  *   variables: {
- *      nickName: // value for 'nickName'
+ *      nickname: // value for 'nickname'
  *      email: // value for 'email'
  *      password: // value for 'password'
  *   },
@@ -366,9 +366,9 @@ export const MeDocument = gql`
     query Me {
   me {
     id
-    nickName
+    nickname
     email
-    loginStatus
+    loginstatus
   }
 }
     `;
@@ -398,8 +398,8 @@ export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
 export const RegisterDocument = gql`
-    mutation Register($nickName: String!, $email: String!, $password: String!) {
-  register(registerInput: {nickName: $nickName, email: $email, password: $password})
+    mutation Register($nickname: String!, $email: String!, $password: String!) {
+  register(registerInput: {nickname: $nickname, email: $email, password: $password})
 }
     `;
 export type RegisterMutationFn = ApolloReactCommon.MutationFunction<RegisterMutation, RegisterMutationVariables>;
@@ -417,7 +417,7 @@ export type RegisterMutationFn = ApolloReactCommon.MutationFunction<RegisterMuta
  * @example
  * const [registerMutation, { data, loading, error }] = useRegisterMutation({
  *   variables: {
- *      nickName: // value for 'nickName'
+ *      nickname: // value for 'nickname'
  *      email: // value for 'email'
  *      password: // value for 'password'
  *   },

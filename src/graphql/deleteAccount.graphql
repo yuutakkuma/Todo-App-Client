@@ -1,11 +1,11 @@
 mutation DeleteAccount(
-  $nickName: String!
+  $nickname: String!
   $email: String!
   $password: String!
 ) {
   deleteAccount(
     deleteAccountInput: {
-      nickName: $nickName
+      nickname: $nickname
       email: $email
       password: $password
     }
