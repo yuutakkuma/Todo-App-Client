@@ -9,7 +9,7 @@ import { CreateTodoGqlError } from '../models/createTodoGqlError';
 
 let todoError: string;
 // エラーを表示するトリガー
-let reloadTrigger: boolean;
+let reloadTrigger: boolean = false;
 
 export const CreateTodo: React.FC = () => {
   const [item, setItem] = useState({ title: '' });
@@ -21,7 +21,7 @@ export const CreateTodo: React.FC = () => {
     const errors: CreateTodoGqlError = errorObj[0] as any;
     todoError = errors.message[0].constraints.length;
     // トリガーをfalseにする
-    reloadTrigger = false;
+    reloadTrigger = true;
   }
 
   return (
@@ -38,8 +38,8 @@ export const CreateTodo: React.FC = () => {
             }
           });
           setItem({ title: '' });
-          // トリガーをtrueにする
-          reloadTrigger = true;
+          // エラーの表示を消す
+          reloadTrigger = false;
         } catch {}
       }}
     >
