@@ -1,44 +1,114 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# URL
 
-## Available Scripts
+下記 URL からアクセス出来ます。　　
+https://silly-poitras-9dcf43.netlify.com/
 
-In the project directory, you can run:
+### 当アプリについて
 
-### `yarn start`
+ポートフォリオ用に作成したタスク管理アプリケーションです。  
+こちらはクライアント部分になり、API サーバーのコードは<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">こちら</a>になります。
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 実装機能
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+ランディングページ
 
-### `yarn test`
+- ログインフォーム
+  - ログイン失敗時にエラー表示
+- テストユーザーログインボタン
+- 新規登録ボタン
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ユーザー新規登録ページ
 
-### `yarn build`
+- 新規登録フォーム
+  - 新規登録失敗時にエラー表示
+- ランディングページへ戻るボタン
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ホームページ
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- ログインユーザーのニックネームを表示
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - ニックネーム取得失敗時にエラー表示
 
-### `yarn eject`
+- タスク投稿フォーム
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  - タスク投稿失敗時にエラー表示
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 投稿タスク一覧
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  - データが無い場合、投稿を促すメッセージを表示
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- 投稿タスク削除ボタン
 
-## Learn More
+  - 削除失敗時にエラー表示
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- アカウント削除ページ移動ボタン
+- ログアウトボタン
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+アカウント削除ページ
+
+- アカウント削除フォーム
+  - アカウント削除失敗時にエラー表示
+- ホームページへ戻るボタン
+
+ロード中
+
+- 円状の青い線がクルクル回ります。
+
+## 使用技術
+
+言語
+
+- HTML
+- CSS
+- TypeScript
+
+フレームワーク
+
+- React.js
+
+クエリ
+
+- GraphQL
+
+Paas
+
+- Netlify
+
+## ローカルでの起動方法
+
+１、先に API サーバーである<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">Todo-App-Server</a>をローカルで起動してください。　　
+起動方法はページ先の README に記載しています。
+
+２、お好きなディレクトリにクローンしてください。
+
+```bash
+% git clone https://github.com/yuuta-wata/Todo-App-Client.git
+```
+
+３、ライプラリのインストールを行います。  
+(注)yarn をインストールしてない方は別途インストールをお願いします。
+
+```bash
+% cd todo-app-client
+% yarn
+```
+
+４、todo-app-client ディレクトリ直下に.env.development.local ファイルを作成し,下記をコピペしてください。  
+(注).env ファイルは通常公開しません、今回はポートフォリオ作成なので公開しています。
+
+```
+REACT_APP_DEVELOPMENT_GRAPHQL_URL=http://localhost:4000/graphql
+REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL=http://localhost:4000/refresh_token/
+
+```
+
+５、expres サーバーを起動すると自動でページが表示されます。  
+ポートは 3000 番になります。
+
+```bash
+% yarn start
+```
+
+###(備考)
+storybook を使用していますが、2020 年 4 月 11 日現在コンパイルエラーで起動しません。
+只今修正中です。
