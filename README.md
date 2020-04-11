@@ -10,20 +10,20 @@ https://silly-poitras-9dcf43.netlify.com/
 
 ## 実装機能
 
-ランディングページ
+**ランディングページ**
 
 - ログインフォーム
   - ログイン失敗時にエラー表示
 - テストユーザーログインボタン
 - 新規登録ボタン
 
-ユーザー新規登録ページ
+**ユーザー新規登録ページ**
 
 - 新規登録フォーム
   - 新規登録失敗時にエラー表示
 - ランディングページへ戻るボタン
 
-ホームページ
+**ホームページ**
 
 - ログインユーザーのニックネームを表示
 
@@ -44,48 +44,48 @@ https://silly-poitras-9dcf43.netlify.com/
 - アカウント削除ページ移動ボタン
 - ログアウトボタン
 
-アカウント削除ページ
+**アカウント削除ページ**
 
 - アカウント削除フォーム
   - アカウント削除失敗時にエラー表示
 - ホームページへ戻るボタン
 
-ロード中
+**ロード中**
 
 - 円状の青い線がクルクル回ります。
 
 ## 使用技術
 
-言語
+**言語**
 
 - HTML
 - CSS
 - TypeScript
 
-フレームワーク
+**フレームワーク**
 
 - React.js
 
-クエリ
+**クエリ**
 
 - GraphQL
 
-Paas
+**Paas**
 
 - Netlify
 
 ## ローカルでの起動方法
 
-１、先に API サーバーである<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">Todo-App-Server</a>をローカルで起動してください。  
+**１**、先に API サーバーである<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">Todo-App-Server</a>をローカルで起動してください。  
 起動方法はページ先の README に記載しています。
 
-２、お好きなディレクトリにクローンしてください。
+**２**、お好きなディレクトリにクローンしてください。
 
 ```bash
 % git clone https://github.com/yuuta-wata/Todo-App-Client.git
 ```
 
-３、ライプラリのインストールを行います。  
+**３**、ライプラリのインストールを行います。  
 (注)yarn をインストールしてない方は別途インストールをお願いします。
 
 ```bash
@@ -93,7 +93,7 @@ Paas
 % yarn
 ```
 
-４、todo-app-client ディレクトリ直下に.env.development.local ファイルを作成し,下記をコピペしてください。  
+**４**、todo-app-client ディレクトリ直下に.env.development.local ファイルを作成し,下記をコピペしてください。  
 (注).env ファイルは通常公開しません、今回はポートフォリオ作成なので公開しています。
 
 ```
@@ -102,7 +102,7 @@ REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL=http://localhost:4000/refresh_token/
 
 ```
 
-５、expres サーバーを起動すると自動でページが表示されます。  
+**５**、expres サーバーを起動すると自動でページが表示されます。  
 ポートは 3000 番になります。
 
 ```bash
