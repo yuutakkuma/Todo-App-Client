@@ -16,13 +16,13 @@ if (process.env.NODE_ENV === 'development') {
 if (process.env.NODE_ENV === 'production') {
   graohqlUrl = process.env.REACT_APP_PRODUCTION_GRAPHQL_URL!;
 }
-// TypeGurde
-if (typeof graohqlUrl! === 'undefined') {
-  graohqlUrl = process.env.REACT_APP_DEVELOPMENT_GRAPHQL_URL!;
-}
+// // TypeGurde
+// if (typeof graohqlUrl! === 'undefined') {
+//   graohqlUrl = process.env.REACT_APP_DEVELOPMENT_GRAPHQL_URL!;
+// }
 
 const client = new ApolloClient({
-  uri: graohqlUrl,
+  uri: graohqlUrl!,
   credentials: 'include'
 });
 
