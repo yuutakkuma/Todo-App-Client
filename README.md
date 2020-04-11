@@ -3,7 +3,7 @@
 WEB に公開しています。
 https://silly-poitras-9dcf43.netlify.com/
 
-### 当アプリについて
+## 当アプリについて
 
 ポートフォリオ用に作成したタスク管理アプリケーションです。  
 こちらはクライアント部分になり、API サーバーのコードは<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">こちら</a>になります。
