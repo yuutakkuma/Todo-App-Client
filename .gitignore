@@ -1,7 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-deploy_client.sh
-
 # dependencies
 /node_modules
 /.pnp
@@ -23,3 +21,6 @@ deploy_client.sh
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local Netlify folder
+.netlify
