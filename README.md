@@ -1,6 +1,6 @@
 # URL
 
-下記 URL からアクセス出来ます。　　
+下記 URL からアクセス出来ます。 　
 https://silly-poitras-9dcf43.netlify.com/
 
 ### 当アプリについて
@@ -76,7 +76,7 @@ Paas
 
 ## ローカルでの起動方法
 
-１、先に API サーバーである<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">Todo-App-Server</a>をローカルで起動してください。　　
+１、先に API サーバーである<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">Todo-App-Server</a>をローカルで起動してください。 　　
 起動方法はページ先の README に記載しています。
 
 ２、お好きなディレクトリにクローンしてください。
@@ -109,6 +109,7 @@ REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL=http://localhost:4000/refresh_token/
 % yarn start
 ```
 
-###(備考)
-storybook を使用していますが、2020 年 4 月 11 日現在コンパイルエラーで起動しません。
+### (備考)
+
+storybook を使用していますが、2020 年 4 月 11 日現在コンパイルエラーで起動しません。  
 只今修正中です。
