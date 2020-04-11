@@ -1,6 +1,6 @@
 # URL
 
-下記 URL からアクセス出来ます。 　
+WEB に公開しています。
 https://silly-poitras-9dcf43.netlify.com/
 
 ### 当アプリについて
@@ -76,7 +76,7 @@ Paas
 
 ## ローカルでの起動方法
 
-１、先に API サーバーである<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">Todo-App-Server</a>をローカルで起動してください。 　　
+１、先に API サーバーである<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">Todo-App-Server</a>をローカルで起動してください。  
 起動方法はページ先の README に記載しています。
 
 ２、お好きなディレクトリにクローンしてください。
