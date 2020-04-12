@@ -45,6 +45,7 @@ export const DeleteAccount: React.FC = () => {
                   password: state.password
                 }
               });
+              window.alert('アカウントを削除しました。');
               history.push('/');
             } catch {}
           }}
