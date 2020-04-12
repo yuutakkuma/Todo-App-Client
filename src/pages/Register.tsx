@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import _ from 'lodash';
 
 import './pageStyle/Register.css';
@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { RegisterButton } from '../components/button/RegisterButton';
 import { RegisterGqlError, ConstraintsError } from '../models/registerGqlError';
 import { Explanation } from '../components/explanation';
+import { registerReducer, initialState } from '../store/RegisterStore';
 
 let nickNameError: string | undefined;
 let emailError: string | undefined;
@@ -15,10 +16,8 @@ let arry: ConstraintsError;
 
 export const Register: React.FC = () => {
   const history = useHistory();
-  const [nickName, setNickName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
   const [register, { loading, error }] = useRegisterMutation();
+  const [state, dispatch] = useReducer(registerReducer, initialState);
 
   if (error) {
     // GraphQLErrorを取得
@@ -64,42 +63,46 @@ export const Register: React.FC = () => {
             try {
               await register({
                 variables: {
-                  nickname: nickName,
-                  email: email,
-                  password: password
+                  nickname: state.nickName,
+                  email: state.email,
+                  password: state.password
                 }
               });
-              history.push('/todo');
             } catch {}
+            window.alert('登録完了！　ログインしてください!');
+            history.push('/');
           }}
         >
           <div className="input-form-inner">
             {error ? <p className="error">{nickNameError}</p> : undefined}
             <input
               className="form-input"
-              value={nickName}
+              value={state.nickName}
               placeholder="ニックネーム"
               onChange={event => {
-                setNickName(event.target.value);
+                const nickNameInput: string = event.target.value;
+                dispatch({ type: 'nickNameType', value: nickNameInput });
               }}
             />
             {error ? <p className="error">{emailError}</p> : undefined}
             <input
               className="form-input"
-              value={email}
+              value={state.email}
               placeholder="Eメール"
               onChange={event => {
-                setEmail(event.target.value);
+                const emailInput: string = event.target.value;
+                dispatch({ type: 'emailType', value: emailInput });
               }}
             />
             {error ? <p className="error">{passwordError}</p> : undefined}
             <input
               className="form-input"
               type="password"
-              value={password}
+              value={state.password}
               placeholder="パスワード"
               onChange={event => {
-                setPassword(event.target.value);
+                const passwordInput: string = event.target.value;
+                dispatch({ type: 'passwordType', value: passwordInput });
               }}
             />
             <RegisterButton isRegisterLoading={loading} />
