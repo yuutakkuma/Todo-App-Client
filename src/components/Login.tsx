@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import _ from 'lodash';
 
 import './componentStyle/Login.css';
@@ -7,14 +7,14 @@ import { useLoginMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
 import { loginGqlError } from '../models/loginGqlError';
 import { TestUserButton } from './button/TestUserButton';
+import { formReducer, initialState } from '../store/FormStore';
 
 let errorMessage: loginGqlError;
 
 export const Login: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [login, { loading, error }] = useLoginMutation();
   const history = useHistory();
+  const [login, { loading, error }] = useLoginMutation();
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
   if (error) {
     // GraphQLErrorを取得
@@ -31,8 +31,8 @@ export const Login: React.FC = () => {
         try {
           await login({
             variables: {
-              email: email,
-              password: password
+              email: state.email,
+              password: state.password
             }
           });
           history.push('/home');
@@ -44,18 +44,18 @@ export const Login: React.FC = () => {
         <input
           className="login-input"
           placeholder="Eメール"
-          value={email}
+          value={state.email}
           onChange={event => {
-            setEmail(event.target.value);
+            dispatch({ type: 'emailType', value: event.target.value });
           }}
         />
         <input
           className="login-input"
           type="password"
           placeholder="パスワード"
-          value={password}
+          value={state.password}
           onChange={event => {
-            setPassword(event.target.value);
+            dispatch({ type: 'passwordType', value: event.target.value });
           }}
         />
         <LoginButton isLoginLoading={loading} />

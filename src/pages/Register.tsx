@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { RegisterButton } from '../components/button/RegisterButton';
 import { RegisterGqlError, ConstraintsError } from '../models/registerGqlError';
 import { Explanation } from '../components/explanation';
-import { registerReducer, initialState } from '../store/RegisterStore';
+import { formReducer, initialState } from '../store/FormStore';
 
 let nickNameError: string | undefined;
 let emailError: string | undefined;
@@ -17,7 +17,7 @@ let arry: ConstraintsError;
 export const Register: React.FC = () => {
   const history = useHistory();
   const [register, { loading, error }] = useRegisterMutation();
-  const [state, dispatch] = useReducer(registerReducer, initialState);
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
   if (error) {
     // GraphQLErrorを取得
@@ -80,8 +80,7 @@ export const Register: React.FC = () => {
               value={state.nickName}
               placeholder="ニックネーム"
               onChange={event => {
-                const nickNameInput: string = event.target.value;
-                dispatch({ type: 'nickNameType', value: nickNameInput });
+                dispatch({ type: 'nickNameType', value: event.target.value });
               }}
             />
             {error ? <p className="error">{emailError}</p> : undefined}
@@ -90,8 +89,7 @@ export const Register: React.FC = () => {
               value={state.email}
               placeholder="Eメール"
               onChange={event => {
-                const emailInput: string = event.target.value;
-                dispatch({ type: 'emailType', value: emailInput });
+                dispatch({ type: 'emailType', value: event.target.value });
               }}
             />
             {error ? <p className="error">{passwordError}</p> : undefined}
@@ -101,8 +99,7 @@ export const Register: React.FC = () => {
               value={state.password}
               placeholder="パスワード"
               onChange={event => {
-                const passwordInput: string = event.target.value;
-                dispatch({ type: 'passwordType', value: passwordInput });
+                dispatch({ type: 'passwordType', value: event.target.value });
               }}
             />
             <RegisterButton isRegisterLoading={loading} />
