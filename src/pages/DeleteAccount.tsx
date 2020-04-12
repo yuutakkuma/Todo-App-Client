@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 
@@ -7,15 +7,14 @@ import { useDeleteAccountMutation } from '../generated/graphql';
 import { loginGqlError } from '../models/loginGqlError';
 import { DeleteAccountButton } from '../components/button/DeleteAccountButton';
 import { Explanation } from '../components/explanation';
+import { formReducer, initialState } from '../store/FormStore';
 
 let errorMessage: loginGqlError;
 
 export const DeleteAccount: React.FC = () => {
   const history = useHistory();
-  const [nickName, setNickName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
   const [deleteAccount, { loading, error }] = useDeleteAccountMutation();
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
   if (error) {
     // GraphQLErrorを取得
@@ -41,9 +40,9 @@ export const DeleteAccount: React.FC = () => {
             try {
               await deleteAccount({
                 variables: {
-                  nickname: nickName,
-                  email: email,
-                  password: password
+                  nickname: state.nickName,
+                  email: state.email,
+                  password: state.password
                 }
               });
               history.push('/');
@@ -58,27 +57,27 @@ export const DeleteAccount: React.FC = () => {
             )}
             <input
               className="form-input"
-              value={nickName}
+              value={state.nickName}
               placeholder="ニックネーム"
               onChange={event => {
-                setNickName(event.target.value);
+                dispatch({ type: 'nickNameType', value: event.target.value });
               }}
             />
             <input
               className="form-input"
-              value={email}
+              value={state.email}
               placeholder="Eメール"
               onChange={event => {
-                setEmail(event.target.value);
+                dispatch({ type: 'emailType', value: event.target.value });
               }}
             />
             <input
               className="form-input"
               type="password"
-              value={password}
+              value={state.password}
               placeholder="パスワード"
               onChange={event => {
-                setPassword(event.target.value);
+                dispatch({ type: 'passwordType', value: event.target.value });
               }}
             />
             <DeleteAccountButton isDeleteAccountLoading={loading} />

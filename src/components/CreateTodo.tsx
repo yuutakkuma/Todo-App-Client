@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import _ from 'lodash';
 
 import './componentStyle/CreateTodo.css';
@@ -6,14 +6,15 @@ import { useCreateTodoMutation } from '../generated/graphql';
 import { TodoCreateButton } from './button/TodoCreateButton';
 import { CharacterCount } from './CharacterCount';
 import { CreateTodoGqlError } from '../models/createTodoGqlError';
+import { formReducer, initialState } from '../store/FormStore';
 
 let todoError: string;
 // エラーを表示するトリガー
 let reloadTrigger: boolean = false;
 
 export const CreateTodo: React.FC = () => {
-  const [item, setItem] = useState({ title: '' });
   const [createTodo, { loading, error }] = useCreateTodoMutation();
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
   if (error) {
     // GraphQLErrorを取得
@@ -34,10 +35,10 @@ export const CreateTodo: React.FC = () => {
         try {
           await createTodo({
             variables: {
-              title: item.title
+              title: state.task
             }
           });
-          setItem({ title: '' });
+          state.task = '';
           // エラーの表示を消す
           reloadTrigger = false;
         } catch {}
@@ -45,7 +46,7 @@ export const CreateTodo: React.FC = () => {
     >
       <div className="todo-form-inner">
         <CharacterCount
-          value={item.title}
+          value={state.task}
           error={todoError}
           reload={reloadTrigger}
         />
@@ -53,11 +54,9 @@ export const CreateTodo: React.FC = () => {
           className="todo-input"
           name="title"
           placeholder="やること"
-          value={item.title}
+          value={state.task}
           onChange={event => {
-            setItem({
-              title: event.target.value
-            });
+            dispatch({ type: 'createTodo', value: event.target.value });
           }}
         />
       </div>
