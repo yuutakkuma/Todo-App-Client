@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import './pageStyle/Landing.css';
 
+import './pageStyle/Landing.css';
 import { Login } from '../components/Login';
+import { Modal } from '../components/modal';
+import { ModalContext } from '../createContext/ModalContext';
 
 export const Landing: React.FC = () => {
   const history = useHistory();
+  const modalCtx = useContext(ModalContext);
   return (
     <div className="main">
       <div className="main-container">
@@ -31,6 +34,7 @@ export const Landing: React.FC = () => {
           </div>
         </div>
       </div>
+      {modalCtx.state ? <Modal modalText={modalCtx.text} /> : undefined}
     </div>
   );
 };

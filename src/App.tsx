@@ -18,7 +18,7 @@ export const App: React.FC = () => {
   useEffect(() => {
     fetch(refreshTokenUrl, {
       method: 'POST',
-      credentials: 'include'
+      credentials: 'include',
     }).then(() => {
       setLoading(false);
     });
