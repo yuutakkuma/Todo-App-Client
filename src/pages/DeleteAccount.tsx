@@ -47,12 +47,12 @@ export const DeleteAccount: React.FC = () => {
                   password: state.password,
                 },
               });
+              // ランディングページでモーダルを表示させる
+              modalCtx.text = 'アカウントを削除しました。';
+              modalCtx.state = true;
+              // ランディングページへ遷移する
+              history.push('/');
             } catch {}
-            // ランディングページでモーダルを表示させる
-            modalCtx.text = 'アカウントを削除しました。';
-            modalCtx.state = true;
-
-            history.push('/');
           }}
         >
           <div className="input-form-inner">

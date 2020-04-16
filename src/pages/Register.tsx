@@ -42,7 +42,6 @@ export const Register: React.FC = () => {
       }
     }
   }
-
   return (
     <div className="main">
       <div className="register-wrapper">
@@ -70,12 +69,12 @@ export const Register: React.FC = () => {
                   password: state.password,
                 },
               });
+              // ランディングページでモーダルを表示させる
+              modalCtx.text = '登録完了しました！ログインしてください！';
+              modalCtx.state = true;
+              // ランディングページに遷移する
+              history.push('/');
             } catch {}
-            // ランディングページでモーダルを表示させる
-            modalCtx.text = '登録完了しました！ログインしてください！';
-            modalCtx.state = true;
-
-            history.push('/');
           }}
         >
           <div className="input-form-inner">

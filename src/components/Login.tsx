@@ -25,15 +25,16 @@ export const Login: React.FC = () => {
   return (
     <form
       className="login-form"
-      onSubmit={async event => {
+      onSubmit={async (event) => {
         event.preventDefault();
+        console.log(state.email);
 
         try {
           await login({
             variables: {
               email: state.email,
-              password: state.password
-            }
+              password: state.password,
+            },
           });
           history.push('/home');
         } catch {}
@@ -45,7 +46,7 @@ export const Login: React.FC = () => {
           className="login-input"
           placeholder="Eメール"
           value={state.email}
-          onChange={event => {
+          onChange={(event) => {
             dispatch({ type: 'emailType', value: event.target.value });
           }}
         />
@@ -54,7 +55,7 @@ export const Login: React.FC = () => {
           type="password"
           placeholder="パスワード"
           value={state.password}
-          onChange={event => {
+          onChange={(event) => {
             dispatch({ type: 'passwordType', value: event.target.value });
           }}
         />

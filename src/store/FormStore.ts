@@ -14,7 +14,7 @@ export const initialState: StateInput = {
   nickName: '',
   email: '',
   password: '',
-  task: ''
+  task: '',
 };
 
 //　フォームを送信するのに必要な値の状態管理
