@@ -85,15 +85,15 @@ https://silly-poitras-9dcf43.netlify.com/
 % git clone https://github.com/yuuta-wata/Todo-App-Client.git
 ```
 
-**３**、ライプラリのインストールを行います。  
+**３**、ライブラリのインストールを行います。  
 (注)yarn をインストールしてない方は別途インストールをお願いします。
 
 ```bash
-% cd todo-app-client
+% cd Todo-App-Client
 % yarn
 ```
 
-**４**、todo-app-client ディレクトリ直下に.env.development.local ファイルを作成し,下記をコピペしてください。  
+**４**、Todo-App-Client ディレクトリ直下に.env.development.local ファイルを作成し,下記をコピペしてください。  
 (注).env ファイルは通常公開しません、今回はポートフォリオ作成なので公開しています。
 
 ```
