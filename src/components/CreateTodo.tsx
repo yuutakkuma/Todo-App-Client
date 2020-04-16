@@ -29,14 +29,14 @@ export const CreateTodo: React.FC = () => {
     <form
       className="todo-form"
       autoComplete="off"
-      onSubmit={async event => {
+      onSubmit={async (event) => {
         event.preventDefault();
 
         try {
           await createTodo({
             variables: {
-              title: state.task
-            }
+              title: state.task,
+            },
           });
           state.task = '';
           // エラーの表示を消す
@@ -55,7 +55,7 @@ export const CreateTodo: React.FC = () => {
           name="title"
           placeholder="やること"
           value={state.task}
-          onChange={event => {
+          onChange={(event) => {
             dispatch({ type: 'createTodo', value: event.target.value });
           }}
         />

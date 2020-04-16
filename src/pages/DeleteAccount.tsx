@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 
@@ -8,6 +8,7 @@ import { loginGqlError } from '../models/loginGqlError';
 import { DeleteAccountButton } from '../components/button/DeleteAccountButton';
 import { Explanation } from '../components/explanation';
 import { formReducer, initialState } from '../store/FormStore';
+import { ModalContext } from '../createContext/ModalContext';
 
 let errorMessage: loginGqlError;
 
@@ -15,6 +16,7 @@ export const DeleteAccount: React.FC = () => {
   const history = useHistory();
   const [deleteAccount, { loading, error }] = useDeleteAccountMutation();
   const [state, dispatch] = useReducer(formReducer, initialState);
+  const modalCtx = useContext(ModalContext);
 
   if (error) {
     // GraphQLErrorを取得
@@ -34,7 +36,7 @@ export const DeleteAccount: React.FC = () => {
         />
         <form
           className="delete-account-form"
-          onSubmit={async event => {
+          onSubmit={async (event) => {
             event.preventDefault();
 
             try {
@@ -42,10 +44,13 @@ export const DeleteAccount: React.FC = () => {
                 variables: {
                   nickname: state.nickName,
                   email: state.email,
-                  password: state.password
-                }
+                  password: state.password,
+                },
               });
-              window.alert('アカウントを削除しました。');
+              // ランディングページでモーダルを表示させる
+              modalCtx.text = 'アカウントを削除しました。';
+              modalCtx.state = true;
+              // ランディングページへ遷移する
               history.push('/');
             } catch {}
           }}
@@ -60,7 +65,7 @@ export const DeleteAccount: React.FC = () => {
               className="form-input"
               value={state.nickName}
               placeholder="ニックネーム"
-              onChange={event => {
+              onChange={(event) => {
                 dispatch({ type: 'nickNameType', value: event.target.value });
               }}
             />
@@ -68,7 +73,7 @@ export const DeleteAccount: React.FC = () => {
               className="form-input"
               value={state.email}
               placeholder="Eメール"
-              onChange={event => {
+              onChange={(event) => {
                 dispatch({ type: 'emailType', value: event.target.value });
               }}
             />
@@ -77,7 +82,7 @@ export const DeleteAccount: React.FC = () => {
               type="password"
               value={state.password}
               placeholder="パスワード"
-              onChange={event => {
+              onChange={(event) => {
                 dispatch({ type: 'passwordType', value: event.target.value });
               }}
             />

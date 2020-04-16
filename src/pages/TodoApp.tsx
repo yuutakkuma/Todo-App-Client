@@ -8,7 +8,7 @@ import { HelloUser } from '../components/HelloUser';
 
 export const TodoApp: React.FC = () => {
   const { data, loading, error } = useGetTodoListQuery({ pollInterval: 500 });
-  const meData = useMeQuery();
+  const meData = useMeQuery({ pollInterval: 500 });
 
   return (
     <div>

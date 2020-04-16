@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
 import _ from 'lodash';
 
 import './pageStyle/Register.css';
@@ -8,6 +8,7 @@ import { RegisterButton } from '../components/button/RegisterButton';
 import { RegisterGqlError, ConstraintsError } from '../models/registerGqlError';
 import { Explanation } from '../components/explanation';
 import { formReducer, initialState } from '../store/FormStore';
+import { ModalContext } from '../createContext/ModalContext';
 
 let nickNameError: string | undefined;
 let emailError: string | undefined;
@@ -18,6 +19,7 @@ export const Register: React.FC = () => {
   const history = useHistory();
   const [register, { loading, error }] = useRegisterMutation();
   const [state, dispatch] = useReducer(formReducer, initialState);
+  const modalCtx = useContext(ModalContext);
 
   if (error) {
     // GraphQLErrorを取得
@@ -40,7 +42,6 @@ export const Register: React.FC = () => {
       }
     }
   }
-
   return (
     <div className="main">
       <div className="register-wrapper">
@@ -53,7 +54,7 @@ export const Register: React.FC = () => {
         />
         <form
           className="register-form"
-          onSubmit={async event => {
+          onSubmit={async (event) => {
             event.preventDefault();
             // エラーメッセージをリセット
             nickNameError = undefined;
@@ -65,12 +66,15 @@ export const Register: React.FC = () => {
                 variables: {
                   nickname: state.nickName,
                   email: state.email,
-                  password: state.password
-                }
+                  password: state.password,
+                },
               });
+              // ランディングページでモーダルを表示させる
+              modalCtx.text = '登録完了しました！ログインしてください！';
+              modalCtx.state = true;
+              // ランディングページに遷移する
+              history.push('/');
             } catch {}
-            window.alert('登録完了！　ログインしてください!');
-            history.push('/');
           }}
         >
           <div className="input-form-inner">
@@ -79,7 +83,7 @@ export const Register: React.FC = () => {
               className="form-input"
               value={state.nickName}
               placeholder="ニックネーム"
-              onChange={event => {
+              onChange={(event) => {
                 dispatch({ type: 'nickNameType', value: event.target.value });
               }}
             />
@@ -88,7 +92,7 @@ export const Register: React.FC = () => {
               className="form-input"
               value={state.email}
               placeholder="Eメール"
-              onChange={event => {
+              onChange={(event) => {
                 dispatch({ type: 'emailType', value: event.target.value });
               }}
             />
@@ -98,7 +102,7 @@ export const Register: React.FC = () => {
               type="password"
               value={state.password}
               placeholder="パスワード"
-              onChange={event => {
+              onChange={(event) => {
                 dispatch({ type: 'passwordType', value: event.target.value });
               }}
             />
