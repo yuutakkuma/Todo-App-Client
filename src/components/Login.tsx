@@ -1,7 +1,10 @@
 import React, { useReducer } from 'react';
 import _ from 'lodash';
 
-import './componentStyle/Login.css';
+import { Form } from '../pages/pageStyle/Form.style';
+import { Inner } from '../pages/pageStyle/Inner.style';
+import { LoginError, LoginInput } from './componentStyle/Login.style';
+
 import { LoginButton } from './button/LoginButton';
 import { useLoginMutation } from '../generated/graphql';
 import { useHistory } from 'react-router-dom';
@@ -23,8 +26,7 @@ export const Login: React.FC = () => {
   }
 
   return (
-    <form
-      className="login-form"
+    <Form
       onSubmit={async (event) => {
         event.preventDefault();
         console.log(state.email);
@@ -40,18 +42,16 @@ export const Login: React.FC = () => {
         } catch {}
       }}
     >
-      <div className="login-form-inner">
-        {error ? <p className="error">{errorMessage.message}</p> : undefined}
-        <input
-          className="login-input"
+      <Inner innerWidth={80}>
+        {error ? <LoginError>{errorMessage.message}</LoginError> : undefined}
+        <LoginInput
           placeholder="Eメール"
           value={state.email}
           onChange={(event) => {
             dispatch({ type: 'emailType', value: event.target.value });
           }}
         />
-        <input
-          className="login-input"
+        <LoginInput
           type="password"
           placeholder="パスワード"
           value={state.password}
@@ -61,7 +61,7 @@ export const Login: React.FC = () => {
         />
         <LoginButton isLoginLoading={loading} />
         <TestUserButton />
-      </div>
-    </form>
+      </Inner>
+    </Form>
   );
 };

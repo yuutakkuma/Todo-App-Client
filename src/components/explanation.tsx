@@ -1,7 +1,12 @@
 import React from 'react';
-
 import { useHistory } from 'react-router-dom';
-import './componentStyle/explanation.css';
+
+import {
+  ExplanationContainer,
+  ExplanationText,
+  BackBtnInner,
+  BackBtn,
+} from './componentStyle/Explanation.style';
 
 interface Props {
   value: string;
@@ -9,19 +14,16 @@ interface Props {
   history: string;
 }
 
-export const Explanation: React.FC<Props> = props => {
+export const Explanation: React.FC<Props> = (props) => {
   const history = useHistory();
   return (
-    <div className="explanation-container">
-      <p className="explanation-text">{props.value}</p>
-      <div className="back-btn-inner">
-        <button
-          className="back-btn"
-          onClick={() => history.push(props.history)}
-        >
+    <ExplanationContainer>
+      <ExplanationText>{props.value}</ExplanationText>
+      <BackBtnInner>
+        <BackBtn onClick={() => history.push(props.history)}>
           {props.buttonName}
-        </button>
-      </div>
-    </div>
+        </BackBtn>
+      </BackBtnInner>
+    </ExplanationContainer>
   );
 };

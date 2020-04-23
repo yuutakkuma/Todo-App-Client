@@ -1,4 +1,6 @@
-.todo-form {
+import styled from 'styled-components';
+
+export const TodoForm = styled.form`
   width: 50%;
   margin: 10px auto 30px auto;
   padding: 10px;
@@ -6,28 +8,18 @@
   border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   display: flex;
-}
+`;
 
-.todo-form-inner {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.character {
-  width: 100%;
-  margin: 0 0 0 5px;
-}
-
-.todo-input {
+export const TodoInput = styled.input`
   width: 100%;
   padding: 5px;
   border: none;
   outline: none;
   font-size: 20px;
   color: #2d334a;
-}
+`;
 
-.todo-btn {
+export const TodoBtn = styled.button`
   width: 50px;
   height: 50px;
   margin: 0 0 0 auto;
@@ -39,4 +31,4 @@
   cursor: pointer;
   border: none;
   outline: none;
-}
+`;

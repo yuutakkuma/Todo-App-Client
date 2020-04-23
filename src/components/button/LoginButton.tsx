@@ -1,15 +1,14 @@
 import React from 'react';
+
+import { LoginBtn } from '../componentStyle/Login.style';
+
 import { Loading } from '../Loading';
 
 interface Props {
   isLoginLoading: boolean;
 }
 
-export const LoginButton: React.FC<Props> = props => {
+export const LoginButton: React.FC<Props> = (props) => {
   if (props.isLoginLoading) return <Loading />;
-  return (
-    <button className="login-btn" type="submit">
-      ログイン
-    </button>
-  );
+  return <LoginBtn type="submit">ログイン</LoginBtn>;
 };

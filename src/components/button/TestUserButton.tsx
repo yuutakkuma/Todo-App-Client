@@ -1,7 +1,10 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { LoginBtn } from '../componentStyle/Login.style';
+
 import { Loading } from '../Loading';
 import { useTestUserLoginMutation } from '../../generated/graphql';
-import { useHistory } from 'react-router-dom';
 
 export const TestUserButton: React.FC = () => {
   const [testLogin, { loading, error }] = useTestUserLoginMutation();
@@ -9,22 +12,21 @@ export const TestUserButton: React.FC = () => {
   if (loading) return <Loading />;
   if (error) return <div>error...</div>;
   return (
-    <button
-      className="login-btn"
+    <LoginBtn
       type="button"
       onClick={async () => {
         try {
           await testLogin({
             variables: {
               email: 'test@test.com',
-              password: 'test'
-            }
+              password: 'test',
+            },
           });
         } catch {}
         history.push('/home');
       }}
     >
       テストユーザーでログインする
-    </button>
+    </LoginBtn>
   );
 };

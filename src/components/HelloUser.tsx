@@ -1,5 +1,6 @@
 import React from 'react';
-import './componentStyle/HelloUser.css';
+
+import { NickName } from './componentStyle/HelloUser.style';
 
 import { MeQuery } from '../generated/graphql';
 import { ApolloError } from 'apollo-boost';
@@ -11,7 +12,7 @@ interface Props {
   error: ApolloError | undefined;
 }
 
-export const HelloUser: React.FC<Props> = props => {
+export const HelloUser: React.FC<Props> = (props) => {
   if (props.isMeDataLoading) return <Loading />;
 
   if (
@@ -23,8 +24,8 @@ export const HelloUser: React.FC<Props> = props => {
   }
 
   return (
-    <div className="nickname">
+    <NickName>
       <h2>こんにちは{props.fetchData.me.nickname}さん</h2>
-    </div>
+    </NickName>
   );
 };

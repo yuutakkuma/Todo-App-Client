@@ -1,7 +1,14 @@
 import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 
-import './componentStyle/Modal.css';
+import {
+  ModalContainer,
+  ModalBox,
+  ModalInner,
+  ModalText,
+  ModalBtn,
+} from './componentStyle/Modal.style';
+
 import { ModalContext } from '../createContext/ModalContext';
 
 interface Props {
@@ -24,14 +31,13 @@ export const Modal: React.FC<Props> = ({ modalText }) => {
   return (
     <div>
       {ReactDOM.createPortal(
-        <div className="modal-container">
-          <div className="modal-box">
-            <div className="modal-inner">
-              <p className="modal-text">{modalText}</p>
-            </div>
-            <div className="modal-inner">
-              <button
-                className="modal-btn"
+        <ModalContainer>
+          <ModalBox>
+            <ModalInner>
+              <ModalText>{modalText}</ModalText>
+            </ModalInner>
+            <ModalInner>
+              <ModalBtn
                 onClick={() => {
                   //　エレメントを削除し、モーダルを閉じる
                   modalRoot.removeChild(el);
@@ -39,10 +45,10 @@ export const Modal: React.FC<Props> = ({ modalText }) => {
                 }}
               >
                 OK！
-              </button>
-            </div>
-          </div>
-        </div>,
+              </ModalBtn>
+            </ModalInner>
+          </ModalBox>
+        </ModalContainer>,
         el
       )}
     </div>

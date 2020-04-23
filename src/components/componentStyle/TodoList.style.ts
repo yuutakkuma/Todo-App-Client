@@ -1,9 +1,11 @@
-.todolist-wrapper {
+import styled from 'styled-components';
+
+export const TodoListWrapper = styled.div`
   width: 100%;
   margin: 10px auto;
-}
+`;
 
-.todolist-container {
+export const TodoListContainer = styled.div`
   width: 50%;
   margin: 10px auto;
   padding: 10px;
@@ -11,24 +13,24 @@
   border-radius: 10px;
   box-shadow: 0 1px 5px #ccc;
   display: flex;
-}
+`;
 
-.todo-name {
+export const TodoName = styled.p`
   width: 80%;
   font-size: 20px;
   color: #2d334a;
-}
+`;
 
-.massage {
+export const Message = styled.div`
   margin: 0 auto;
   padding: 10px;
   font-size: 30px;
   color: #8ac6d1;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   text-align: center;
-}
+`;
 
-.delete-btn {
+export const TodoDeleteBtn = styled.button`
   width: 50px;
   margin: 0 0 0 auto;
   border-radius: 10%;
@@ -39,4 +41,4 @@
   cursor: pointer;
   border: none;
   outline: none;
-}
+`;

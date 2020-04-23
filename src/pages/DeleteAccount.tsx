@@ -2,7 +2,12 @@ import React, { useReducer, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 
-import './pageStyle/DeleteAccount.css';
+import { Form } from './pageStyle/Form.style';
+import { Main } from './pageStyle/Main.style';
+import { Wrapper } from './pageStyle/Wrapper.style';
+import { Inner } from './pageStyle/Inner.style';
+import { Input } from './pageStyle/Input.style';
+
 import { useDeleteAccountMutation } from '../generated/graphql';
 import { loginGqlError } from '../models/loginGqlError';
 import { DeleteAccountButton } from '../components/button/DeleteAccountButton';
@@ -25,8 +30,8 @@ export const DeleteAccount: React.FC = () => {
   }
 
   return (
-    <div className="main">
-      <div className="delete-account-wrapper">
+    <Main>
+      <Wrapper>
         <Explanation
           value={
             'アカウントを削除するにはユーザー情報を正しく入力してください。'
@@ -34,8 +39,7 @@ export const DeleteAccount: React.FC = () => {
           buttonName={'ホームへ戻る'}
           history={'/home'}
         />
-        <form
-          className="delete-account-form"
+        <Form
           onSubmit={async (event) => {
             event.preventDefault();
 
@@ -55,13 +59,13 @@ export const DeleteAccount: React.FC = () => {
             } catch {}
           }}
         >
-          <div className="input-form-inner">
+          <Inner innerWidth={80}>
             {error ? (
               <p className="error">{errorMessage.message}</p>
             ) : (
               undefined
             )}
-            <input
+            <Input
               className="form-input"
               value={state.nickName}
               placeholder="ニックネーム"
@@ -69,7 +73,7 @@ export const DeleteAccount: React.FC = () => {
                 dispatch({ type: 'nickNameType', value: event.target.value });
               }}
             />
-            <input
+            <Input
               className="form-input"
               value={state.email}
               placeholder="Eメール"
@@ -77,7 +81,7 @@ export const DeleteAccount: React.FC = () => {
                 dispatch({ type: 'emailType', value: event.target.value });
               }}
             />
-            <input
+            <Input
               className="form-input"
               type="password"
               value={state.password}
@@ -87,9 +91,9 @@ export const DeleteAccount: React.FC = () => {
               }}
             />
             <DeleteAccountButton isDeleteAccountLoading={loading} />
-          </div>
-        </form>
-      </div>
-    </div>
+          </Inner>
+        </Form>
+      </Wrapper>
+    </Main>
   );
 };

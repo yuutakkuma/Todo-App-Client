@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { TodoDeleteBtn } from '../componentStyle/TodoList.style';
+
 import { useDeleteTodoMutation } from '../../generated/graphql';
 import { Loading } from '../Loading';
 
@@ -6,7 +9,7 @@ interface Props {
   todoId: string;
 }
 
-export const TodoDeleteButton: React.FC<Props> = props => {
+export const TodoDeleteButton: React.FC<Props> = (props) => {
   const [todoDelete, { loading, error }] = useDeleteTodoMutation();
 
   if (error) {
@@ -15,20 +18,19 @@ export const TodoDeleteButton: React.FC<Props> = props => {
   if (loading) return <Loading />;
 
   return (
-    <button
-      className="delete-btn"
+    <TodoDeleteBtn
       type="button"
       onClick={async () => {
         try {
           await todoDelete({
             variables: {
-              id: props.todoId
-            }
+              id: props.todoId,
+            },
           });
         } catch {}
       }}
     >
       DELETE
-    </button>
+    </TodoDeleteBtn>
   );
 };

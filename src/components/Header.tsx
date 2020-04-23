@@ -1,30 +1,38 @@
 import React from 'react';
-import './componentStyle/Header.css';
+import { useHistory } from 'react-router-dom';
+
+import {
+  HeaderStyle,
+  HeaderContainer,
+  HeaderInner,
+  HeaderH1,
+  HeaderBtnBox,
+  DeleteAccountMoveBtn,
+  HeaderBtnContainer,
+} from './componentStyle/Header.style';
 
 import { LogOutButton } from './button/LogOutButton';
-import { useHistory } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   const history = useHistory();
   return (
-    <header>
-      <div className="header-container">
-        <div className="header-inner">
-          <h1>ToDo アプリ</h1>
-        </div>
-        <div className="header-btn-box">
-          <div className="header-btn-container">
-            <button
-              className="deleteaccount-move-btn"
+    <HeaderStyle>
+      <HeaderContainer>
+        <HeaderInner>
+          <HeaderH1>ToDo アプリ</HeaderH1>
+        </HeaderInner>
+        <HeaderBtnBox>
+          <HeaderBtnContainer>
+            <DeleteAccountMoveBtn
               type="button"
               onClick={() => history.push('/deleteaccount')}
             >
               アカウント削除
-            </button>
+            </DeleteAccountMoveBtn>
             <LogOutButton />
-          </div>
-        </div>
-      </div>
-    </header>
+          </HeaderBtnContainer>
+        </HeaderBtnBox>
+      </HeaderContainer>
+    </HeaderStyle>
   );
 };

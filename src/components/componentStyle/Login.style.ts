@@ -1,18 +1,6 @@
-.login-form {
-  width: 50%;
-  margin: 20px auto;
-  padding: 10px 0;
-  background-color: #fffdf9;
-  border-radius: 10px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-}
+import styled from 'styled-components';
 
-.login-form-inner {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.login-input {
+export const LoginInput = styled.input`
   width: 100%;
   margin: 10px 0;
   padding: 10px 0 10px 5px;
@@ -22,9 +10,15 @@
   border-radius: 5px;
   font-size: 20px;
   box-sizing: border-box;
-}
+`;
 
-.login-btn {
+export const LoginError = styled.p`
+  margin: 0;
+  padding: 0;
+  color: red;
+`;
+
+export const LoginBtn = styled.button`
   width: 100%;
   margin: 10px 0;
   padding: 10px 5px;
@@ -33,4 +27,4 @@
   border-radius: 5px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-}
+`;

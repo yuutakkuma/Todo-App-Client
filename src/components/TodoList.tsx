@@ -2,7 +2,12 @@ import React from 'react';
 import { ApolloError } from 'apollo-boost';
 import _ from 'lodash';
 
-import './componentStyle/TodoList.css';
+import {
+  Message,
+  TodoListWrapper,
+  TodoListContainer,
+} from './componentStyle/TodoList.style';
+
 import { GetTodoListQuery } from '../generated/graphql';
 import { TodoDeleteButton } from './button/TodoDeleteButton';
 import { TodoListItem } from './TodoListItem';
@@ -13,31 +18,31 @@ interface Props {
   error: ApolloError | undefined;
 }
 
-export const TodoList: React.FC<Props> = props => {
+export const TodoList: React.FC<Props> = (props) => {
   if (
     typeof props.fetchData === 'undefined' ||
     !props.fetchData.getTodoList ||
     props.fetchData.getTodoList.length === 0
   ) {
-    return <div className="massage">やることを追加しよう！</div>;
+    return <Message>やることを追加しよう！</Message>;
   }
 
   if (props.error) return <div>ToDoリストを受信出来ませんでした。</div>;
 
   return (
-    <div className="todolist-wrapper">
-      {_.map(_.orderBy(props.fetchData.getTodoList, 'id', 'desc'), x => {
+    <TodoListWrapper>
+      {_.map(_.orderBy(props.fetchData.getTodoList, 'id', 'desc'), (x) => {
         if (!x) return <div>Error...</div>;
         return (
-          <div className="todolist-container" key={x.id}>
+          <TodoListContainer key={x.id}>
             <TodoListItem
               title={x.title}
               isTodoListItemLoading={props.isTodoListLoading}
             />
             <TodoDeleteButton todoId={x.id} />
-          </div>
+          </TodoListContainer>
         );
       })}
-    </div>
+    </TodoListWrapper>
   );
 };
