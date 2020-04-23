@@ -1,9 +1,14 @@
 import React, { useReducer, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 
-import './pageStyle/Register.css';
+import { Main } from './pageStyle/Main.style';
+import { Wrapper } from './pageStyle/Wrapper.style';
+import { Form } from './pageStyle/Form.style';
+import { Inner } from './pageStyle/Inner.style';
+import { Input } from './pageStyle/Input.style';
+
 import { useRegisterMutation } from '../generated/graphql';
-import { useHistory } from 'react-router-dom';
 import { RegisterButton } from '../components/button/RegisterButton';
 import { RegisterGqlError, ConstraintsError } from '../models/registerGqlError';
 import { Explanation } from '../components/explanation';
@@ -43,8 +48,8 @@ export const Register: React.FC = () => {
     }
   }
   return (
-    <div className="main">
-      <div className="register-wrapper">
+    <Main>
+      <Wrapper>
         <Explanation
           value={
             '新規登録するにはニックネーム、Eメール、パスワードを入力してください。'
@@ -52,8 +57,7 @@ export const Register: React.FC = () => {
           buttonName={'戻る'}
           history={'/'}
         />
-        <form
-          className="register-form"
+        <Form
           onSubmit={async (event) => {
             event.preventDefault();
             // エラーメッセージをリセット
@@ -77,10 +81,9 @@ export const Register: React.FC = () => {
             } catch {}
           }}
         >
-          <div className="input-form-inner">
+          <Inner innerWidth={80}>
             {error ? <p className="error">{nickNameError}</p> : undefined}
-            <input
-              className="form-input"
+            <Input
               value={state.nickName}
               placeholder="ニックネーム"
               onChange={(event) => {
@@ -88,8 +91,7 @@ export const Register: React.FC = () => {
               }}
             />
             {error ? <p className="error">{emailError}</p> : undefined}
-            <input
-              className="form-input"
+            <Input
               value={state.email}
               placeholder="Eメール"
               onChange={(event) => {
@@ -97,8 +99,7 @@ export const Register: React.FC = () => {
               }}
             />
             {error ? <p className="error">{passwordError}</p> : undefined}
-            <input
-              className="form-input"
+            <Input
               type="password"
               value={state.password}
               placeholder="パスワード"
@@ -107,9 +108,9 @@ export const Register: React.FC = () => {
               }}
             />
             <RegisterButton isRegisterLoading={loading} />
-          </div>
-        </form>
-      </div>
-    </div>
+          </Inner>
+        </Form>
+      </Wrapper>
+    </Main>
   );
 };

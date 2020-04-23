@@ -1,37 +1,39 @@
-header {
+import styled from 'styled-components';
+
+export const HeaderStyle = styled.header`
   background-color: #8ac6d1;
-  /* margin: auto 0px; */
   padding: 0 30px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-}
+`;
 
-.header-container {
+export const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
-}
+`;
 
-.header-inner {
+export const HeaderInner = styled.div`
   width: 20%;
   margin: 0 0 auto 0;
-}
+`;
 
-header h1 {
+export const HeaderH1 = styled.h1`
   color: #fffdf9;
-}
+`;
 
-.header-btn-box {
+export const HeaderBtnBox = styled.div`
   width: 50%;
   margin: 0 0 0 auto;
   display: flex;
-}
+`;
 
-.header-btn-container {
+export const HeaderBtnContainer = styled.div`
   width: 100%;
   margin: 0 0 0 auto;
   padding: 15px 5px;
   display: flex;
-}
-.deleteaccount-move-btn {
+`;
+
+export const DeleteAccountMoveBtn = styled.button`
   width: 20%;
   margin: 0 0 0 auto;
   font-size: 15px;
@@ -39,9 +41,9 @@ header h1 {
   border-radius: 5px;
   background-color: #fffdf9;
   cursor: pointer;
-}
+`;
 
-.logout-btn {
+export const LogOutBtn = styled.button`
   width: 20%;
   margin: 0 0 0 10px;
   font-size: 15px;
@@ -49,4 +51,4 @@ header h1 {
   border-radius: 5px;
   background-color: #fffdf9;
   cursor: pointer;
-}
+`;

@@ -1,7 +1,9 @@
 import React, { useReducer } from 'react';
 import _ from 'lodash';
 
-import './componentStyle/CreateTodo.css';
+import { Inner } from '../pages/pageStyle/Inner.style';
+import { TodoForm, TodoInput } from './componentStyle/CreateTodo.style';
+
 import { useCreateTodoMutation } from '../generated/graphql';
 import { TodoCreateButton } from './button/TodoCreateButton';
 import { CharacterCount } from './CharacterCount';
@@ -26,8 +28,7 @@ export const CreateTodo: React.FC = () => {
   }
 
   return (
-    <form
-      className="todo-form"
+    <TodoForm
       autoComplete="off"
       onSubmit={async (event) => {
         event.preventDefault();
@@ -44,14 +45,13 @@ export const CreateTodo: React.FC = () => {
         } catch {}
       }}
     >
-      <div className="todo-form-inner">
+      <Inner innerWidth={100}>
         <CharacterCount
           value={state.task}
           error={todoError}
           reload={reloadTrigger}
         />
-        <input
-          className="todo-input"
+        <TodoInput
           name="title"
           placeholder="やること"
           value={state.task}
@@ -59,8 +59,8 @@ export const CreateTodo: React.FC = () => {
             dispatch({ type: 'createTodo', value: event.target.value });
           }}
         />
-      </div>
+      </Inner>
       <TodoCreateButton isCreateLoading={loading} />
-    </form>
+    </TodoForm>
   );
 };

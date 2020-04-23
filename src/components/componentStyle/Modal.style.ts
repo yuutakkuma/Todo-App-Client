@@ -1,24 +1,14 @@
-#modal-root {
-  position: relative;
-}
+import styled from 'styled-components';
 
-.modal {
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.25);
-}
-
-.modal-container {
+export const ModalContainer = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+`;
 
-.modal-box {
+export const ModalBox = styled.div`
   width: 30%;
   height: 30%;
   border: 5px;
@@ -26,21 +16,21 @@
   border-radius: 10px;
   border-color: #fffdf9;
   background-color: #bfe8f0;
-}
+`;
 
-.modal-inner {
+export const ModalInner = styled.div`
   width: 100%;
   height: 50%;
   position: relative;
-}
+`;
 
-.modal-text {
+export const ModalText = styled.p`
   margin: 0;
   padding: 50px;
   text-align: center;
-}
+`;
 
-.modal-btn {
+export const ModalBtn = styled.button`
   position: absolute;
   width: 20%;
   margin: 0;
@@ -48,4 +38,4 @@
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-}
+`;

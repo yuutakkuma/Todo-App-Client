@@ -1,6 +1,9 @@
 import React from 'react';
-import { useLogOutMutation } from '../../generated/graphql';
 import { useHistory } from 'react-router-dom';
+
+import { LogOutBtn } from '../componentStyle/Header.style';
+
+import { useLogOutMutation } from '../../generated/graphql';
 import { Loading } from '../Loading';
 
 export const LogOutButton: React.FC = () => {
@@ -10,15 +13,13 @@ export const LogOutButton: React.FC = () => {
   if (loading) return <Loading />;
 
   return (
-    <button
-      className="logout-btn"
-      data-testid="logout-btn-test"
+    <LogOutBtn
       onClick={async () => {
         await logOut();
         history.push('/');
       }}
     >
       ログアウト
-    </button>
+    </LogOutBtn>
   );
 };

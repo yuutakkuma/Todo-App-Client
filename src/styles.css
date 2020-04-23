@@ -7,15 +7,18 @@ body {
   background-color: #eeee;
 }
 
-.main {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  background-color: #bfe8f0;
+#root {
+  position: relative;
 }
 
-.error {
-  margin: 0;
-  padding: 0;
-  color: red;
+#modal-root {
+  position: relative;
+}
+
+.modal {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.25);
 }
