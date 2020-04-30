@@ -10,7 +10,7 @@ import { H1 } from './pageStyle/H1.style';
 import { Button } from './pageStyle/Button.style';
 
 import { Login } from '../components/Login';
-import { Modal } from '../components/modal';
+import { Portal } from '../components/Portal';
 import { ModalContext } from '../createContext/ModalContext';
 
 export const Landing: React.FC = () => {
@@ -37,7 +37,7 @@ export const Landing: React.FC = () => {
           </Inner>
         </Box>
       </Container>
-      {modalCtx.state ? <Modal modalText={modalCtx.text} /> : undefined}
+      {modalCtx.state ? <Portal modalText={modalCtx.text} /> : undefined}
     </Main>
   );
 };

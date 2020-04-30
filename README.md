@@ -111,5 +111,6 @@ REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL=http://localhost:4000/refresh_token/
 
 ### (備考)
 
-storybook を使用していますが、2020 年 4 月 11 日現在コンパイルエラーで起動しません。  
-只今修正中です。
+~storybook を使用していますが、2020 年 4 月 11 日現在コンパイルエラーで起動しません。  
+只今修正中です。~  
+修正しました。(2020/4/30)
