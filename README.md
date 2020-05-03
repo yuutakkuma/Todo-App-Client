@@ -85,15 +85,7 @@ https://silly-poitras-9dcf43.netlify.com/
 % git clone https://github.com/yuuta-wata/Todo-App-Client.git
 ```
 
-**３**、ライブラリのインストールを行います。  
-(注)yarn をインストールしてない方は別途インストールをお願いします。
-
-```bash
-% cd Todo-App-Client
-% yarn
-```
-
-**４**、Todo-App-Client ディレクトリ直下に.env.development.local ファイルを作成し,下記をコピペしてください。  
+**3**、Todo-App-Client ディレクトリ直下に.env.development.local ファイルを作成し,下記をコピペしてください。  
 (注).env ファイルは通常公開しません、今回はポートフォリオ作成なので公開しています。
 
 ```
@@ -102,12 +94,15 @@ REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL=http://localhost:4000/refresh_token/
 
 ```
 
-**５**、expres サーバーを起動すると自動でページが表示されます。  
-ポートは 3000 番になります。
+**4**、docker を起動します。  
+(注)docker 及び yarn をインストールしてない方は別途インストールをお願いします。
 
 ```bash
-% yarn start
+% cd Todo-App-Client
+% docker-compose -f docker/dev/docker-compose.yml up
 ```
+
+3000 番ポートで起動します。
 
 ### (備考)
 

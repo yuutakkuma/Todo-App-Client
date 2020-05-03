@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  todo_client:
+    build:
+      context: ../../
+      dockerfile: docker/dev/dockerfile.development
+    container_name: todo-app-client
+    volumes:
+      - ../../src:/usr/app/src
+    ports:
+      - '3000:3000'
+    tty: true
