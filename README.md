@@ -99,7 +99,7 @@ REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL=http://localhost:4000/refresh_token/
 
 ```bash
 % cd Todo-App-Client
-% docker-compose -f docker/dev/docker-compose.yml up
+% docker-compose -f docker/dev/docker-compose.development.yml up
 ```
 
 3000 番ポートで起動します。
