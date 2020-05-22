@@ -1,8 +1,3 @@
-# URL
-
-WEB に公開しています。
-https://silly-poitras-9dcf43.netlify.com/
-
 ## 当アプリについて
 
 ポートフォリオ用に作成したタスク管理アプリケーションです。  
