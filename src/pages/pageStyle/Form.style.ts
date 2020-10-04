@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Form = styled.form`
   width: 50%;
@@ -7,4 +7,4 @@ export const Form = styled.form`
   background-color: #fffdf9;
   border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-`;
+`

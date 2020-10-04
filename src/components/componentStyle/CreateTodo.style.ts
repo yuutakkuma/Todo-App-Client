@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const TodoForm = styled.form`
   width: 50%;
@@ -8,7 +8,7 @@ export const TodoForm = styled.form`
   border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   display: flex;
-`;
+`
 
 export const TodoInput = styled.input`
   width: 100%;
@@ -17,7 +17,7 @@ export const TodoInput = styled.input`
   outline: none;
   font-size: 20px;
   color: #2d334a;
-`;
+`
 
 export const TodoBtn = styled.button`
   width: 50px;
@@ -27,8 +27,17 @@ export const TodoBtn = styled.button`
   font-size: 30px;
   color: #fffdf9;
   background-color: #8ac6d1;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   border: none;
   outline: none;
-`;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+`

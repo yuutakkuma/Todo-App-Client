@@ -2,8 +2,8 @@ export interface CreateTodoGqlError {
   message: [
     {
       constraints: {
-        length: string;
-      };
+        length: string
+      }
     }
-  ];
+  ]
 }

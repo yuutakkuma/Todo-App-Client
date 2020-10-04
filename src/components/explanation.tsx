@@ -1,21 +1,21 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 import {
   ExplanationContainer,
   ExplanationText,
   BackBtnInner,
-  BackBtn,
-} from './componentStyle/Explanation.style';
+  BackBtn
+} from './componentStyle/Explanation.style'
 
 interface Props {
-  value: string;
-  buttonName: string;
-  history: string;
+  value: string
+  buttonName: string
+  history: string
 }
 
-export const Explanation: React.FC<Props> = (props) => {
-  const history = useHistory();
+export const Explanation: React.FC<Props> = props => {
+  const history = useHistory()
   return (
     <ExplanationContainer>
       <ExplanationText>{props.value}</ExplanationText>
@@ -25,5 +25,5 @@ export const Explanation: React.FC<Props> = (props) => {
         </BackBtn>
       </BackBtnInner>
     </ExplanationContainer>
-  );
-};
+  )
+}

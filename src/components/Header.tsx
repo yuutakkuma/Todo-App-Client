@@ -1,5 +1,5 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 import {
   HeaderStyle,
@@ -8,13 +8,13 @@ import {
   HeaderH1,
   HeaderBtnBox,
   DeleteAccountMoveBtn,
-  HeaderBtnContainer,
-} from './componentStyle/Header.style';
+  HeaderBtnContainer
+} from './componentStyle/Header.style'
 
-import { LogOutButton } from './button/LogOutButton';
+import { LogOutButton } from './button/LogOutButton'
 
 export const Header: React.FC = () => {
-  const history = useHistory();
+  const history = useHistory()
   return (
     <HeaderStyle>
       <HeaderContainer>
@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
         <HeaderBtnBox>
           <HeaderBtnContainer>
             <DeleteAccountMoveBtn
-              type="button"
+              type='button'
               onClick={() => history.push('/deleteaccount')}
             >
               アカウント削除
@@ -34,5 +34,5 @@ export const Header: React.FC = () => {
         </HeaderBtnBox>
       </HeaderContainer>
     </HeaderStyle>
-  );
-};
+  )
+}

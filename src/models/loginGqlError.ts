@@ -1,5 +1,5 @@
 export interface loginGqlError {
-  statusCode: number;
-  error: string;
-  message: string;
+  statusCode: number
+  error: string
+  message: string
 }

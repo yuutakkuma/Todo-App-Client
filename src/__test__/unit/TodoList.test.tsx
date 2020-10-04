@@ -1,15 +1,15 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { MockedProvider } from '@apollo/react-testing';
+import React from 'react'
+import { render } from '@testing-library/react'
+import { MockedProvider } from '@apollo/react-testing'
 
-import { GetTodoListQuery } from '../../generated/graphql';
-import { TodoList } from '../../components/TodoList';
+import { GetTodoListQuery } from '../../generated/graphql'
+import { TodoList } from '../../components/TodoList'
 
 const title = {
   one: 'パンを買う',
   two: 'ヨーグルト美味しい',
   three: '筋トレする'
-};
+}
 
 const data: GetTodoListQuery = {
   getTodoList: [
@@ -32,7 +32,7 @@ const data: GetTodoListQuery = {
       __typename: 'Todo'
     }
   ]
-};
+}
 
 describe('TodoList', () => {
   test('TodoListを表示', () => {
@@ -44,21 +44,21 @@ describe('TodoList', () => {
           error={undefined}
         />
       </MockedProvider>
-    );
-    component.getByText(title.one);
-    component.getByText(title.two);
-    component.getByText(title.three);
-  });
+    )
+    component.getByText(title.one)
+    component.getByText(title.two)
+    component.getByText(title.three)
+  })
 
   test('ロード中', () => {
     const isLoadingComponent = render(
       <MockedProvider>
         <TodoList fetchData={data} isTodoListLoading={true} error={undefined} />
       </MockedProvider>
-    );
+    )
     // isLoadingComponent.debug();
-    isLoadingComponent.findByRole('svg');
-  });
+    isLoadingComponent.findByRole('svg')
+  })
 
   test('データが無い', () => {
     const noDataComponent = render(
@@ -69,9 +69,9 @@ describe('TodoList', () => {
           error={undefined}
         />
       </MockedProvider>
-    );
+    )
 
     // notDataComponent.debug();
-    noDataComponent.getByText('やることを追加しよう！');
-  });
-});
+    noDataComponent.getByText('やることを追加しよう！')
+  })
+})

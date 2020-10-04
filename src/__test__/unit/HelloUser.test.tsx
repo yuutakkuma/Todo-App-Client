@@ -1,20 +1,20 @@
-import React from 'react';
-import { MockedProvider } from '@apollo/react-testing';
-import { render } from '@testing-library/react';
-import { ApolloError } from 'apollo-boost';
+import React from 'react'
+import { MockedProvider } from '@apollo/react-testing'
+import { render } from '@testing-library/react'
+import { ApolloError } from 'apollo-boost'
 
-import { MeQuery } from '../../generated/graphql';
-import { HelloUser } from '../../components/HelloUser';
+import { MeQuery } from '../../generated/graphql'
+import { HelloUser } from '../../components/HelloUser'
 
 const data: MeQuery = {
   me: {
     id: '1',
-    nickName: 'リラックマ',
+    nickname: 'リラックマ',
     email: 'rirakuma@rirakuma.com',
-    loginStatus: true
+    loginstatus: true
   }
-};
-let apolloError: ApolloError;
+}
+let apolloError: ApolloError
 
 describe('HelloUser', () => {
   test('ニックネームを表示する', () => {
@@ -22,10 +22,10 @@ describe('HelloUser', () => {
       <MockedProvider>
         <HelloUser fetchData={data} isMeDataLoading={false} error={undefined} />
       </MockedProvider>
-    );
+    )
     // component.debug();
-    component.getByText('こんにちはリラックマさん');
-  });
+    component.getByText('こんにちはリラックマさん')
+  })
 
   test('受信失敗', () => {
     const canNotReceiveComponent = render(
@@ -36,8 +36,8 @@ describe('HelloUser', () => {
           error={apolloError}
         />
       </MockedProvider>
-    );
+    )
     // canNotReceiveComponent.debug();
-    canNotReceiveComponent.getByText('ニックネームを受信出来ませんでした。');
-  });
-});
+    canNotReceiveComponent.getByText('ニックネームを受信出来ませんでした。')
+  })
+})
