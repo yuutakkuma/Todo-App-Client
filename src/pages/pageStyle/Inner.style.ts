@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 interface Inner {
-  innerWidth: number;
+  innerWidth: number
 }
 
 export const Inner = styled.div`
-  width: ${(props: Inner) => `${props.innerWidth}%`};
+  width: ${({ innerWidth }: Inner) => `${innerWidth}%`};
   margin: 0 auto;
-`;
+`

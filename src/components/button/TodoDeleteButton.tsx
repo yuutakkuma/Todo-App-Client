@@ -1,36 +1,36 @@
-import React from 'react';
+import React from 'react'
 
-import { TodoDeleteBtn } from '../componentStyle/TodoList.style';
+import { TodoDeleteBtn } from '../componentStyle/TodoList.style'
 
-import { useDeleteTodoMutation } from '../../generated/graphql';
-import { Loading } from '../Loading';
+import { useDeleteTodoMutation } from '../../generated/graphql'
+import { Loading } from '../Loading'
 
 interface Props {
-  todoId: string;
+  todoId: string
 }
 
-export const TodoDeleteButton: React.FC<Props> = (props) => {
-  const [todoDelete, { loading, error }] = useDeleteTodoMutation();
+export const TodoDeleteButton: React.FC<Props> = props => {
+  const [todoDelete, { loading, error }] = useDeleteTodoMutation()
 
   if (error) {
-    return <div>削除出来ませんでした。</div>;
+    return <div>削除出来ませんでした。</div>
   }
-  if (loading) return <Loading />;
+  if (loading) return <Loading />
 
   return (
     <TodoDeleteBtn
-      type="button"
+      type='button'
       onClick={async () => {
         try {
           await todoDelete({
             variables: {
-              id: props.todoId,
-            },
-          });
+              id: props.todoId
+            }
+          })
         } catch {}
       }}
     >
       DELETE
     </TodoDeleteBtn>
-  );
-};
+  )
+}

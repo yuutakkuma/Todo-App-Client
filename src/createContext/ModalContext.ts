@@ -1,11 +1,11 @@
-import { createContext } from 'react';
+import { createContext } from 'react'
 
 interface ModalCtx {
-  text: string | undefined;
-  state: boolean | undefined;
+  text: string | undefined
+  state: boolean | undefined
 }
 
 export const ModalContext = createContext<ModalCtx>({
   text: undefined,
-  state: undefined,
-});
+  state: undefined
+})

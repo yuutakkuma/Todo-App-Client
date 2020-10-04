@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const TodoListWrapper = styled.div`
   width: 100%;
   margin: 10px auto;
-`;
+`
 
 export const TodoListContainer = styled.div`
   width: 50%;
@@ -13,13 +13,14 @@ export const TodoListContainer = styled.div`
   border-radius: 10px;
   box-shadow: 0 1px 5px #ccc;
   display: flex;
-`;
+  flex-direction: row;
+`
 
 export const TodoName = styled.p`
   width: 80%;
   font-size: 20px;
   color: #2d334a;
-`;
+`
 
 export const Message = styled.div`
   margin: 0 auto;
@@ -28,7 +29,7 @@ export const Message = styled.div`
   color: #8ac6d1;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   text-align: center;
-`;
+`
 
 export const TodoDeleteBtn = styled.button`
   width: 50px;
@@ -41,4 +42,13 @@ export const TodoDeleteBtn = styled.button`
   cursor: pointer;
   border: none;
   outline: none;
-`;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+  }
+`

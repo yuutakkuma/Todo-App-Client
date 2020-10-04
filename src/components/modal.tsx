@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 
 import {
   ModalContainer,
   ModalBox,
   ModalInner,
   ModalText,
-  ModalBtn,
-} from './componentStyle/Modal.style';
+  ModalBtn
+} from './componentStyle/Modal.style'
 
 interface Props {
-  text: string | undefined;
-  removeChild: Function;
+  text: string | undefined
+  removeChild: Function
 }
 
-export const Modal: React.FC<Props> = (props) => {
+export const Modal: React.FC<Props> = props => {
   return (
     <ModalContainer>
       <ModalBox>
@@ -23,7 +23,7 @@ export const Modal: React.FC<Props> = (props) => {
         <ModalInner>
           <ModalBtn
             onClick={() => {
-              props.removeChild();
+              props.removeChild()
             }}
           >
             OK！
@@ -31,5 +31,5 @@ export const Modal: React.FC<Props> = (props) => {
         </ModalInner>
       </ModalBox>
     </ModalContainer>
-  );
-};
+  )
+}
