@@ -45,10 +45,6 @@
   - アカウント削除失敗時にエラー表示
 - ホームページへ戻るボタン
 
-**ロード中**
-
-- 円状の青い線がクルクル回ります。
-
 ## 使用技術
 
 **言語**
@@ -89,12 +85,13 @@ REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL=http://localhost:4000/refresh_token/
 
 ```
 
-**4**、docker を起動します。  
-(注)docker 及び yarn をインストールしてない方は別途インストールをお願いします。
+**4**、アプリを起動します。  
+yarn をインストールしてない方は別途インストールをお願いします。
 
 ```bash
 % cd Todo-App-Client
-% docker-compose -f docker/dev/docker-compose.development.yml up
+% yarn
+% yarn start
 ```
 
 3000 番ポートで起動します。
