@@ -1,16 +1,16 @@
-module.exports = function(api) {
-  api.cache(false);
+module.exports = function (api) {
+  api.cache(false)
   return {
-    plugins: [["babel-plugin-storybook-csf-title", false]],
+    plugins: [['babel-plugin-storybook-csf-title', false]],
     overrides: [
       {
         include: /stories\.(js|ts|tsx)$/,
         plugins: [
           [
-            "babel-plugin-storybook-csf-title",
+            'babel-plugin-storybook-csf-title',
             {
               toTitle: ({ cwd, filename }) => {
-                const relativePath = filename.replace(cwd, "");
+                const relativePath = filename.replace(cwd, '')
                 // console.log(
                 //   "toTitle:",
                 //   cwd,
@@ -18,12 +18,12 @@ module.exports = function(api) {
                 //   relativePath,
                 //   relativePath.substr(0, relativePath.lastIndexOf("/"))
                 // );
-                return relativePath.substr(0, relativePath.lastIndexOf("/"));
-              },
-            },
-          ],
-        ],
-      },
-    ],
-  };
-};
+                return relativePath.substr(0, relativePath.lastIndexOf('/'))
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}

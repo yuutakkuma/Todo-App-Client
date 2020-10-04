@@ -64,6 +64,7 @@
     "@types/styled-components": "^5.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-storybook-csf-title": "^2.0.0",
+    "prettier": "^2.1.2",
     "react-is": "^16.13.1"
   }
 }

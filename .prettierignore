@@ -1,0 +1,10 @@
+# Ignore artifacts:
+build
+node_modules
+.netlify
+.vscode
+public
+codegen.yml
+tsconfig.json
+src/generated/graphql.tsx
+package.json 
