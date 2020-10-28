@@ -7,7 +7,7 @@ import { Wrapper } from './pageStyle/Wrapper.style'
 import { Inner } from './pageStyle/Inner.style'
 import { Input } from './pageStyle/Input.style'
 
-import { useDeleteAccountMutation } from '../generated/graphql'
+import { useDeleteAccountMutation } from '../graphql/generated/graphql'
 import { loginGqlError } from '../models/loginGqlError'
 import { DeleteAccountButton } from '../components/button/DeleteAccountButton'
 import { Explanation } from '../components/explanation'
@@ -56,8 +56,7 @@ export const DeleteAccount: React.FC = () => {
               // ランディングページへ遷移する
               history.push('/')
             } catch {}
-          }}
-        >
+          }}>
           <Inner innerWidth={80}>
             {error ? (
               <p className='error'>{errorMessage.message}</p>

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 
 import { LogOutBtn } from '../componentStyle/Header.style'
 
-import { useLogOutMutation } from '../../generated/graphql'
+import { useLogOutMutation } from '../../graphql/generated/graphql'
 import { Loading } from '../Loading'
 
 export const LogOutButton: React.FC = () => {
@@ -17,8 +17,7 @@ export const LogOutButton: React.FC = () => {
       onClick={async () => {
         await logOut()
         history.push('/')
-      }}
-    >
+      }}>
       ログアウト
     </LogOutBtn>
   )

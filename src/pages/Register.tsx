@@ -7,7 +7,7 @@ import { Form } from './pageStyle/Form.style'
 import { Inner } from './pageStyle/Inner.style'
 import { Input } from './pageStyle/Input.style'
 
-import { useRegisterMutation } from '../generated/graphql'
+import { useRegisterMutation } from '../graphql/generated/graphql'
 import { FormButtonBase } from '../components/button/FormButtonBase'
 import { RegisterGqlError, ConstraintsError } from '../models/registerGqlError'
 import { Explanation } from '../components/explanation'
@@ -79,8 +79,7 @@ export const Register: React.FC = () => {
               // ランディングページに遷移する
               history.push('/')
             } catch {}
-          }}
-        >
+          }}>
           <Inner innerWidth={80}>
             {error ? <p className='error'>{nickNameError}</p> : undefined}
             <Input

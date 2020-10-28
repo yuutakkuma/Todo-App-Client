@@ -8,7 +8,7 @@ import {
   TodoListContainer
 } from './componentStyle/TodoList.style'
 
-import { GetTodoListQuery } from '../generated/graphql'
+import { GetTodoListQuery } from '../graphql/generated/graphql'
 import { TodoDeleteButton } from './button/TodoDeleteButton'
 import { TodoListItem } from './TodoListItem'
 

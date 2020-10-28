@@ -31,8 +31,8 @@ export type Mutation = {
   createTodo?: Maybe<Scalars['Boolean']>,
   deleteTodo?: Maybe<Scalars['Boolean']>,
   register?: Maybe<Scalars['Boolean']>,
-  login?: Maybe<Scalars['Boolean']>,
-  testUserLogin?: Maybe<Scalars['Boolean']>,
+  login?: Maybe<Users>,
+  testUserLogin?: Maybe<Users>,
   logOut?: Maybe<Scalars['Boolean']>,
   deleteAccount?: Maybe<Scalars['Boolean']>,
 };
@@ -73,6 +73,7 @@ export type Query = {
   allTodoList?: Maybe<Array<Maybe<Todo>>>,
   getUsers?: Maybe<Array<Maybe<Users>>>,
   me?: Maybe<Users>,
+  helloNestJS: Scalars['String'],
 };
 
 export type RegisterInput = {
@@ -93,7 +94,7 @@ export type Users = {
   id: Scalars['ID'],
   nickname: Scalars['String'],
   email: Scalars['String'],
-  loginstatus: Scalars['Boolean'],
+  accessToken: Scalars['String'],
 };
 
 export type CreateTodoMutationVariables = {
@@ -155,7 +156,10 @@ export type LoginMutationVariables = {
 
 export type LoginMutation = (
   { __typename?: 'Mutation' }
-  & Pick<Mutation, 'login'>
+  & { login: Maybe<(
+    { __typename?: 'Users' }
+    & Pick<Users, 'id' | 'nickname' | 'email' | 'accessToken'>
+  )> }
 );
 
 export type MeQueryVariables = {};
@@ -165,7 +169,7 @@ export type MeQuery = (
   { __typename?: 'Query' }
   & { me: Maybe<(
     { __typename?: 'Users' }
-    & Pick<Users, 'id' | 'nickname' | 'email' | 'loginstatus'>
+    & Pick<Users, 'id' | 'nickname' | 'email'>
   )> }
 );
 
@@ -189,7 +193,10 @@ export type TestUserLoginMutationVariables = {
 
 export type TestUserLoginMutation = (
   { __typename?: 'Mutation' }
-  & Pick<Mutation, 'testUserLogin'>
+  & { testUserLogin: Maybe<(
+    { __typename?: 'Users' }
+    & Pick<Users, 'id' | 'nickname' | 'email' | 'accessToken'>
+  )> }
 );
 
 
@@ -350,7 +357,12 @@ export type LogOutMutationResult = ApolloReactCommon.MutationResult<LogOutMutati
 export type LogOutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogOutMutation, LogOutMutationVariables>;
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
-  login(loginInput: {email: $email, password: $password})
+  login(loginInput: {email: $email, password: $password}) {
+    id
+    nickname
+    email
+    accessToken
+  }
 }
     `;
 export type LoginMutationFn = ApolloReactCommon.MutationFunction<LoginMutation, LoginMutationVariables>;
@@ -385,7 +397,6 @@ export const MeDocument = gql`
     id
     nickname
     email
-    loginstatus
   }
 }
     `;
@@ -448,7 +459,12 @@ export type RegisterMutationResult = ApolloReactCommon.MutationResult<RegisterMu
 export type RegisterMutationOptions = ApolloReactCommon.BaseMutationOptions<RegisterMutation, RegisterMutationVariables>;
 export const TestUserLoginDocument = gql`
     mutation TestUserLogin($email: String!, $password: String!) {
-  testUserLogin(loginInput: {email: $email, password: $password})
+  testUserLogin(loginInput: {email: $email, password: $password}) {
+    id
+    nickname
+    email
+    accessToken
+  }
 }
     `;
 export type TestUserLoginMutationFn = ApolloReactCommon.MutationFunction<TestUserLoginMutation, TestUserLoginMutationVariables>;

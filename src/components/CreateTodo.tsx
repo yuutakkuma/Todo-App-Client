@@ -4,7 +4,7 @@ import _ from 'lodash'
 import { Inner } from '../pages/pageStyle/Inner.style'
 import { TodoForm, TodoInput } from './componentStyle/CreateTodo.style'
 
-import { useCreateTodoMutation } from '../generated/graphql'
+import { useCreateTodoMutation } from '../graphql/generated/graphql'
 import { TodoCreateButton } from './button/TodoCreateButton'
 import { CharacterCount } from './CharacterCount'
 import { CreateTodoGqlError } from '../models/createTodoGqlError'
@@ -43,10 +43,9 @@ export const CreateTodo: React.FC = () => {
           // エラーの表示を消す
           reloadTrigger = false
         } catch {}
-      }}
-    >
-      <Inner innerWidth={100} style={{display: 'flex'}}>
-        <div style={{width: '100%'}}>
+      }}>
+      <Inner innerWidth={100} style={{ display: 'flex' }}>
+        <div style={{ width: '100%' }}>
           <CharacterCount
             value={state.task}
             error={todoError}
@@ -61,7 +60,7 @@ export const CreateTodo: React.FC = () => {
             }}
           />
         </div>
-      <TodoCreateButton isCreateLoading={loading} />
+        <TodoCreateButton isCreateLoading={loading} />
       </Inner>
     </TodoForm>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetTodoListQuery, useMeQuery } from '../generated/graphql'
+import { useGetTodoListQuery, useMeQuery } from '../graphql/generated/graphql'
 
 import { CreateTodo } from '../components/CreateTodo'
 import { TodoList } from '../components/TodoList'

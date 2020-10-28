@@ -3,15 +3,14 @@ import { MockedProvider } from '@apollo/react-testing'
 import { render } from '@testing-library/react'
 import { ApolloError } from 'apollo-boost'
 
-import { MeQuery } from '../../generated/graphql'
+import { MeQuery } from '../../graphql/generated/graphql'
 import { HelloUser } from '../../components/HelloUser'
 
 const data: MeQuery = {
   me: {
     id: '1',
     nickname: 'リラックマ',
-    email: 'rirakuma@rirakuma.com',
-    loginstatus: true
+    email: 'rirakuma@rirakuma.com'
   }
 }
 let apolloError: ApolloError

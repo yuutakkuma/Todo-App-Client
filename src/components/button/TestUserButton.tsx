@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { LoginBtn } from '../componentStyle/Login.style'
 
 import { Loading } from '../Loading'
-import { useTestUserLoginMutation } from '../../generated/graphql'
+import { useTestUserLoginMutation } from '../../graphql/generated/graphql'
 
 export const TestUserButton: React.FC = () => {
   const [testLogin, { loading, error }] = useTestUserLoginMutation()
@@ -24,8 +24,7 @@ export const TestUserButton: React.FC = () => {
           })
         } catch {}
         history.push('/home')
-      }}
-    >
+      }}>
       テストユーザーでログインする
     </LoginBtn>
   )

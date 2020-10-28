@@ -6,7 +6,7 @@ import { Inner } from '../pages/pageStyle/Inner.style'
 import { LoginError, LoginInput } from './componentStyle/Login.style'
 
 import { FormButtonBase } from './button/FormButtonBase'
-import { useLoginMutation } from '../generated/graphql'
+import { useLoginMutation } from '../graphql/generated/graphql'
 import { useHistory } from 'react-router-dom'
 import { loginGqlError } from '../models/loginGqlError'
 import { TestUserButton } from './button/TestUserButton'
@@ -41,8 +41,7 @@ export const Login: React.FC = () => {
           })
           history.push('/home')
         } catch {}
-      }}
-    >
+      }}>
       <Inner innerWidth={80}>
         {error ? <LoginError>{errorMessage.message}</LoginError> : undefined}
         <LoginInput

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { TodoDeleteBtn } from '../componentStyle/TodoList.style'
 
-import { useDeleteTodoMutation } from '../../generated/graphql'
+import { useDeleteTodoMutation } from '../../graphql/generated/graphql'
 import { Loading } from '../Loading'
 
 interface Props {
@@ -28,8 +28,7 @@ export const TodoDeleteButton: React.FC<Props> = props => {
             }
           })
         } catch {}
-      }}
-    >
+      }}>
       DELETE
     </TodoDeleteBtn>
   )
