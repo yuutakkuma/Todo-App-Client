@@ -1,7 +1,18 @@
 ## アプリについて
 
-ポートフォリオ用に作成したタスク管理アプリケーションです。  
+ポートフォリオ用に作成したタスク管理アプリ(WEB 版)です。  
 こちらはクライアント部分になり、API サーバーのコードは<a href="https://github.com/yuuta-wata/Todo-App-Server" alt="Todo-App-Server">こちら</a>になります。
+
+## 状態管理
+
+- WEB 版では Redux は使用しない。
+- ReactHooks を使用する。
+  - グローバルで管理する場合
+    - useContext
+  - モジュール内で管理する場合
+    - useReducer
+  - ローカルスコープで管理する場合
+    - useState
 
 ## 実装機能
 
