@@ -1,0 +1,19 @@
+import styled from 'styled-components'
+
+export const Button = styled.button`
+  color: rgba(253, 253, 253, 1);
+  background-color: rgba(50, 190, 230, 1);
+  border-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(50, 170, 220, 1);
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translate(0.3px, 0.3px);
+  }
+`
