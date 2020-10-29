@@ -14,5 +14,6 @@ const Template: Story<Props> = args => <Component {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  title: 'BaseButton'
+  title: 'BaseButton',
+  disabled: false
 }
