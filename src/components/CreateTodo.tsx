@@ -1,10 +1,15 @@
 import React, { useReducer } from 'react'
+import { useMutation } from '@apollo/client'
 import _ from 'lodash'
 
 import { Inner } from '../pages/pageStyle/Inner.style'
 import { TodoForm, TodoInput } from './componentStyle/CreateTodo.style'
 
-import { useCreateTodoMutation } from '../graphql/generated/graphql'
+import {
+  CreateTodoMutation,
+  CreateTodoMutationVariables,
+  CreateTodoDocument
+} from '../graphql/generated/graphql'
 import { TodoCreateButton } from './button/TodoCreateButton'
 import { CharacterCount } from './CharacterCount'
 import { CreateTodoGqlError } from '../models/createTodoGqlError'
@@ -15,7 +20,10 @@ let todoError: string
 let reloadTrigger: boolean = false
 
 export const CreateTodo: React.FC = () => {
-  const [createTodo, { loading, error }] = useCreateTodoMutation()
+  const [createTodo, { loading, error }] = useMutation<
+    CreateTodoMutation,
+    CreateTodoMutationVariables
+  >(CreateTodoDocument)
   const [state, dispatch] = useReducer(formReducer, initialState)
 
   if (error) {

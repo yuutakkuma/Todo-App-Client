@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react'
+import { useMutation } from '@apollo/client'
 import _ from 'lodash'
 
 import { Form } from '../pages/pageStyle/Form.style'
@@ -6,7 +7,11 @@ import { Inner } from '../pages/pageStyle/Inner.style'
 import { LoginError, LoginInput } from './componentStyle/Login.style'
 
 import { FormButtonBase } from './button/FormButtonBase'
-import { useLoginMutation } from '../graphql/generated/graphql'
+import {
+  LoginMutation,
+  LoginDocument,
+  LoginMutationVariables
+} from '../graphql/generated/graphql'
 import { useHistory } from 'react-router-dom'
 import { loginGqlError } from '../models/loginGqlError'
 import { TestUserButton } from './button/TestUserButton'
@@ -17,7 +22,10 @@ let errorMessage: loginGqlError
 
 export const Login: React.FC = () => {
   const history = useHistory()
-  const [login, { loading, error }] = useLoginMutation()
+  const [login, { loading, error }] = useMutation<
+    LoginMutation,
+    LoginMutationVariables
+  >(LoginDocument)
   const [state, dispatch] = useReducer(formReducer, initialState)
 
   if (error) {

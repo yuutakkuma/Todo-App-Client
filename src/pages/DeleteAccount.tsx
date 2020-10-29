@@ -1,4 +1,5 @@
 import React, { useReducer, useContext } from 'react'
+import { useMutation } from '@apollo/client'
 import { useHistory } from 'react-router-dom'
 import _ from 'lodash'
 
@@ -7,7 +8,11 @@ import { Wrapper } from './pageStyle/Wrapper.style'
 import { Inner } from './pageStyle/Inner.style'
 import { Input } from './pageStyle/Input.style'
 
-import { useDeleteAccountMutation } from '../graphql/generated/graphql'
+import {
+  DeleteAccountMutation,
+  DeleteAccountDocument,
+  DeleteAccountMutationVariables
+} from '../graphql/generated/graphql'
 import { loginGqlError } from '../models/loginGqlError'
 import { DeleteAccountButton } from '../components/button/DeleteAccountButton'
 import { Explanation } from '../components/explanation'
@@ -17,7 +22,10 @@ import { ModalContext } from '../createContext/ModalContext'
 let errorMessage: loginGqlError
 
 export const DeleteAccount: React.FC = () => {
-  const [deleteAccount, { loading, error }] = useDeleteAccountMutation()
+  const [deleteAccount, { loading, error }] = useMutation<
+    DeleteAccountMutation,
+    DeleteAccountMutationVariables
+  >(DeleteAccountDocument)
   const [state, dispatch] = useReducer(formReducer, initialState)
   const history = useHistory()
   const modalCtx = useContext(ModalContext)

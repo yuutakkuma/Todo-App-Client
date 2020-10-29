@@ -3,7 +3,7 @@ import React from 'react'
 import { NickName } from './componentStyle/HelloUser.style'
 
 import { MeQuery } from '../graphql/generated/graphql'
-import { ApolloError } from 'apollo-boost'
+import { ApolloError } from '@apollo/client'
 import { Loading } from './Loading'
 
 interface Props {

@@ -1,5 +1,11 @@
 import React from 'react'
-import { useGetTodoListQuery, useMeQuery } from '../graphql/generated/graphql'
+import { useQuery } from '@apollo/client'
+import {
+  GetTodoListQuery,
+  GetTodoListDocument,
+  MeQuery,
+  MeDocument
+} from '../graphql/generated/graphql'
 
 import { CreateTodo } from '../components/CreateTodo'
 import { TodoList } from '../components/TodoList'
@@ -7,8 +13,11 @@ import { Header } from '../components/Header'
 import { HelloUser } from '../components/HelloUser'
 
 export const TodoApp: React.FC = () => {
-  const { data, loading, error } = useGetTodoListQuery({ pollInterval: 500 })
-  const meData = useMeQuery({ pollInterval: 500 })
+  const { data, loading, error } = useQuery<GetTodoListQuery>(
+    GetTodoListDocument,
+    { pollInterval: 500 }
+  )
+  const meData = useQuery<MeQuery>(MeDocument)
 
   return (
     <div>

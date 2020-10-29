@@ -1,4 +1,5 @@
 import React, { useReducer, useContext } from 'react'
+import { useMutation } from '@apollo/client'
 import { useHistory } from 'react-router-dom'
 import _ from 'lodash'
 
@@ -7,7 +8,11 @@ import { Form } from './pageStyle/Form.style'
 import { Inner } from './pageStyle/Inner.style'
 import { Input } from './pageStyle/Input.style'
 
-import { useRegisterMutation } from '../graphql/generated/graphql'
+import {
+  RegisterMutation,
+  RegisterDocument,
+  RegisterMutationVariables
+} from '../graphql/generated/graphql'
 import { FormButtonBase } from '../components/button/FormButtonBase'
 import { RegisterGqlError, ConstraintsError } from '../models/registerGqlError'
 import { Explanation } from '../components/explanation'
@@ -22,7 +27,10 @@ let arry: ConstraintsError
 
 export const Register: React.FC = () => {
   const history = useHistory()
-  const [register, { loading, error }] = useRegisterMutation()
+  const [register, { loading, error }] = useMutation<
+    RegisterMutation,
+    RegisterMutationVariables
+  >(RegisterDocument)
   const [state, dispatch] = useReducer(formReducer, initialState)
   const modalCtx = useContext(ModalContext)
 

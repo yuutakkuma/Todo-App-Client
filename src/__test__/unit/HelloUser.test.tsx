@@ -1,7 +1,7 @@
 import React from 'react'
 import { MockedProvider } from '@apollo/react-testing'
 import { render } from '@testing-library/react'
-import { ApolloError } from 'apollo-boost'
+import { ApolloError } from '@apollo/client'
 
 import { MeQuery } from '../../graphql/generated/graphql'
 import { HelloUser } from '../../components/HelloUser'
