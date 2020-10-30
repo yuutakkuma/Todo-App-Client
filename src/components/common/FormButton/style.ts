@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import BaseButton from '../BaseButton'
+import BaseButton from '../base/BaseButton'
 
 export const StyledFormButton = styled(BaseButton)`
   width: 100%;
