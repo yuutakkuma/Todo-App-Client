@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import BaseButton from '../components/common/BaseButton'
+import BaseButton from '../components/common/base/BaseButton'
 
 import { StyledTopMain, StyledTopBox, StyledTopHeading } from './styles/top'
 
