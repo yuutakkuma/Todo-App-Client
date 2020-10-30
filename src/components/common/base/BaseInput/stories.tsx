@@ -7,7 +7,7 @@ import Component from '.'
 
 export default {
   component: Component,
-  argsType: { onChange: {} }
+  argTypes: { onChange: {} }
 }
 
 const Template: Story<Props> = args => <Component {...args} />

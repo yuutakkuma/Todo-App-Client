@@ -5,4 +5,5 @@ export const StyledBaseInput = styled.input`
   border-style: solid;
   border-color: rgba(235, 235, 235, 1);
   outline: none;
+  box-sizing: border-box;
 `
