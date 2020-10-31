@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 
-import { Props } from './type'
+import { ErrorPropertyType, Props } from './type'
 
 import Component from '.'
 
@@ -20,5 +20,34 @@ export const Default = Template.bind({})
 Default.args = {
   onSubmit: e => {
     e.preventDefault()
+  }
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  onSubmit: e => {
+    e.preventDefault()
+  },
+  errors: {
+    message: [
+      {
+        property: ErrorPropertyType.NICKNAME,
+        constraints: {
+          length: 'ニックネームエラー'
+        }
+      },
+      {
+        property: ErrorPropertyType.EMAIL,
+        constraints: {
+          isEmail: 'Eメールエラー'
+        }
+      },
+      {
+        property: ErrorPropertyType.PASSWORD,
+        constraints: {
+          length: 'パスワードエラー'
+        }
+      }
+    ]
   }
 }
