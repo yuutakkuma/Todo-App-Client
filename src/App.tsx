@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react'
 import { ApolloProvider } from '@apollo/client'
+import axios from 'axios'
 
 import { client } from './lib/apollo'
 import { Loading } from './components/Loading'
@@ -7,6 +8,7 @@ import { Routes } from './Routes'
 
 export const App: FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
+
   const RefreshTokenURL = () => {
     const {
       NODE_ENV,
@@ -26,19 +28,23 @@ export const App: FC = () => {
     return ''
   }
 
+  const token = localStorage.getItem('token')
+
   useEffect(() => {
-    fetch(RefreshTokenURL(), {
-      method: 'POST',
-      // credentials: 'include',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    })
+    axios
+      .post(RefreshTokenURL(), undefined, {
+        headers: {
+          authorization: `Bearer ${token ? token : ''}`
+        }
+      })
       .then(res => {
         console.log('RefreshToken Response:', res)
         setLoading(false)
       })
-      .catch(err => console.log('RefreshToken Error:', err))
+      .catch(err => {
+        console.log('RefreshToken Error:', err)
+        setLoading(false)
+      })
     // アプリ実行中にリフレッシュトークンURLが変わることは無い
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -51,7 +57,8 @@ export const App: FC = () => {
           alignItems: 'center',
           justifyContent: 'center',
           height: '100vh'
-        }}>
+        }}
+      >
         <Loading />
       </div>
     )
