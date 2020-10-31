@@ -26,7 +26,7 @@ const TopPage: FC = () => {
           type='button'
           title='ログイン'
           marginBottom={50}
-          onClick={() => console.log('ログイン')}
+          onClick={() => push('loginPage')}
         />
         <Button
           type='button'

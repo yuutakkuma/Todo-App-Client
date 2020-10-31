@@ -5,6 +5,7 @@ import { TodoApp } from './pages/TodoApp'
 import { DeleteAccount } from './pages/DeleteAccount'
 import TopPage from './pages/TopPage'
 import RegisterPage from './pages/RegisterPage'
+import LoginPage from './pages/LoginPage'
 import { ModalContext } from './createContext/ModalContext'
 
 export const Routes: React.FC = () => {
@@ -14,6 +15,7 @@ export const Routes: React.FC = () => {
         <ModalContext.Provider value={{ text: undefined, state: false }}>
           <Route exact path='/' component={TopPage} />
           <Route path='/registerPage' component={RegisterPage} />
+          <Route path='/loginPage' component={LoginPage} />
           <Route path='/deleteaccount' component={DeleteAccount} />
           <Route path='/home' component={TodoApp} />
         </ModalContext.Provider>
