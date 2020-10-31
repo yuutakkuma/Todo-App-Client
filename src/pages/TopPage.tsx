@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import BaseButton from '../components/common/base/BaseButton'
@@ -6,6 +7,8 @@ import BaseButton from '../components/common/base/BaseButton'
 import { StyledTopMain, StyledTopBox, StyledTopHeading } from './styles/top'
 
 const TopPage: FC = () => {
+  const { push } = useHistory()
+
   const Button = styled(BaseButton)<{ marginBottom?: number }>`
     width: 50%;
     height: 50px;
@@ -29,7 +32,7 @@ const TopPage: FC = () => {
           type='button'
           title='新規登録'
           marginBottom={50}
-          onClick={() => console.log('新規登録')}
+          onClick={() => push('registerPage')}
         />
         <Button
           type='button'
