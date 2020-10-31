@@ -21,3 +21,13 @@ Default.args = {
     e.preventDefault()
   }
 }
+
+export const Error = Template.bind({})
+Error.args = {
+  onSubmit: e => {
+    e.preventDefault()
+  },
+  errors: {
+    message: 'ログインエラー'
+  }
+}

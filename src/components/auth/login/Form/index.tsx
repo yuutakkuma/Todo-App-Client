@@ -2,17 +2,20 @@ import React, { FC } from 'react'
 
 import FormButton from '../../../common/FormButton'
 
-import { StyledLoginForm, StyledLoginInput } from './style'
+import { StyledLoginForm, StyledLoginInput, LoginErrorMessage } from './style'
 import { Props } from './type'
 
 const LoginFrom: FC<Props> = ({
+  className,
   inputEmail,
   inputPassword,
   onEmailChange,
   onPasswordChange,
-  onSubmit
+  onSubmit,
+  errors
 }) => (
-  <StyledLoginForm onSubmit={onSubmit}>
+  <StyledLoginForm className={className} onSubmit={onSubmit}>
+    <LoginErrorMessage message={errors?.message} />
     <StyledLoginInput
       type='email'
       placeholder='Eメール'
