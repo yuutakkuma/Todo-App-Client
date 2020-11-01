@@ -11,7 +11,6 @@ export const StyledTaskList = styled.div`
   border-style: solid;
   border-width: 1px;
   border-radius: 5px;
-  box-shadow: 0 1px 2px rgba(190, 190, 190, 1);
   box-sizing: border-box;
 `
 
