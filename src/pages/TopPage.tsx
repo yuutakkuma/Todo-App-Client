@@ -1,21 +1,16 @@
 import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
-import styled from 'styled-components'
 
-import BaseButton from '../components/common/base/BaseButton'
-
-import { StyledTopMain, StyledTopBox, StyledTopHeading } from './styles/top'
+import {
+  StyledTopMain,
+  StyledTopBox,
+  StyledTopHeading,
+  Button
+} from './styles/top'
 
 const TopPage: FC = () => {
   const { push } = useHistory()
 
-  const Button = styled(BaseButton)<{ marginBottom?: number }>`
-    width: 50%;
-    height: 50px;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: ${({ marginBottom = 0 }) => `${marginBottom}px`};
-  `
   return (
     <StyledTopMain>
       <StyledTopBox>
