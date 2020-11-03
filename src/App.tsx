@@ -6,7 +6,7 @@ import { GetRefreshTokenDocument } from './graphql/generated'
 import { client } from './lib/apollo'
 import { Context } from './lib/context'
 import { Loading } from './components/Loading'
-import { Routes } from './Routes'
+import { Routes } from './pages/Routes'
 
 export const App: FC = () => {
   const [loading, setLoading] = useState<boolean>(true)

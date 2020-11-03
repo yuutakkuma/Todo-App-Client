@@ -7,11 +7,11 @@ import {
   RouteProps
 } from 'react-router-dom'
 
-import TopPage from './pages/TopPage'
-import RegisterPage from './pages/RegisterPage'
-import LoginPage from './pages/LoginPage'
-import HomePage from './pages/HomePage'
-import DeleteAccountPage from './pages/DeleteAccountPage'
+import TopPage from './TopPage'
+import RegisterPage from './RegisterPage'
+import LoginPage from './LoginPage'
+import HomePage from './HomePage'
+import DeleteAccountPage from './DeleteAccountPage'
 
 export const Routes: FC = () => {
   const [token, setToken] = useState<string | null>(
