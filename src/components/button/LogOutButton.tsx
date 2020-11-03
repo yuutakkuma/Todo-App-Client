@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client'
 
 import { LogOutBtn } from '../componentStyle/Header.style'
 
-import { LogOutMutation, LogOutDocument } from '../../graphql/generated/graphql'
+import { LogOutMutation, LogOutDocument } from '../../graphql/generated'
 import { Loading } from '../Loading'
 
 export const LogOutButton: React.FC = () => {
@@ -19,7 +19,8 @@ export const LogOutButton: React.FC = () => {
         await logOut()
         localStorage.setItem('token', '')
         history.push('/')
-      }}>
+      }}
+    >
       ログアウト
     </LogOutBtn>
   )

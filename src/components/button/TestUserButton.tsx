@@ -7,7 +7,7 @@ import { LoginBtn } from '../componentStyle/Login.style'
 import {
   TestUserLoginMutation,
   TestUserLoginDocument
-} from '../../graphql/generated/graphql'
+} from '../../graphql/generated'
 import { Loading } from '../Loading'
 
 export const TestUserButton: React.FC = () => {
@@ -35,7 +35,8 @@ export const TestUserButton: React.FC = () => {
           })
         } catch {}
         history.push('/home')
-      }}>
+      }}
+    >
       テストユーザーでログインする
     </LoginBtn>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { MockedProvider } from '@apollo/react-testing'
 
-import { GetTodoListQuery } from '../../graphql/generated/graphql'
+import { GetTodoListQuery } from '../../graphql/generated'
 import { TodoList } from '../../components/TodoList'
 
 const title = {

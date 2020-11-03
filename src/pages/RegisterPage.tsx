@@ -6,7 +6,7 @@ import {
   RegisterMutation,
   RegisterMutationVariables,
   RegisterDocument
-} from '../graphql/generated/graphql'
+} from '../graphql/generated'
 
 import {
   StyledRegisterMain,

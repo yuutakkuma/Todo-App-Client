@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NickName } from './componentStyle/HelloUser.style'
 
-import { MeQuery } from '../graphql/generated/graphql'
+import { MeQuery } from '../graphql/generated'
 import { ApolloError } from '@apollo/client'
 import { Loading } from './Loading'
 

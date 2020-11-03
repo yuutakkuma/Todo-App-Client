@@ -12,7 +12,7 @@ import {
   DeleteAccountMutation,
   DeleteAccountDocument,
   DeleteAccountMutationVariables
-} from '../graphql/generated/graphql'
+} from '../graphql/generated'
 import { loginGqlError } from '../models/loginGqlError'
 import { DeleteAccountButton } from '../components/button/DeleteAccountButton'
 import { Explanation } from '../components/explanation'
@@ -64,7 +64,8 @@ export const DeleteAccount: React.FC = () => {
               // ランディングページへ遷移する
               history.push('/')
             } catch {}
-          }}>
+          }}
+        >
           <Inner innerWidth={80}>
             {error ? (
               <p className='error'>{errorMessage.message}</p>

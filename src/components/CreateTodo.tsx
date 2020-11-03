@@ -9,7 +9,7 @@ import {
   CreateTodoMutation,
   CreateTodoMutationVariables,
   CreateTodoDocument
-} from '../graphql/generated/graphql'
+} from '../graphql/generated'
 import { TodoCreateButton } from './button/TodoCreateButton'
 import { CharacterCount } from './CharacterCount'
 import { CreateTodoGqlError } from '../models/createTodoGqlError'
@@ -51,7 +51,8 @@ export const CreateTodo: React.FC = () => {
           // エラーの表示を消す
           reloadTrigger = false
         } catch {}
-      }}>
+      }}
+    >
       <Inner innerWidth={100} style={{ display: 'flex' }}>
         <div style={{ width: '100%' }}>
           <CharacterCount

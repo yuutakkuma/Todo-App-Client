@@ -3,7 +3,7 @@ import { MockedProvider } from '@apollo/react-testing'
 import { render } from '@testing-library/react'
 import { ApolloError } from '@apollo/client'
 
-import { MeQuery } from '../../graphql/generated/graphql'
+import { MeQuery } from '../../graphql/generated'
 import { HelloUser } from '../../components/HelloUser'
 
 const data: MeQuery = {

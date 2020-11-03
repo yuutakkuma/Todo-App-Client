@@ -5,7 +5,7 @@ import {
   GetTodoListDocument,
   MeQuery,
   MeDocument
-} from '../graphql/generated/graphql'
+} from '../graphql/generated'
 
 import { CreateTodo } from '../components/CreateTodo'
 import { TodoList } from '../components/TodoList'

@@ -12,7 +12,7 @@ import {
   RegisterMutation,
   RegisterDocument,
   RegisterMutationVariables
-} from '../graphql/generated/graphql'
+} from '../graphql/generated'
 import { FormButtonBase } from '../components/button/FormButtonBase'
 import { RegisterGqlError, ConstraintsError } from '../models/registerGqlError'
 import { Explanation } from '../components/explanation'
@@ -87,7 +87,8 @@ export const Register: React.FC = () => {
               // ランディングページに遷移する
               history.push('/')
             } catch {}
-          }}>
+          }}
+        >
           <Inner innerWidth={80}>
             {error ? <p className='error'>{nickNameError}</p> : undefined}
             <Input

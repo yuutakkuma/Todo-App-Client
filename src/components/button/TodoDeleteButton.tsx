@@ -7,7 +7,7 @@ import {
   DeleteTodoMutation,
   DeleteTodoMutationVariables,
   DeleteTodoDocument
-} from '../../graphql/generated/graphql'
+} from '../../graphql/generated'
 import { Loading } from '../Loading'
 
 interface Props {
@@ -36,7 +36,8 @@ export const TodoDeleteButton: React.FC<Props> = props => {
             }
           })
         } catch {}
-      }}>
+      }}
+    >
       DELETE
     </TodoDeleteBtn>
   )

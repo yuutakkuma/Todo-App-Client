@@ -11,7 +11,7 @@ import {
   LoginMutation,
   LoginDocument,
   LoginMutationVariables
-} from '../graphql/generated/graphql'
+} from '../graphql/generated'
 import { useHistory } from 'react-router-dom'
 import { loginGqlError } from '../models/loginGqlError'
 import { TestUserButton } from './button/TestUserButton'
@@ -49,7 +49,8 @@ export const Login: React.FC = () => {
           })
           history.push('/home')
         } catch {}
-      }}>
+      }}
+    >
       <Inner innerWidth={80}>
         {error ? <LoginError>{errorMessage.message}</LoginError> : undefined}
         <LoginInput
