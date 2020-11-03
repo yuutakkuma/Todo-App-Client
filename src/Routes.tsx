@@ -1,24 +1,40 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import React, { FC, useState, useEffect } from 'react'
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  RouteProps
+} from 'react-router-dom'
 
-import { TodoApp } from './pages/TodoApp'
 import { DeleteAccount } from './pages/DeleteAccount'
 import TopPage from './pages/TopPage'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
-import { ModalContext } from './createContext/ModalContext'
+import HomePage from './pages/HomePage'
 
-export const Routes: React.FC = () => {
+export const Routes: FC = () => {
+  const [token, setToken] = useState<string | null>(
+    localStorage.getItem('token')
+  )
+  useEffect(() => {
+    setToken(localStorage.getItem('token'))
+  }, [])
+
+  const PrivateRoute: FC<RouteProps> = ({ children, ...props }) => (
+    <Route {...props} render={() => (token ? children : <Redirect to='/' />)} />
+  )
+
   return (
     <BrowserRouter>
       <Switch>
-        <ModalContext.Provider value={{ text: undefined, state: false }}>
-          <Route exact path='/' component={TopPage} />
-          <Route path='/registerPage' component={RegisterPage} />
-          <Route path='/loginPage' component={LoginPage} />
+        <Route exact path='/' component={TopPage} />
+        <Route path='/register' component={RegisterPage} />
+        <Route path='/login' component={LoginPage} />
+        <PrivateRoute>
+          <Route path='/home' component={HomePage} />
           <Route path='/deleteaccount' component={DeleteAccount} />
-          <Route path='/home' component={TodoApp} />
-        </ModalContext.Provider>
+        </PrivateRoute>
       </Switch>
     </BrowserRouter>
   )

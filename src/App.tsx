@@ -1,52 +1,31 @@
 import React, { FC, useState, useEffect } from 'react'
 import { ApolloProvider } from '@apollo/client'
-import axios from 'axios'
+
+import { GetRefreshTokenDocument } from './graphql/generated'
 
 import { client } from './lib/apollo'
+import { Context } from './lib/context'
 import { Loading } from './components/Loading'
 import { Routes } from './Routes'
 
 export const App: FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
 
-  const RefreshTokenURL = () => {
-    const {
-      NODE_ENV,
-      REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL,
-      REACT_APP_PRODUCTION_REFRESH_TOKEN_URL
-    } = process.env
-
-    // 開発環境用　リフレッシュトークンURL
-    if (NODE_ENV === 'development' && REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL) {
-      return REACT_APP_DEVELOPMENT_REFRESH_TOKEN_URL
-    }
-    // 本番環境用　リフレッシュトークンURL
-    if (NODE_ENV === 'production' && REACT_APP_PRODUCTION_REFRESH_TOKEN_URL) {
-      return REACT_APP_PRODUCTION_REFRESH_TOKEN_URL
-    }
-
-    return ''
-  }
-
-  const token = localStorage.getItem('token')
-
   useEffect(() => {
-    axios
-      .post(RefreshTokenURL(), undefined, {
-        headers: {
-          authorization: `Bearer ${token ? token : ''}`
+    client
+      .query({ query: GetRefreshTokenDocument })
+      .then(({ data: { getRefreshToken } }) => {
+        if (getRefreshToken && getRefreshToken.refreshToken) {
+          localStorage.setItem('token', getRefreshToken.refreshToken)
+          setLoading(false)
+        } else {
+          localStorage.setItem('token', '')
         }
       })
-      .then(res => {
-        console.log('RefreshToken Response:', res)
-        setLoading(false)
-      })
       .catch(err => {
-        console.log('RefreshToken Error:', err)
+        localStorage.setItem('token', '')
         setLoading(false)
       })
-    // アプリ実行中にリフレッシュトークンURLが変わることは無い
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (loading) {
@@ -63,11 +42,15 @@ export const App: FC = () => {
       </div>
     )
   }
-  console.log('client:', client.link)
-
   return (
     <ApolloProvider client={client}>
-      <Routes />
+      <Context.Provider
+        value={{
+          token: localStorage.getItem('token')
+        }}
+      >
+        <Routes />
+      </Context.Provider>
     </ApolloProvider>
   )
 }
