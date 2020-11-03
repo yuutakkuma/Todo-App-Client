@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import ReactDOM from 'react-dom'
 
-import { ModalContext } from '../createContext/ModalContext'
+// import { ModalContext } from '../createContext/ModalContext'
 import { Modal } from './modal'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const Portal: React.FC<Props> = props => {
-  const modalCtx = useContext(ModalContext)
+  // const modalCtx = useContext(ModalContext)
 
   const modalRoot = document.getElementById('modal-root')
   const el = document.createElement('div')
@@ -24,7 +24,7 @@ export const Portal: React.FC<Props> = props => {
   //　エレメントを削除し、モーダルを閉じる
   const removeHendle = () => {
     modalRoot.removeChild(el)
-    modalCtx.state = false
+    // modalCtx.state = false
   }
 
   return (
