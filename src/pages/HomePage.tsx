@@ -46,7 +46,7 @@ const HomePage: FC = () => {
   return (
     <>
       <Header
-        onAccountDeleteClick={() => {}}
+        onAccountDeleteClick={() => push('deleteAccount')}
         onLogoutClick={() => {
           localStorage.setItem('token', '')
           replace('/')

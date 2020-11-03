@@ -7,11 +7,11 @@ import {
   RouteProps
 } from 'react-router-dom'
 
-import { DeleteAccount } from './pages/DeleteAccount'
 import TopPage from './pages/TopPage'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
+import DeleteAccountPage from './pages/DeleteAccountPage'
 
 export const Routes: FC = () => {
   const [token, setToken] = useState<string | null>(
@@ -33,7 +33,7 @@ export const Routes: FC = () => {
         <Route path='/login' component={LoginPage} />
         <PrivateRoute>
           <Route path='/home' component={HomePage} />
-          <Route path='/deleteaccount' component={DeleteAccount} />
+          <Route path='/deleteAccount' component={DeleteAccountPage} />
         </PrivateRoute>
       </Switch>
     </BrowserRouter>
