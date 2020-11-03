@@ -1,5 +1,12 @@
 import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useMutation } from '@apollo/client'
+
+import {
+  TestUserLoginMutation,
+  TestUserLoginMutationVariables,
+  TestUserLoginDocument
+} from '../graphql/generated'
 
 import {
   StyledTopMain,
@@ -9,6 +16,12 @@ import {
 } from './styles/top'
 
 const TopPage: FC = () => {
+  const [
+    testLogin,
+    { loading: testLoginLoading, error: testLoginError }
+  ] = useMutation<TestUserLoginMutation, TestUserLoginMutationVariables>(
+    TestUserLoginDocument
+  )
   const { push } = useHistory()
 
   return (
@@ -32,7 +45,20 @@ const TopPage: FC = () => {
         <Button
           type='button'
           title='テストユーザーログイン'
-          onClick={() => console.log('テストユーザーログイン')}
+          onClick={async () =>
+            await testLogin({
+              variables: { email: 'test@test.com', password: 'test' }
+            })
+              .then(({ data }) => {
+                if (data && data.testUserLogin) {
+                  localStorage.setItem('token', data.testUserLogin.accessToken)
+                  push('home')
+                } else {
+                  throw new Error('アクセストークンを取得出来ませんでした。')
+                }
+              })
+              .catch(err => console.log('testLoginError:', err))
+          }
         />
       </StyledTopBox>
     </StyledTopMain>
