@@ -4,5 +4,5 @@ export interface Props {
     task: string
   }[]
   disabled: boolean
-  onClick: () => any
+  onClick: (id: number) => any
 }

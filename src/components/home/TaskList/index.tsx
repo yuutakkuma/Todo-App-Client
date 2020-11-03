@@ -19,7 +19,11 @@ const TaskList: FC<Props> = ({ tasks, disabled, onClick }) => (
             <TaskItem task={task} />
           </StyledTaskListBox>
           <StyledTaskListBox width={'10%'}>
-            <DoneButton title='完了' disabled={disabled} onClick={onClick} />
+            <DoneButton
+              title='完了'
+              disabled={disabled}
+              onClick={() => onClick(id)}
+            />
           </StyledTaskListBox>
         </StyledTaskList>
       ))}

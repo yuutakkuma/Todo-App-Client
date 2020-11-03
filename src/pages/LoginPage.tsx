@@ -6,7 +6,7 @@ import {
   LoginMutation,
   LoginMutationVariables,
   LoginDocument
-} from '../graphql/generated/graphql'
+} from '../graphql/generated'
 
 import {
   StyledLoginMain,
@@ -47,9 +47,15 @@ const LoginPage: FC = () => {
             event.preventDefault()
 
             try {
-              await login({ variables: { email, password } })
-              setEmail('')
-              setPassword('')
+              const result = await login({ variables: { email, password } })
+              if (result.data && result.data.login) {
+                localStorage.setItem('token', result.data.login.accessToken)
+                setEmail('')
+                setPassword('')
+                push('home')
+              } else {
+                throw new Error('アクセストークンを取得出来ませんでした。')
+              }
             } catch {
               console.log('Login error:', error)
             }

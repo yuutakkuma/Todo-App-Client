@@ -26,13 +26,13 @@ const TopPage: FC = () => {
           type='button'
           title='ログイン'
           marginBottom={50}
-          onClick={() => push('loginPage')}
+          onClick={() => push('login')}
         />
         <Button
           type='button'
           title='新規登録'
           marginBottom={50}
-          onClick={() => push('registerPage')}
+          onClick={() => push('register')}
         />
         <Button
           type='button'
