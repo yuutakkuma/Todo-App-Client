@@ -11,6 +11,7 @@ export const StyledModalContainer = styled.div`
   border-width: 3px;
   border-color: rgba(244, 244, 242, 0.8);
   border-style: solid;
+  background-color: rgba(45, 97, 135, 1);
 `
 
 export const StyledModalBox = styled.div<{ flex: number }>`

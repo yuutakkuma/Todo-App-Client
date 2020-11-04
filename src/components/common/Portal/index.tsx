@@ -17,6 +17,8 @@ const Portal: FC<Props> = ({ title, content, onPress }) => {
   container.style.display = 'flex'
   container.style.alignItems = 'center'
   container.style.justifyContent = 'center'
+  container.style.position = 'fixed'
+  container.style.top = '0'
 
   modalRoot.appendChild(container)
 
