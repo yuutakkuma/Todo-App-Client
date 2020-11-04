@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import Modal from './Modal'
 import { Props } from './type'
 
-const Portal: FC<Props> = ({ title, content, onPress }) => {
+const Portal: FC<Props> = ({ title, discription, onPress }) => {
   const modalRoot = document.getElementById('modal-root')
   const container = document.createElement('div')
   if (!modalRoot) {
@@ -30,7 +30,11 @@ const Portal: FC<Props> = ({ title, content, onPress }) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <Modal title={title} content={content} onClick={removeHendle} />,
+        <Modal
+          title={title}
+          discription={discription}
+          onClick={removeHendle}
+        />,
         container
       )}
     </>

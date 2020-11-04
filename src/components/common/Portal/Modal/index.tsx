@@ -4,20 +4,20 @@ import {
   StyledModalContainer,
   StyledModalBox,
   Heading,
-  Content,
+  Discription,
   Button
 } from './style'
 import { Props } from './type'
 
-const Modal: FC<Props> = ({ title, content, onClick }) => (
+const Modal: FC<Props> = ({ title, discription, onClick }) => (
   <StyledModalContainer>
-    <StyledModalBox flex={1}>
+    <StyledModalBox height='20%'>
       <Heading>{title}</Heading>
     </StyledModalBox>
-    <StyledModalBox flex={3}>
-      <Content>{content}</Content>
+    <StyledModalBox height='60%'>
+      <Discription>{discription}</Discription>
     </StyledModalBox>
-    <StyledModalBox flex={2}>
+    <StyledModalBox height='20%'>
       <Button type='button' title='OK' onClick={onClick} />
     </StyledModalBox>
   </StyledModalContainer>

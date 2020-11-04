@@ -1,5 +1,5 @@
 export interface Props {
   title: string
-  content: string
+  discription: string
   onClick: () => any
 }

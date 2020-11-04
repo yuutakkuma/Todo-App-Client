@@ -14,24 +14,28 @@ export const StyledModalContainer = styled.div`
   background-color: rgba(45, 97, 135, 1);
 `
 
-export const StyledModalBox = styled.div<{ flex: number }>`
+export const StyledModalBox = styled.div<{ height: string }>`
+  width: 100%;
+  height: ${({ height }) => height};
   display: flex;
-  flex-grow: ${({ flex }) => flex};
   align-items: center;
   justify-content: center;
 `
 
-export const Heading = styled.h3`
+export const Heading = styled.div`
   color: rgba(253, 253, 253, 1);
   font-size: 30px;
-  letter-spacing: 10px;
+  font-weight: 600;
   text-align: center;
+  letter-spacing: 10px;
 `
 
-export const Content = styled.p`
+export const Discription = styled.p`
   color: rgba(253, 253, 253, 1);
-  font-size: 25px;
-  letter-spacing: 10px;
+  font-size: 20px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin: 0;
 `
 
 export const Button = styled(BaseButton)`

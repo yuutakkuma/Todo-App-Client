@@ -15,5 +15,12 @@ const Template: Story<Props> = args => <Component {...args} />
 export const Default = Template.bind({})
 Default.args = {
   title: 'アカウント作成したよ!',
-  content: 'さっそくログインしよう!'
+  discription: 'さっそくログインしよう!'
+}
+
+export const TokenError = Template.bind({})
+TokenError.args = {
+  title: 'エラー',
+  discription:
+    'アクセストークンを取得出来ませんでした。再度ログインするか、しばらくたってからログインしてください。'
 }

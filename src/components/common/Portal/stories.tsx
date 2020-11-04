@@ -15,5 +15,5 @@ const Template: Story<Props> = args => <Component {...args} />
 export const Default = Template.bind({})
 Default.args = {
   title: 'アカウント作成したよ!',
-  content: 'さっそくログインしよう!'
+  discription: 'さっそくログインしよう!'
 }
