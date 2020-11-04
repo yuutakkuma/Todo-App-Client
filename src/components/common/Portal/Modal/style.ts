@@ -24,18 +24,20 @@ export const StyledModalBox = styled.div<{ height: string }>`
 
 export const Heading = styled.div`
   color: rgba(253, 253, 253, 1);
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   text-align: center;
-  letter-spacing: 10px;
+  letter-spacing: 5px;
+  padding: 0 20px;
 `
 
 export const Discription = styled.p`
   color: rgba(253, 253, 253, 1);
   font-size: 20px;
-  letter-spacing: 8px;
+  letter-spacing: 5px;
   text-align: center;
   margin: 0;
+  padding: 0 20px;
 `
 
 export const Button = styled(BaseButton)`
