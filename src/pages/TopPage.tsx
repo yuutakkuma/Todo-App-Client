@@ -7,6 +7,7 @@ import {
   TestUserLoginMutationVariables,
   TestUserLoginDocument
 } from '../graphql/generated'
+import Portal from '../components/common/Portal'
 
 import {
   StyledTopMain,
@@ -61,6 +62,15 @@ const TopPage: FC = () => {
           }
         />
       </StyledTopBox>
+      {testLoginError && (
+        <Portal
+          title='ログイン出来ませんでした'
+          discription='サーバーエラーの可能性があります。'
+          onPress={() => {
+            window.location.reload()
+          }}
+        />
+      )}
     </StyledTopMain>
   )
 }

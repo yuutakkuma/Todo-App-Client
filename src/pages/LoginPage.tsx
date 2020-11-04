@@ -8,6 +8,8 @@ import {
   LoginDocument
 } from '../graphql/generated'
 
+import Portal from '../components/common/Portal'
+
 import {
   StyledLoginMain,
   StyledLoginHeading,
@@ -17,12 +19,13 @@ import {
 } from './styles/login'
 
 const LoginPage: FC = () => {
+  const [loggedIn, setLoggedIn] = useState<boolean>(false)
+  const [tokenError, setTokenError] = useState<boolean>(false)
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { push } = useHistory()
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [login, { loading, error }] = useMutation<
+  const [login, { loading, error: LoginError }] = useMutation<
     LoginMutation,
     LoginMutationVariables
   >(LoginDocument)
@@ -45,24 +48,38 @@ const LoginPage: FC = () => {
           onPasswordChange={event => setPassword(event.target.value)}
           onSubmit={async event => {
             event.preventDefault()
-
-            try {
-              const result = await login({ variables: { email, password } })
+            await login({ variables: { email, password } }).then(result => {
               if (result.data && result.data.login) {
                 localStorage.setItem('token', result.data.login.accessToken)
                 setEmail('')
                 setPassword('')
-                push('home')
+                setLoggedIn(true)
               } else {
-                throw new Error('アクセストークンを取得出来ませんでした。')
+                setTokenError(true)
               }
-            } catch {
-              console.log('Login error:', error)
-            }
+            })
           }}
-          errors={error?.graphQLErrors[0].message as any}
+          errors={LoginError?.graphQLErrors[0].message as any}
         />
       </StyledLoginBox>
+      {loggedIn && (
+        <Portal
+          title='ログインしました!'
+          discription='タスクを管理しよう!'
+          onPress={() => {
+            push('home')
+          }}
+        />
+      )}
+      {tokenError && (
+        <Portal
+          title='エラー'
+          discription='アクセストークンを取得出来ませんでした。再度ログインするか、しばらくたってからログインしてください。'
+          onPress={() => {
+            setTokenError(false)
+          }}
+        />
+      )}
     </StyledLoginMain>
   )
 }

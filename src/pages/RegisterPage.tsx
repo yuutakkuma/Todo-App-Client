@@ -8,6 +8,8 @@ import {
   RegisterDocument
 } from '../graphql/generated'
 
+import Portal from '../components/common/Portal'
+
 import {
   StyledRegisterMain,
   StyledRegisterHeading,
@@ -17,13 +19,13 @@ import {
 } from './styles/register'
 
 const RegisterPage: FC = () => {
+  const [completed, setCompleted] = useState<boolean>(false)
   const [nickname, setNickname] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { push } = useHistory()
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [register, { loading, error }] = useMutation<
+  const [register, { loading, error: registerError }] = useMutation<
     RegisterMutation,
     RegisterMutationVariables
   >(RegisterDocument)
@@ -48,19 +50,27 @@ const RegisterPage: FC = () => {
           onPasswordChange={event => setPassword(event.target.value)}
           onSubmit={async event => {
             event.preventDefault()
-
-            try {
-              await register({ variables: { nickname, email, password } })
-              setNickname('')
-              setEmail('')
-              setPassword('')
-            } catch {
-              console.log('register error:', error)
-            }
+            await register({ variables: { nickname, email, password } }).then(
+              () => {
+                setNickname('')
+                setEmail('')
+                setPassword('')
+                setCompleted(true)
+              }
+            )
           }}
-          errors={error?.graphQLErrors[0].message as any}
+          errors={registerError?.graphQLErrors[0].message as any}
         />
       </StyledRegisterBox>
+      {completed && (
+        <Portal
+          title='アカウント作成したよ！'
+          discription='さっそくログインしよう!'
+          onPress={() => {
+            push('login')
+          }}
+        />
+      )}
     </StyledRegisterMain>
   )
 }

@@ -7,6 +7,7 @@ import {
   DeleteAccountMutationVariables,
   DeleteAccountDocument
 } from '../graphql/generated'
+import Portal from '../components/common/Portal'
 
 import {
   StyledDeleteAccountMain,
@@ -17,13 +18,13 @@ import {
 } from './styles/deleteAccount'
 
 const DeleteAccountPage: FC = () => {
+  const [completed, setCompleted] = useState<boolean>(false)
   const [nickname, setNickname] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const { push } = useHistory()
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [deleteAccount, { loading, error }] = useMutation<
+  const [deleteAccount, { loading, error: deleteAccountError }] = useMutation<
     DeleteAccountMutation,
     DeleteAccountMutationVariables
   >(DeleteAccountDocument)
@@ -49,18 +50,27 @@ const DeleteAccountPage: FC = () => {
           onSubmit={async event => {
             event.preventDefault()
 
-            try {
-              await deleteAccount({ variables: { nickname, email, password } })
+            await deleteAccount({
+              variables: { nickname, email, password }
+            }).then(() => {
               setNickname('')
               setEmail('')
               setPassword('')
-            } catch {
-              console.log('DeleteAccount error:', error)
-            }
+              setCompleted(true)
+            })
           }}
-          errors={error?.graphQLErrors[0].message as any}
+          errors={deleteAccountError?.graphQLErrors[0].message as any}
         />
       </StyledDeleteAccountBox>
+      {completed && (
+        <Portal
+          title='アカウントを削除しました'
+          discription='ご利用ありがとうございました。'
+          onPress={() => {
+            push('/')
+          }}
+        />
+      )}
     </StyledDeleteAccountMain>
   )
 }

@@ -17,6 +17,7 @@ import {
 import Header from '../components/common/Header'
 import TaskInput from '../components/home/TaskInput'
 import TaskList from '../components/home/TaskList'
+import Portal from '../components/common/Portal'
 
 import { StyledHomeMain } from './styles/home'
 
@@ -32,7 +33,7 @@ const HomePage: FC = () => {
   } = useQuery<GetTodoListQuery, GetTodoListQueryVariables>(GetTodoListDocument)
   const [
     addTask,
-    { loading: addTaskLoading, error: addTaskLoadingError }
+    { loading: addTaskLoading, error: addTaskError }
   ] = useMutation<CreateTodoMutation, CreateTodoMutationVariables>(
     CreateTodoDocument
   )
@@ -68,7 +69,7 @@ const HomePage: FC = () => {
           }}
           disabled={addTaskLoading}
         />
-        {taskData && taskData.getTodoList ? (
+        {taskData && taskData.getTodoList && taskData.getTodoList.length > 1 ? (
           <TaskList
             tasks={taskData.getTodoList.map(tasks => ({
               id: Number(tasks!.id),
@@ -83,6 +84,27 @@ const HomePage: FC = () => {
           />
         ) : (
           <div>まだデータがないよ</div>
+        )}
+        {getTaskError && (
+          <Portal
+            title='タスクを取得出来ませんでした'
+            discription='リロードするか、再度ログインしてください。'
+            onPress={() => window.location.reload()}
+          />
+        )}
+        {addTaskError && (
+          <Portal
+            title='タスクを追加出来ませんでした'
+            discription='時間を置いて再度投稿するか、開発者へ問合せてください。'
+            onPress={() => window.location.reload()}
+          />
+        )}
+        {deleteTaskError && (
+          <Portal
+            title='タスクを削除出来ませんでした'
+            discription='ブラウザをリロードしても直らない場合は開発者へ問い合わせてください。'
+            onPress={() => window.location.reload()}
+          />
         )}
       </StyledHomeMain>
     </>
