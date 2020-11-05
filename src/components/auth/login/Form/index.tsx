@@ -9,6 +9,7 @@ const LoginFrom: FC<Props> = ({
   className,
   inputEmail,
   inputPassword,
+  isLoading,
   onEmailChange,
   onPasswordChange,
   onSubmit,
@@ -30,7 +31,7 @@ const LoginFrom: FC<Props> = ({
       value={inputPassword}
       onChange={onPasswordChange}
     />
-    <FormButton type='submit' title='ログイン' />
+    <FormButton type='submit' title='ログイン' isLoading={isLoading} />
   </StyledLoginForm>
 )
 

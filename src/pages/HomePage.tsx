@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useMutation, useQuery } from '@apollo/client'
 
@@ -44,6 +44,11 @@ const HomePage: FC = () => {
     DeleteTodoDocument
   )
 
+  useEffect(() => {
+    taskRefetch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       <Header
@@ -62,10 +67,12 @@ const HomePage: FC = () => {
               variables: {
                 title: task
               }
-            }).then(() => {
-              taskRefetch()
-              setTask('')
             })
+              .then(() => {
+                taskRefetch()
+                setTask('')
+              })
+              .catch(() => console.error('Add Task Error'))
           }}
           disabled={addTaskLoading}
         />
@@ -76,10 +83,11 @@ const HomePage: FC = () => {
               task: tasks!.title
             }))}
             disabled={deleteTaskLoading}
+            isLoading={taskLoading}
             onClick={id =>
-              deleteTask({ variables: { id: String(id) } }).then(() =>
-                taskRefetch()
-              )
+              deleteTask({ variables: { id: String(id) } })
+                .then(() => taskRefetch())
+                .catch(() => console.error('Delete Task Error'))
             }
           />
         ) : (

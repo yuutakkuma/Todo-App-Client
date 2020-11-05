@@ -25,7 +25,7 @@ const LoginPage: FC = () => {
   const [password, setPassword] = useState<string>('')
   const { push } = useHistory()
 
-  const [login, { loading, error: LoginError }] = useMutation<
+  const [login, { loading: loginLoading, error: LoginError }] = useMutation<
     LoginMutation,
     LoginMutationVariables
   >(LoginDocument)
@@ -44,20 +44,23 @@ const LoginPage: FC = () => {
         <LoginForm
           inputEmail={email}
           inputPassword={password}
+          isLoading={loginLoading}
           onEmailChange={event => setEmail(event.target.value)}
           onPasswordChange={event => setPassword(event.target.value)}
           onSubmit={async event => {
             event.preventDefault()
-            await login({ variables: { email, password } }).then(result => {
-              if (result.data && result.data.login) {
-                localStorage.setItem('token', result.data.login.accessToken)
-                setEmail('')
-                setPassword('')
-                setLoggedIn(true)
-              } else {
-                setTokenError(true)
-              }
-            })
+            await login({ variables: { email, password } })
+              .then(result => {
+                if (result.data && result.data.login) {
+                  localStorage.setItem('token', result.data.login.accessToken)
+                  setEmail('')
+                  setPassword('')
+                  setLoggedIn(true)
+                } else {
+                  setTokenError(true)
+                }
+              })
+              .catch(() => console.error('Login Error'))
           }}
           errors={LoginError?.graphQLErrors[0].message as any}
         />

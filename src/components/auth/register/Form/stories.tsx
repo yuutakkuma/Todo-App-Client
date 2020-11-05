@@ -51,3 +51,11 @@ Error.args = {
     ]
   }
 }
+
+export const IsLoading = Template.bind({})
+IsLoading.args = {
+  onSubmit: e => {
+    e.preventDefault()
+  },
+  isLoading: true
+}

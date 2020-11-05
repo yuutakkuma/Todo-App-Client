@@ -39,7 +39,11 @@ export const App: FC = () => {
           height: '100vh'
         }}
       >
-        <Loading width='100px' height='100px' />
+        <Loading
+          width='100px'
+          height='100px'
+          circleColor='rgba(45, 97, 135, 1)'
+        />
       </div>
     )
   }

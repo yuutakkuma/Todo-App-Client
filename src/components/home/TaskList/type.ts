@@ -4,5 +4,6 @@ export interface Props {
     task: string
   }[]
   disabled: boolean
+  isLoading?: boolean
   onClick: (id: number) => any
 }

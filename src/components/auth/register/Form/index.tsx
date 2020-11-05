@@ -14,6 +14,7 @@ const RegisterForm: FC<Props> = ({
   inputNickname,
   inputEmail,
   inputPassword,
+  isLoading,
   onNicknameChange,
   onEmailChange,
   onPasswordChange,
@@ -92,7 +93,7 @@ const RegisterForm: FC<Props> = ({
         value={inputPassword}
         onChange={onPasswordChange}
       />
-      <FormButton type='submit' title='新規登録' />
+      <FormButton type='submit' title='新規登録' isLoading={isLoading} />
     </StyledRegisterForm>
   )
 }

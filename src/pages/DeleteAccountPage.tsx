@@ -24,10 +24,12 @@ const DeleteAccountPage: FC = () => {
   const [password, setPassword] = useState<string>('')
   const { push } = useHistory()
 
-  const [deleteAccount, { loading, error: deleteAccountError }] = useMutation<
-    DeleteAccountMutation,
-    DeleteAccountMutationVariables
-  >(DeleteAccountDocument)
+  const [
+    deleteAccount,
+    { loading: deleteAccountLoading, error: deleteAccountError }
+  ] = useMutation<DeleteAccountMutation, DeleteAccountMutationVariables>(
+    DeleteAccountDocument
+  )
 
   return (
     <StyledDeleteAccountMain>
@@ -44,6 +46,7 @@ const DeleteAccountPage: FC = () => {
           inputNickname={nickname}
           inputEmail={email}
           inputPassword={password}
+          isLoading={deleteAccountLoading}
           onNicknameChange={event => setNickname(event.target.value)}
           onEmailChange={event => setEmail(event.target.value)}
           onPasswordChange={event => setPassword(event.target.value)}
@@ -52,12 +55,14 @@ const DeleteAccountPage: FC = () => {
 
             await deleteAccount({
               variables: { nickname, email, password }
-            }).then(() => {
-              setNickname('')
-              setEmail('')
-              setPassword('')
-              setCompleted(true)
             })
+              .then(() => {
+                setNickname('')
+                setEmail('')
+                setPassword('')
+                setCompleted(true)
+              })
+              .catch(() => console.error('Account Delete Error'))
           }}
           errors={deleteAccountError?.graphQLErrors[0].message as any}
         />

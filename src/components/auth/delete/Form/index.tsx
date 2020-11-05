@@ -14,6 +14,7 @@ const DeleteAccountForm: FC<Props> = ({
   inputNickname,
   inputEmail,
   inputPassword,
+  isLoading,
   onNicknameChange,
   onEmailChange,
   onPasswordChange,
@@ -43,7 +44,7 @@ const DeleteAccountForm: FC<Props> = ({
       value={inputPassword}
       onChange={onPasswordChange}
     />
-    <FormButton type='submit' title='アカウント削除' />
+    <FormButton type='submit' title='アカウント削除' isLoading={isLoading} />
   </StyledDeleteForm>
 )
 

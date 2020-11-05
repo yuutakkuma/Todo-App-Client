@@ -13,7 +13,7 @@ export const Button = styled.button`
   justify-content: center;
 
   &:hover {
-    background-color: rgba(50, 170, 220, 1);
+    opacity: 0.8;
   }
 
   &:active {

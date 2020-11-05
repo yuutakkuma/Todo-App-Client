@@ -25,10 +25,10 @@ const RegisterPage: FC = () => {
   const [password, setPassword] = useState<string>('')
   const { push } = useHistory()
 
-  const [register, { loading, error: registerError }] = useMutation<
-    RegisterMutation,
-    RegisterMutationVariables
-  >(RegisterDocument)
+  const [
+    register,
+    { loading: registerLoading, error: registerError }
+  ] = useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument)
 
   return (
     <StyledRegisterMain>
@@ -45,6 +45,7 @@ const RegisterPage: FC = () => {
           inputNickname={nickname}
           inputEmail={email}
           inputPassword={password}
+          isLoading={registerLoading}
           onNicknameChange={event => setNickname(event.target.value)}
           onEmailChange={event => setEmail(event.target.value)}
           onPasswordChange={event => setPassword(event.target.value)}

@@ -46,6 +46,7 @@ const TopPage: FC = () => {
         <Button
           type='button'
           title='テストユーザーログイン'
+          isLoading={testLoginLoading}
           onClick={async () =>
             await testLogin({
               variables: { email: 'test@test.com', password: 'test' }
@@ -58,7 +59,7 @@ const TopPage: FC = () => {
                   throw new Error('アクセストークンを取得出来ませんでした。')
                 }
               })
-              .catch(err => console.log('testLoginError:', err))
+              .catch(() => console.error('testLoginError'))
           }
         />
       </StyledTopBox>

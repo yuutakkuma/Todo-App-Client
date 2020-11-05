@@ -38,3 +38,31 @@ Default.args = {
   ],
   disabled: false
 }
+
+export const IsLoading = Template.bind({})
+IsLoading.args = {
+  isLoading: true,
+  tasks: [
+    {
+      id: 1,
+      task: '買い物'
+    },
+    {
+      id: 2,
+      task: '筋トレ'
+    },
+    {
+      id: 3,
+      task: '掃除'
+    },
+    {
+      id: 4,
+      task: '勉強'
+    },
+    {
+      id: 5,
+      task: 'お絵かき'
+    }
+  ],
+  disabled: false
+}

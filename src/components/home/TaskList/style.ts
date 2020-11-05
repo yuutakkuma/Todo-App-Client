@@ -14,9 +14,13 @@ export const StyledTaskList = styled.div`
   box-sizing: border-box;
 `
 
-export const StyledTaskListBox = styled.div<{ width: string }>`
+export const StyledTaskListBox = styled.div<{
+  width: string
+  marginBottom?: string
+}>`
   width: ${({ width }) => width};
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: ${({ marginBottom = '0px' }) => marginBottom};
 `
