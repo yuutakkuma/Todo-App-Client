@@ -3,9 +3,10 @@ import { ApolloProvider } from '@apollo/client'
 
 import { GetRefreshTokenDocument } from './graphql/generated'
 
+import Loading from './components/common/Loading'
+
 import { client } from './lib/apollo'
 import { Context } from './lib/context'
-import { Loading } from './components/Loading'
 import { Routes } from './pages/Routes'
 
 export const App: FC = () => {
@@ -38,7 +39,7 @@ export const App: FC = () => {
           height: '100vh'
         }}
       >
-        <Loading />
+        <Loading width='100px' height='100px' />
       </div>
     )
   }
