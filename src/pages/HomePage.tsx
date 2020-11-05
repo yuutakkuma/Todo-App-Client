@@ -14,10 +14,11 @@ import {
   DeleteTodoDocument
 } from '../graphql/generated'
 
+import Portal from '../components/common/Portal'
 import Header from '../components/common/Header'
 import TaskInput from '../components/home/TaskInput'
 import TaskList from '../components/home/TaskList'
-import Portal from '../components/common/Portal'
+import CharacterCounter from '../components/home/CharacterCounter'
 
 import { StyledHomeMain } from './styles/home'
 
@@ -48,7 +49,6 @@ const HomePage: FC = () => {
     taskRefetch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
   return (
     <>
       <Header
@@ -59,6 +59,10 @@ const HomePage: FC = () => {
         }}
       />
       <StyledHomeMain>
+        <CharacterCounter
+          characterCounts={task.length}
+          error={addTaskError && '1文字以上、25文字以下になります。'}
+        />
         <TaskInput
           inputValue={task}
           onChange={event => setTask(event.target.value)}
@@ -97,13 +101,6 @@ const HomePage: FC = () => {
           <Portal
             title='タスクを取得出来ませんでした'
             discription='リロードするか、再度ログインしてください。'
-            onPress={() => window.location.reload()}
-          />
-        )}
-        {addTaskError && (
-          <Portal
-            title='タスクを追加出来ませんでした'
-            discription='時間を置いて再度投稿するか、開発者へ問合せてください。'
             onPress={() => window.location.reload()}
           />
         )}
