@@ -19,6 +19,7 @@ import Header from '../components/common/Header'
 import TaskInput from '../components/home/TaskInput'
 import TaskList from '../components/home/TaskList'
 import CharacterCounter from '../components/home/CharacterCounter'
+import PromptMessage from '../components/home/PromptMessage'
 
 import { StyledHomeMain } from './styles/home'
 
@@ -95,7 +96,7 @@ const HomePage: FC = () => {
             }
           />
         ) : (
-          <div>まだデータがないよ</div>
+          <PromptMessage message='やることを追加しよう！' />
         )}
         {getTaskError && (
           <Portal
