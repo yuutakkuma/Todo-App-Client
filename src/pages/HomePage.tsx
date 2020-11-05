@@ -21,7 +21,7 @@ import TaskList from '../components/home/TaskList'
 import CharacterCounter from '../components/home/CharacterCounter'
 import PromptMessage from '../components/home/PromptMessage'
 
-import { StyledHomeMain } from './styles/home'
+import { Container, Main, Box, Inner } from './styles/home'
 
 const HomePage: FC = () => {
   const [task, setTask] = useState<string>('')
@@ -51,36 +51,40 @@ const HomePage: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <>
-      <Header
-        onAccountDeleteClick={() => push('deleteAccount')}
-        onLogoutClick={() => {
-          localStorage.setItem('token', '')
-          replace('/')
-        }}
-      />
-      <StyledHomeMain>
-        <CharacterCounter
-          characterCounts={task.length}
-          error={addTaskError && '1文字以上、25文字以下になります。'}
-        />
-        <TaskInput
-          inputValue={task}
-          onChange={event => setTask(event.target.value)}
-          onClick={async () => {
-            await addTask({
-              variables: {
-                title: task
-              }
-            })
-              .then(() => {
-                taskRefetch()
-                setTask('')
-              })
-              .catch(() => console.error('Add Task Error'))
+    <Container>
+      <Box position='fixed'>
+        <Header
+          onAccountDeleteClick={() => push('deleteAccount')}
+          onLogoutClick={() => {
+            localStorage.setItem('token', '')
+            replace('/')
           }}
-          disabled={addTaskLoading}
         />
+        <Inner>
+          <CharacterCounter
+            characterCounts={task.length}
+            error={addTaskError && '1文字以上、25文字以下になります。'}
+          />
+          <TaskInput
+            inputValue={task}
+            onChange={event => setTask(event.target.value)}
+            onClick={async () => {
+              await addTask({
+                variables: {
+                  title: task
+                }
+              })
+                .then(() => {
+                  taskRefetch()
+                  setTask('')
+                })
+                .catch(() => console.error('Add Task Error'))
+            }}
+            disabled={addTaskLoading}
+          />
+        </Inner>
+      </Box>
+      <Main>
         {taskData && taskData.getTodoList && taskData.getTodoList.length > 1 ? (
           <TaskList
             tasks={taskData.getTodoList.map(tasks => ({
@@ -112,8 +116,8 @@ const HomePage: FC = () => {
             onPress={() => window.location.reload()}
           />
         )}
-      </StyledHomeMain>
-    </>
+      </Main>
+    </Container>
   )
 }
 
