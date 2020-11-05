@@ -3,8 +3,15 @@ import React, { FC } from 'react'
 import { StyledTaskInputArea } from './style'
 import { Props } from './type'
 
-const TaskInputArea: FC<Props> = ({ type, placeholder, value, onChange }) => (
+const TaskInputArea: FC<Props> = ({
+  className,
+  type,
+  placeholder,
+  value,
+  onChange
+}) => (
   <StyledTaskInputArea
+    className={className}
     type={type}
     placeholder={placeholder}
     value={value}
