@@ -3,5 +3,6 @@ export interface Props {
   title: string
   disabled?: boolean
   className?: string
+  isLoading?: boolean
   onClick?: () => any
 }

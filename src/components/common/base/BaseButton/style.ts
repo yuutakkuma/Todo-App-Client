@@ -8,6 +8,9 @@ export const Button = styled.button`
   box-shadow: 1px 1px rgba(0, 0, 0, 0.3);
   outline: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: rgba(50, 170, 220, 1);

@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 
+import Loading from '../../Loading'
+
 import { Button } from './style'
 import { Props } from './type'
 
@@ -8,6 +10,7 @@ const BaseButton: FC<Props> = ({
   title,
   disabled,
   className,
+  isLoading,
   onClick
 }) => (
   <Button
@@ -16,7 +19,11 @@ const BaseButton: FC<Props> = ({
     disabled={disabled}
     onClick={onClick}
   >
-    {title}
+    {isLoading ? (
+      <Loading width='20px' height='20px' circleColor='rgba(50, 190, 230, 1)' />
+    ) : (
+      title
+    )}
   </Button>
 )
 

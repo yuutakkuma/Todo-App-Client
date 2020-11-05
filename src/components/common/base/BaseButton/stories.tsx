@@ -17,3 +17,9 @@ Default.args = {
   title: 'BaseButton',
   disabled: false
 }
+
+export const IsLoading = Template.bind({})
+IsLoading.args = {
+  isLoading: true,
+  disabled: false
+}
