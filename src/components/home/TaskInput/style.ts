@@ -11,8 +11,8 @@ export const TaskInputContainer = styled.div`
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: rgba(255, 255, 255, 1);
-  padding: 10px 0;
-  margin: 20px 0;
+  padding: 0 0 10px 0;
+  margin: 0 0 20px 0;
 `
 
 export const Input = styled(TaskInputArea)`

@@ -1,16 +1,20 @@
 import React, { FC } from 'react'
 
-import ErrorMessage from '../../common/ErrorMessage'
-
-import { Container, Counter } from './style'
+import { Container, Counter, CounterErrorMessage } from './style'
 import { Props } from './type'
 
-const CharacterCounter: FC<Props> = ({ characterCounts: character, error }) => (
+const CharacterCounter: FC<Props> = ({ characterCounts, error }) => (
   <Container>
-    <Counter color={error ? 'rgba(246, 131, 15, 1)' : 'rgba(244, 244, 242, 1)'}>
-      {`${character}/25`}
+    <Counter
+      color={
+        error || characterCounts > 25
+          ? 'rgba(246, 131, 15, 1)'
+          : 'rgba(244, 244, 242, 1)'
+      }
+    >
+      {`${characterCounts}/25`}
     </Counter>
-    {error && <ErrorMessage message={error} />}
+    {error && <CounterErrorMessage message={error} />}
   </Container>
 )
 
