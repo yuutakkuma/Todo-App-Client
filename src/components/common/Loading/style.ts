@@ -43,14 +43,12 @@ export const Loader = styled.div`
   }
 `
 
-export const Circle = styled.div`
+export const Circle = styled.div<{ circleColor: string }>`
   width: 80%;
   height: 80%;
   position: absolute;
-  /* top: 10%;
-  left: 3%; */
   right: 0px;
-  background-color: rgba(45, 97, 135, 1);
+  background-color: ${({ circleColor }) => circleColor};
   border-top-left-radius: 100px;
   border-bottom-left-radius: 100px;
 `
