@@ -85,7 +85,7 @@ const HomePage: FC = () => {
         </Inner>
       </Box>
       <Main>
-        {taskData && taskData.getTodoList && taskData.getTodoList.length > 1 ? (
+        {taskData && taskData.getTodoList && taskData.getTodoList.length > 0 ? (
           <TaskList
             tasks={taskData.getTodoList.map(tasks => ({
               id: Number(tasks!.id),
