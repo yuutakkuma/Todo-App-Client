@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledTask = styled.p`
+export const Task = styled.p`
   width: 100%;
   padding-left: 20px;
   font-size: 20px;

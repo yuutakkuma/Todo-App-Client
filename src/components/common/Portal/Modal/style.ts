@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import BaseButton from '../../base/BaseButton'
 
-export const StyledModalContainer = styled.div`
+export const Container = styled.div`
   width: 500px;
   height: 300px;
   display: flex;
@@ -12,9 +12,14 @@ export const StyledModalContainer = styled.div`
   border-color: rgba(244, 244, 242, 0.8);
   border-style: solid;
   background-color: rgba(45, 97, 135, 1);
+
+  @media screen and (max-width: 750px) {
+    width: 400px;
+    height: 250px;
+  }
 `
 
-export const StyledModalBox = styled.div<{ height: string }>`
+export const Box = styled.div<{ height: string }>`
   width: 100%;
   height: ${({ height }) => height};
   display: flex;
@@ -29,6 +34,10 @@ export const Heading = styled.div`
   text-align: center;
   letter-spacing: 5px;
   padding: 0 20px;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 20px;
+  }
 `
 
 export const Discription = styled.p`
@@ -38,6 +47,10 @@ export const Discription = styled.p`
   text-align: center;
   margin: 0;
   padding: 0 20px;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 15px;
+  }
 `
 
 export const Button = styled(BaseButton)`
@@ -50,5 +63,9 @@ export const Button = styled(BaseButton)`
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  @media screen and (max-width: 1000px) {
+    font-size: 25px;
   }
 `

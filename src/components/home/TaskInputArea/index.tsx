@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { StyledTaskInputArea } from './style'
+import { InputArea } from './style'
 import { Props } from './type'
 
 const TaskInputArea: FC<Props> = ({
@@ -10,7 +10,7 @@ const TaskInputArea: FC<Props> = ({
   value,
   onChange
 }) => (
-  <StyledTaskInputArea
+  <InputArea
     className={className}
     type={type}
     placeholder={placeholder}

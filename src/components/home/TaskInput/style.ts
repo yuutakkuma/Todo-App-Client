@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import TaskInputArea from '../TaskInputArea'
 
-export const TaskInputContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -16,6 +16,6 @@ export const TaskInputContainer = styled.div`
 `
 
 export const Input = styled(TaskInputArea)`
-  width: 90%;
+  width: 80%;
   height: 50px;
 `

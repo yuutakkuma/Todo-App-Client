@@ -14,8 +14,19 @@ export const Main = styled.main`
   }
 `
 
-export const Box = styled.div`
+export const Box = styled.div<{ mediaFlex?: number }>`
   width: 50%;
+  height: 100%;
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    height: unset;
+    flex-grow: ${({ mediaFlex = 1 }) => mediaFlex};
+  }
+`
+
+export const Flex = styled.div<{ mediaJustifyContent: string }>`
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -23,8 +34,7 @@ export const Box = styled.div`
   flex-direction: column;
 
   @media screen and (max-width: 1000px) {
-    width: 100%;
-    height: 40%;
+    justify-content: ${({ mediaJustifyContent }) => mediaJustifyContent};
   }
 `
 
@@ -35,6 +45,16 @@ export const Heading = styled.h1`
 
   @media screen and (max-width: 1000px) {
     font-size: 70px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 700px) {
+    font-size: 60px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 50px;
+    letter-spacing: 5px;
   }
 `
 
@@ -47,5 +67,10 @@ export const Button = styled(BaseButton)<{ marginBottom?: number }>`
 
   @media screen and (max-width: 1000px) {
     width: 60%;
+    margin: ${({ marginBottom = 0 }) => `0 auto ${marginBottom}px auto`};
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 80%;
   }
 `

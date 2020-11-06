@@ -8,9 +8,10 @@ import {
   LoginDocument
 } from '../graphql/generated'
 
+import LoginForm from '../components/auth/login/Form'
 import Portal from '../components/common/Portal'
 
-import { Main, Heading, Box, LoginForm, BackButton } from './styles/login'
+import { Main, Heading, Box, BackButton } from './styles/login'
 
 const LoginPage: FC = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false)

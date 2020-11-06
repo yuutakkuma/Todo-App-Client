@@ -9,7 +9,7 @@ import {
 } from '../graphql/generated'
 import Portal from '../components/common/Portal'
 
-import { Main, Box, Heading, Button } from './styles/top'
+import { Main, Box, Flex, Heading, Button } from './styles/top'
 
 const TopPage: FC = () => {
   const [
@@ -22,41 +22,48 @@ const TopPage: FC = () => {
 
   return (
     <Main>
-      <Box>
-        <Heading>TODO APP</Heading>
+      <Box mediaFlex={1}>
+        <Flex mediaJustifyContent='center'>
+          <Heading>TODO APP</Heading>
+        </Flex>
       </Box>
-      <Box>
-        <Button
-          type='button'
-          title='ログイン'
-          marginBottom={50}
-          onClick={() => push('login')}
-        />
-        <Button
-          type='button'
-          title='新規登録'
-          marginBottom={50}
-          onClick={() => push('register')}
-        />
-        <Button
-          type='button'
-          title='テストユーザーログイン'
-          isLoading={testLoginLoading}
-          onClick={async () =>
-            await testLogin({
-              variables: { email: 'test@test.com', password: 'test' }
-            })
-              .then(({ data }) => {
-                if (data && data.testUserLogin) {
-                  localStorage.setItem('token', data.testUserLogin.accessToken)
-                  push('home')
-                } else {
-                  throw new Error('アクセストークンを取得出来ませんでした。')
-                }
+      <Box mediaFlex={3}>
+        <Flex mediaJustifyContent='flex-start'>
+          <Button
+            type='button'
+            title='ログイン'
+            marginBottom={50}
+            onClick={() => push('login')}
+          />
+          <Button
+            type='button'
+            title='新規登録'
+            marginBottom={50}
+            onClick={() => push('register')}
+          />
+          <Button
+            type='button'
+            title='テストユーザーログイン'
+            isLoading={testLoginLoading}
+            onClick={async () =>
+              await testLogin({
+                variables: { email: 'test@test.com', password: 'test' }
               })
-              .catch(() => console.error('testLoginError'))
-          }
-        />
+                .then(({ data }) => {
+                  if (data && data.testUserLogin) {
+                    localStorage.setItem(
+                      'token',
+                      data.testUserLogin.accessToken
+                    )
+                    push('home')
+                  } else {
+                    throw new Error('アクセストークンを取得出来ませんでした。')
+                  }
+                })
+                .catch(() => console.error('testLoginError'))
+            }
+          />
+        </Flex>
       </Box>
       {testLoginError && (
         <Portal

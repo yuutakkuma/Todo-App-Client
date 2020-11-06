@@ -7,9 +7,11 @@ import {
   DeleteAccountMutationVariables,
   DeleteAccountDocument
 } from '../graphql/generated'
-import Portal from '../components/common/Portal'
 
-import { Main, Heading, Box, Form, BackButton } from './styles/deleteAccount'
+import Portal from '../components/common/Portal'
+import DeleteForm from '../components/auth/delete/Form'
+
+import { Main, Heading, Box, BackButton } from './styles/deleteAccount'
 
 const DeleteAccountPage: FC = () => {
   const [completed, setCompleted] = useState<boolean>(false)
@@ -34,7 +36,7 @@ const DeleteAccountPage: FC = () => {
         <Heading>アカウントを削除するには必要事項を入力してください。</Heading>
       </Box>
       <Box flex={3}>
-        <Form
+        <DeleteForm
           inputNickname={nickname}
           inputEmail={email}
           inputPassword={password}

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { StyledBaseInput } from './style'
+import { Input } from './style'
 import { Props } from './type'
 
 const BaseInput: FC<Props> = ({
@@ -10,7 +10,7 @@ const BaseInput: FC<Props> = ({
   value,
   onChange
 }) => (
-  <StyledBaseInput
+  <Input
     className={className}
     type={type}
     placeholder={placeholder}

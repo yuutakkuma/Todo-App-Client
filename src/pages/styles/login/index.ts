@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import StyledLoginForm from '../../../components/auth/login/Form'
 import BaseButton from '../../../components/common/base/BaseButton'
 
 export const Main = styled.main`
@@ -25,7 +24,7 @@ export const Box = styled.div<{
   flex-grow: ${({ flex }) => flex};
 
   @media screen and (max-width: 1000px) {
-    width: 60%;
+    width: 80%;
   }
 `
 
@@ -34,10 +33,14 @@ export const Heading = styled.h1`
   font-size: 30px;
   letter-spacing: 10px;
   padding-left: 15px;
-`
 
-export const LoginForm = styled(StyledLoginForm)`
-  width: 100%;
+  @media screen and (max-width: 1000px) {
+    font-size: 25px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+  }
 `
 
 export const BackButton = styled(BaseButton)`
@@ -47,5 +50,9 @@ export const BackButton = styled(BaseButton)`
 
   @media screen and (max-width: 1000px) {
     width: 30%;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 40%;
   }
 `

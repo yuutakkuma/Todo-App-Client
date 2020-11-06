@@ -7,7 +7,6 @@ export const Container = styled.div`
 
 export const Box = styled.div<{ position?: string }>`
   width: 100%;
-  min-width: 500px;
   position: ${({ position = 'static' }) => position};
   z-index: 1;
   display: flex;
@@ -21,7 +20,7 @@ export const Inner = styled.div`
   width: 60%;
   margin-top: 20px;
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 1200px) {
     width: 80%;
   }
 `
@@ -38,7 +37,7 @@ export const Main = styled.main`
   justify-content: center;
   background-color: transparent;
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 1200px) {
     width: 80%;
   }
 `

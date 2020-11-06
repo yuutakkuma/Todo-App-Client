@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledTaskList = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 80px;
   display: flex;
@@ -16,6 +16,8 @@ export const StyledTaskList = styled.div`
 
 export const Box = styled.div<{
   width: string
+  tabletWidth?: string
+  mobileWidth?: string
   mediaWidth?: string
   marginBottom?: string
 }>`
@@ -26,6 +28,10 @@ export const Box = styled.div<{
   margin-bottom: ${({ marginBottom = '0px' }) => marginBottom};
 
   @media screen and (max-width: 1000px) {
-    width: ${({ mediaWidth }) => mediaWidth};
+    width: ${({ tabletWidth }) => tabletWidth};
+  }
+
+  @media screen and (max-width: 500px) {
+    width: ${({ mobileWidth }) => mobileWidth};
   }
 `

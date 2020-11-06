@@ -2,11 +2,7 @@ import React, { FC } from 'react'
 
 import FormButton from '../../../common/FormButton'
 
-import {
-  StyledDeleteForm,
-  StyledDeleteInput,
-  DeleteErrorMessage
-} from './style'
+import { Form, Input, DeleteErrorMessage } from './style'
 import { Props } from './type'
 
 const DeleteAccountForm: FC<Props> = ({
@@ -21,23 +17,23 @@ const DeleteAccountForm: FC<Props> = ({
   onSubmit,
   errors
 }) => (
-  <StyledDeleteForm className={className} onSubmit={onSubmit}>
+  <Form className={className} onSubmit={onSubmit}>
     <DeleteErrorMessage message={errors?.message} />
-    <StyledDeleteInput
+    <Input
       type='nickname'
       placeholder='ニックネーム'
       marginBottom={30}
       value={inputNickname}
       onChange={onNicknameChange}
     />
-    <StyledDeleteInput
+    <Input
       type='email'
       placeholder='Eメール'
       marginBottom={30}
       value={inputEmail}
       onChange={onEmailChange}
     />
-    <StyledDeleteInput
+    <Input
       type='password'
       placeholder='パスワード'
       marginBottom={50}
@@ -45,7 +41,7 @@ const DeleteAccountForm: FC<Props> = ({
       onChange={onPasswordChange}
     />
     <FormButton type='submit' title='アカウント削除' isLoading={isLoading} />
-  </StyledDeleteForm>
+  </Form>
 )
 
 export default DeleteAccountForm

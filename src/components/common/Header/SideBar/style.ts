@@ -10,7 +10,7 @@ export const Container = styled.div<{ isOpen?: boolean }>`
 `
 
 export const Bar = styled.div<{ isOpen?: boolean }>`
-  width: 300px;
+  width: 50%;
   height: 100%;
   padding-top: 20px;
   visibility: visible;

@@ -4,7 +4,7 @@ import TaskItem from '../TaskItem'
 import DoneButton from '../DoneButton'
 import Loading from '../../common/Loading'
 
-import { StyledTaskList, Box } from './style'
+import { Container, Box } from './style'
 import { Props } from './type'
 
 const TaskList: FC<Props> = ({ tasks, disabled, isLoading, onClick }) => (
@@ -21,21 +21,21 @@ const TaskList: FC<Props> = ({ tasks, disabled, isLoading, onClick }) => (
     {tasks
       .sort((tasksA, tasksB) => (tasksA.id < tasksB.id ? 1 : -1))
       .map(({ id, task }, index) => (
-        <StyledTaskList
+        <Container
           style={{ marginBottom: index === tasks.length - 1 ? 0 : 20 }}
           key={id}
         >
-          <Box width='90%' mediaWidth='80%'>
+          <Box width='90%' tabletWidth='80%' mobileWidth='70%'>
             <TaskItem task={task} />
           </Box>
-          <Box width='10%' mediaWidth='15%'>
+          <Box width='10%' tabletWidth='15%' mobileWidth='25%'>
             <DoneButton
               title='完了'
               disabled={disabled}
               onClick={() => onClick(id)}
             />
           </Box>
-        </StyledTaskList>
+        </Container>
       ))}
   </>
 )

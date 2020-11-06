@@ -21,7 +21,6 @@ export const Box = styled.div<{
   width: 100%;
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
   align-items: center;
   justify-content: ${({ justifyContent }) => justifyContent};
 
@@ -35,9 +34,8 @@ export const Button = styled(BaseButton)<{
   marginHorizontal?: string
   marginVertical?: string
 }>`
-  width: 10%;
+  width: 30%;
   height: 50px;
-  min-width: 150px;
   margin: ${({ marginVertical = '0px', marginHorizontal = '0px' }) =>
     marginVertical + ' ' + marginHorizontal};
   background-color: transparent;
@@ -48,6 +46,14 @@ export const Button = styled(BaseButton)<{
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
+
+  @media screen and (max-width: 1000px) {
+    width: 40%;
+  }
+
+  @media screen and (max-width: 750px) {
+    width: 80%;
+  }
 `
 
 export const Heading = styled.h1`
@@ -55,6 +61,11 @@ export const Heading = styled.h1`
   font-size: 40px;
   letter-spacing: 10px;
   margin-left: 20px;
+
+  @media screen and (max-width: 500px) {
+    font-size: 30px;
+    letter-spacing: 5px;
+  }
 `
 
 export const Hambuger = styled(HambugerButton)`
@@ -67,5 +78,11 @@ export const Hambuger = styled(HambugerButton)`
     position: absolute;
     top: 15px;
     left: 10px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 50px;
+    height: 35px;
+    top: 25px;
   }
 `

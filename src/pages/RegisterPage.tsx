@@ -8,9 +8,10 @@ import {
   RegisterDocument
 } from '../graphql/generated'
 
+import RegisterForm from '../components/auth/register/Form'
 import Portal from '../components/common/Portal'
 
-import { Main, Heading, Box, RegisterForm, BackButton } from './styles/register'
+import { Main, Heading, Box, BackButton } from './styles/register'
 
 const RegisterPage: FC = () => {
   const [completed, setCompleted] = useState<boolean>(false)
@@ -43,14 +44,14 @@ const RegisterPage: FC = () => {
           onPasswordChange={event => setPassword(event.target.value)}
           onSubmit={async event => {
             event.preventDefault()
-            await register({ variables: { nickname, email, password } }).then(
-              () => {
+            await register({ variables: { nickname, email, password } })
+              .then(() => {
                 setNickname('')
                 setEmail('')
                 setPassword('')
                 setCompleted(true)
-              }
-            )
+              })
+              .catch(() => console.error('Register Error'))
           }}
           errors={registerError?.graphQLErrors[0].message as any}
         />

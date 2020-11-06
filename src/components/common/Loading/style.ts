@@ -9,7 +9,7 @@ const animated = keyframes`
   }
 `
 
-export const LoadingContainer = styled.div<{ width: string; height: string }>`
+export const Container = styled.div<{ width: string; height: string }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   display: flex;

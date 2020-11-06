@@ -2,11 +2,7 @@ import React, { FC } from 'react'
 
 import FormButton from '../../../common/FormButton'
 
-import {
-  StyledRegisterForm,
-  StyledRegisterInput,
-  RegisterErrorMessage
-} from './style'
+import { Form, Input, RegisterErrorMessage } from './style'
 import { Props, ErrorPropertyType } from './type'
 
 const RegisterForm: FC<Props> = ({
@@ -52,7 +48,7 @@ const RegisterForm: FC<Props> = ({
     })
 
   return (
-    <StyledRegisterForm className={className} onSubmit={onSubmit}>
+    <Form className={className} onSubmit={onSubmit}>
       <RegisterErrorMessage
         message={
           registerErrors &&
@@ -60,7 +56,7 @@ const RegisterForm: FC<Props> = ({
             ?.mes
         }
       />
-      <StyledRegisterInput
+      <Input
         type='nickname'
         placeholder='ニックネーム'
         value={inputNickname}
@@ -73,7 +69,7 @@ const RegisterForm: FC<Props> = ({
             ?.mes
         }
       />
-      <StyledRegisterInput
+      <Input
         type='email'
         placeholder='Eメール'
         value={inputEmail}
@@ -86,7 +82,7 @@ const RegisterForm: FC<Props> = ({
             ?.mes
         }
       />
-      <StyledRegisterInput
+      <Input
         type='password'
         placeholder='パスワード'
         marginBottom={50}
@@ -94,7 +90,7 @@ const RegisterForm: FC<Props> = ({
         onChange={onPasswordChange}
       />
       <FormButton type='submit' title='新規登録' isLoading={isLoading} />
-    </StyledRegisterForm>
+    </Form>
   )
 }
 

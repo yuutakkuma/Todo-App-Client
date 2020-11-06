@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import quillPan from './images/quill_pan.png'
 
-export const StyledAddTaskButton = styled.button`
+export const Button = styled.button`
   width: 60px;
   height: 60px;
   background-color: rgba(255, 255, 255, 1);
