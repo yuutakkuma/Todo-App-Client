@@ -10,13 +10,7 @@ import {
 
 import Portal from '../components/common/Portal'
 
-import {
-  StyledRegisterMain,
-  StyledRegisterHeading,
-  StyledRegisterBox,
-  RegisterForm,
-  BackButton
-} from './styles/register'
+import { Main, Heading, Box, RegisterForm, BackButton } from './styles/register'
 
 const RegisterPage: FC = () => {
   const [completed, setCompleted] = useState<boolean>(false)
@@ -31,16 +25,14 @@ const RegisterPage: FC = () => {
   ] = useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument)
 
   return (
-    <StyledRegisterMain>
-      <StyledRegisterBox flex={0.5} alignItems='center'>
+    <Main>
+      <Box flex={0.5} alignItems='center'>
         <BackButton type='button' title='もどる' onClick={() => push('/')} />
-      </StyledRegisterBox>
-      <StyledRegisterBox flex={1}>
-        <StyledRegisterHeading>
-          アカウントを作成するには必要事項を入力してください。
-        </StyledRegisterHeading>
-      </StyledRegisterBox>
-      <StyledRegisterBox flex={3}>
+      </Box>
+      <Box flex={1}>
+        <Heading>アカウントを作成するには必要事項を入力してください。</Heading>
+      </Box>
+      <Box flex={3}>
         <RegisterForm
           inputNickname={nickname}
           inputEmail={email}
@@ -62,7 +54,7 @@ const RegisterPage: FC = () => {
           }}
           errors={registerError?.graphQLErrors[0].message as any}
         />
-      </StyledRegisterBox>
+      </Box>
       {completed && (
         <Portal
           title='アカウント作成したよ！'
@@ -72,7 +64,7 @@ const RegisterPage: FC = () => {
           }}
         />
       )}
-    </StyledRegisterMain>
+    </Main>
   )
 }
 

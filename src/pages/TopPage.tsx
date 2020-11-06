@@ -9,12 +9,7 @@ import {
 } from '../graphql/generated'
 import Portal from '../components/common/Portal'
 
-import {
-  StyledTopMain,
-  StyledTopBox,
-  StyledTopHeading,
-  Button
-} from './styles/top'
+import { Main, Box, Heading, Button } from './styles/top'
 
 const TopPage: FC = () => {
   const [
@@ -26,11 +21,11 @@ const TopPage: FC = () => {
   const { push } = useHistory()
 
   return (
-    <StyledTopMain>
-      <StyledTopBox>
-        <StyledTopHeading>TODO APP</StyledTopHeading>
-      </StyledTopBox>
-      <StyledTopBox>
+    <Main>
+      <Box>
+        <Heading>TODO APP</Heading>
+      </Box>
+      <Box>
         <Button
           type='button'
           title='ログイン'
@@ -62,7 +57,7 @@ const TopPage: FC = () => {
               .catch(() => console.error('testLoginError'))
           }
         />
-      </StyledTopBox>
+      </Box>
       {testLoginError && (
         <Portal
           title='ログイン出来ませんでした'
@@ -72,7 +67,7 @@ const TopPage: FC = () => {
           }}
         />
       )}
-    </StyledTopMain>
+    </Main>
   )
 }
 

@@ -9,13 +9,7 @@ import {
 } from '../graphql/generated'
 import Portal from '../components/common/Portal'
 
-import {
-  StyledDeleteAccountMain,
-  StyledDeleteAccountHeading,
-  StyledDeleteAccountBox,
-  DeleteAccountForm,
-  BackButton
-} from './styles/deleteAccount'
+import { Main, Heading, Box, Form, BackButton } from './styles/deleteAccount'
 
 const DeleteAccountPage: FC = () => {
   const [completed, setCompleted] = useState<boolean>(false)
@@ -32,17 +26,15 @@ const DeleteAccountPage: FC = () => {
   )
 
   return (
-    <StyledDeleteAccountMain>
-      <StyledDeleteAccountBox flex={0.5} alignItems='center'>
+    <Main>
+      <Box flex={0.5} alignItems='center'>
         <BackButton type='button' title='もどる' onClick={() => push('home')} />
-      </StyledDeleteAccountBox>
-      <StyledDeleteAccountBox flex={1}>
-        <StyledDeleteAccountHeading>
-          アカウントを削除するには必要事項を入力してください。
-        </StyledDeleteAccountHeading>
-      </StyledDeleteAccountBox>
-      <StyledDeleteAccountBox flex={3}>
-        <DeleteAccountForm
+      </Box>
+      <Box flex={1}>
+        <Heading>アカウントを削除するには必要事項を入力してください。</Heading>
+      </Box>
+      <Box flex={3}>
+        <Form
           inputNickname={nickname}
           inputEmail={email}
           inputPassword={password}
@@ -66,7 +58,7 @@ const DeleteAccountPage: FC = () => {
           }}
           errors={deleteAccountError?.graphQLErrors[0].message as any}
         />
-      </StyledDeleteAccountBox>
+      </Box>
       {completed && (
         <Portal
           title='アカウントを削除しました'
@@ -76,7 +68,7 @@ const DeleteAccountPage: FC = () => {
           }}
         />
       )}
-    </StyledDeleteAccountMain>
+    </Main>
   )
 }
 

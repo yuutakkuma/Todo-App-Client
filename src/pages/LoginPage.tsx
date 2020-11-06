@@ -10,13 +10,7 @@ import {
 
 import Portal from '../components/common/Portal'
 
-import {
-  StyledLoginMain,
-  StyledLoginHeading,
-  StyledLoginBox,
-  LoginForm,
-  BackButton
-} from './styles/login'
+import { Main, Heading, Box, LoginForm, BackButton } from './styles/login'
 
 const LoginPage: FC = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
@@ -31,16 +25,14 @@ const LoginPage: FC = () => {
   >(LoginDocument)
 
   return (
-    <StyledLoginMain>
-      <StyledLoginBox flex={0.5} alignItems='center'>
+    <Main>
+      <Box flex={0.5} alignItems='center'>
         <BackButton type='button' title='もどる' onClick={() => push('/')} />
-      </StyledLoginBox>
-      <StyledLoginBox flex={1}>
-        <StyledLoginHeading>
-          ログインするには必要事項を入力してください。
-        </StyledLoginHeading>
-      </StyledLoginBox>
-      <StyledLoginBox flex={3}>
+      </Box>
+      <Box flex={1}>
+        <Heading>ログインするには必要事項を入力してください。</Heading>
+      </Box>
+      <Box flex={3}>
         <LoginForm
           inputEmail={email}
           inputPassword={password}
@@ -64,7 +56,7 @@ const LoginPage: FC = () => {
           }}
           errors={LoginError?.graphQLErrors[0].message as any}
         />
-      </StyledLoginBox>
+      </Box>
       {loggedIn && (
         <Portal
           title='ログインしました!'
@@ -83,7 +75,7 @@ const LoginPage: FC = () => {
           }}
         />
       )}
-    </StyledLoginMain>
+    </Main>
   )
 }
 

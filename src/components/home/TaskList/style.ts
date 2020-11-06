@@ -14,8 +14,9 @@ export const StyledTaskList = styled.div`
   box-sizing: border-box;
 `
 
-export const StyledTaskListBox = styled.div<{
+export const Box = styled.div<{
   width: string
+  mediaWidth?: string
   marginBottom?: string
 }>`
   width: ${({ width }) => width};
@@ -23,4 +24,8 @@ export const StyledTaskListBox = styled.div<{
   align-items: center;
   justify-content: center;
   margin-bottom: ${({ marginBottom = '0px' }) => marginBottom};
+
+  @media screen and (max-width: 1000px) {
+    width: ${({ mediaWidth }) => mediaWidth};
+  }
 `

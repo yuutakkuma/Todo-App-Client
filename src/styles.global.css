@@ -5,6 +5,7 @@ html {
 body {
   margin: 0px;
   background-color: rgba(45, 97, 135, 1);
+  min-width: 500px;
 }
 
 #root {

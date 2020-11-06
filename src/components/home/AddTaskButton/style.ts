@@ -16,7 +16,6 @@ export const StyledAddTaskButton = styled.button`
   background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 0 10px;
 
   &:hover {
     background-color: rgba(245, 245, 245, 1);
@@ -25,5 +24,10 @@ export const StyledAddTaskButton = styled.button`
   &:active {
     box-shadow: none;
     transform: translate(0.3px, 0.3px);
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 55px;
+    height: 55px;
   }
 `

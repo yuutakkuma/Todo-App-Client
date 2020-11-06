@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import FormButton from '../../../common/FormButton'
 
-import { StyledLoginForm, StyledLoginInput, LoginErrorMessage } from './style'
+import { Form, Input, LoginErrorMessage } from './style'
 import { Props } from './type'
 
 const LoginFrom: FC<Props> = ({
@@ -15,16 +15,16 @@ const LoginFrom: FC<Props> = ({
   onSubmit,
   errors
 }) => (
-  <StyledLoginForm className={className} onSubmit={onSubmit}>
+  <Form className={className} onSubmit={onSubmit}>
     <LoginErrorMessage message={errors?.message} />
-    <StyledLoginInput
+    <Input
       type='email'
       placeholder='Eメール'
       marginBottom={30}
       value={inputEmail}
       onChange={onEmailChange}
     />
-    <StyledLoginInput
+    <Input
       type='password'
       placeholder='パスワード'
       marginBottom={30}
@@ -32,7 +32,7 @@ const LoginFrom: FC<Props> = ({
       onChange={onPasswordChange}
     />
     <FormButton type='submit' title='ログイン' isLoading={isLoading} />
-  </StyledLoginForm>
+  </Form>
 )
 
 export default LoginFrom
