@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import hambuger from './images/hambuger.png'
 
 export const Container = styled.button`
   width: 100%;
@@ -11,6 +12,10 @@ export const Container = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  background-image: url(${hambuger});
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
 
   &:hover {
     opacity: 0.5;
@@ -19,10 +24,4 @@ export const Container = styled.button`
   &:active {
     transform: translate(0.3px, 0.3px);
   }
-`
-
-export const Border = styled.div`
-  width: 80%;
-  height: 5%;
-  background-color: rgba(253, 253, 253, 1);
 `
