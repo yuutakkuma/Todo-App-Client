@@ -5,5 +5,6 @@ export interface Props {
   }[]
   disabled: boolean
   isLoading?: boolean
+  deleteId?: number | null
   onClick: (id: number) => any
 }

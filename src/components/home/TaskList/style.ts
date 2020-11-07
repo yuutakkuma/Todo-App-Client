@@ -12,6 +12,7 @@ export const Container = styled.div`
   border-width: 1px;
   border-radius: 5px;
   box-sizing: border-box;
+  position: relative;
 `
 
 export const Box = styled.div<{
@@ -34,4 +35,11 @@ export const Box = styled.div<{
   @media screen and (max-width: 500px) {
     width: ${({ mobileWidth }) => mobileWidth};
   }
+`
+
+export const Absolute = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `

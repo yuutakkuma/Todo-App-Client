@@ -25,6 +25,7 @@ import { Container, Main, Box, Inner } from './styles/home'
 
 const HomePage: FC = () => {
   const [task, setTask] = useState<string>('')
+  const [deleteId, setDeleteId] = useState<number | null>(null)
   const { push, replace } = useHistory()
 
   const {
@@ -92,12 +93,17 @@ const HomePage: FC = () => {
               task: tasks!.title
             }))}
             disabled={deleteTaskLoading}
-            isLoading={taskLoading}
-            onClick={id =>
+            isLoading={taskLoading || addTaskLoading}
+            deleteId={deleteId}
+            onClick={id => {
+              setDeleteId(id)
               deleteTask({ variables: { id: String(id) } })
-                .then(() => taskRefetch())
+                .then(() => {
+                  setDeleteId(null)
+                  taskRefetch()
+                })
                 .catch(() => console.error('Delete Task Error'))
-            }
+            }}
           />
         ) : (
           <PromptMessage message='やることを追加しよう！' />
