@@ -1,5 +1,9 @@
 import { createContext } from 'react'
 
-interface State {}
+interface State {
+  height: number
+}
 
-export const Context = createContext<State>({})
+const height = window.innerHeight
+
+export const Context = createContext<State>({ height })

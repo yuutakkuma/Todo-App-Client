@@ -1,7 +1,8 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 
+import { Context } from '../lib/context'
 import {
   TestUserLoginMutation,
   TestUserLoginMutationVariables,
@@ -12,6 +13,7 @@ import Portal from '../components/common/Portal'
 import { Main, Box, Flex, Heading, Button } from './styles/top'
 
 const TopPage: FC = () => {
+  const { height } = useContext(Context)
   const [
     testLogin,
     { loading: testLoginLoading, error: testLoginError }
@@ -21,7 +23,7 @@ const TopPage: FC = () => {
   const { push } = useHistory()
 
   return (
-    <Main>
+    <Main height={height}>
       <Box mediaFlex={1}>
         <Flex mediaJustifyContent='center'>
           <Heading>TODO APP</Heading>

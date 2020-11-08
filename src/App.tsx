@@ -48,7 +48,7 @@ export const App: FC = () => {
     <ApolloProvider client={client}>
       <Context.Provider
         value={{
-          token: localStorage.getItem('token')
+          height: window.innerHeight
         }}
       >
         <Routes />

@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 import BaseButton from '../../../components/common/base/BaseButton'
 
-export const Main = styled.main`
+export const Main = styled.main<{ height: number }>`
   width: 100%;
-  height: 100vh;
+  height: ${({ height }) => `${height}px`};
   display: flex;
   flex-direction: row;
   background-color: transparent;
