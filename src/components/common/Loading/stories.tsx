@@ -1,23 +1,41 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 
-import { Props } from './type'
+import { LoadingMode, Props } from './type'
 
 import Component from '.'
 
 export default {
-  component: Component
+  component: Component,
+  decorators: [
+    (Story: Story) => (
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <Story />
+      </div>
+    )
+  ]
 }
 
 const Template: Story<Props> = args => <Component {...args} />
 
-export const Default = Template.bind({})
-Default.args = {
-  width: '100px',
-  height: '100px'
+export const Large = Template.bind({})
+Large.args = {
+  mode: LoadingMode.LARGE
 }
-export const small = Template.bind({})
-small.args = {
-  width: '20px',
-  height: '20px'
+
+export const Midium = Template.bind({})
+Midium.args = {
+  mode: LoadingMode.MIDIUM
+}
+
+export const Small = Template.bind({})
+Small.args = {
+  mode: LoadingMode.SMALL
 }

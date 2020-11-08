@@ -8,6 +8,7 @@ import Loading from './components/common/Loading'
 import { client } from './lib/apollo'
 import { Context } from './lib/context'
 import { Routes } from './pages/Routes'
+import { LoadingMode } from './components/common/Loading/type'
 
 export const App: FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
@@ -39,11 +40,7 @@ export const App: FC = () => {
           height: '100vh'
         }}
       >
-        <Loading
-          width='100px'
-          height='100px'
-          circleColor='rgba(45, 97, 135, 1)'
-        />
+        <Loading mode={LoadingMode.LARGE} />
       </div>
     )
   }

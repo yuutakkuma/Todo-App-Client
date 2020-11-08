@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 
-const animated = keyframes`
+const rotate = keyframes`
   0% {
     transform: rotate(0deg);
   }
@@ -9,46 +9,89 @@ const animated = keyframes`
   }
 `
 
-export const Container = styled.div<{ width: string; height: string }>`
+const largeAnimated = keyframes`
+  0%,
+    100% {
+      stroke-dashoffset: 440;
+    }
+    50% {
+      stroke-dashoffset: 0;
+    }
+    50.1% {
+      stroke-dashoffset: 880;
+    }
+`
+
+const midiumAnimated = keyframes`
+  0%,
+    100% {
+      stroke-dashoffset: 270;
+    }
+    50% {
+      stroke-dashoffset: 0;
+    }
+    50.1% {
+      stroke-dashoffset: 540;
+    }
+`
+
+const smallAnimated = keyframes`
+  0%,
+    100% {
+      stroke-dashoffset: 60;
+    }
+    50% {
+      stroke-dashoffset: 0;
+    }
+    50.1% {
+      stroke-dashoffset: 120;
+    }
+`
+
+const loaderColor = 'rgba(235, 235, 235, 1)'
+
+export const Container = styled.svg<{ width: string; height: string }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: transparent;
-  animation: ${animated} 2s linear infinite;
-`
-
-export const Loader = styled.div`
   position: relative;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to top, transparent, rgba(253, 253, 253, 1));
-  background-repeat: no-repeat;
-  border-top-left-radius: 100px;
-  border-bottom-left-radius: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &::after {
-    content: '';
-    width: 25%;
-    height: 10%;
-    position: absolute;
-    top: 0px;
-    right: -10%;
-    border-radius: 50%;
-    background-color: rgba(253, 253, 253, 1);
-  }
+  animation: ${rotate} 2s linear infinite;
 `
 
-export const Circle = styled.div<{ circleColor: string }>`
-  width: 80%;
-  height: 80%;
-  position: absolute;
-  right: 0px;
-  background-color: ${({ circleColor }) => circleColor};
-  border-top-left-radius: 100px;
-  border-bottom-left-radius: 100px;
+export const LargeLoader = styled.circle`
+  width: 1000%;
+  height: 100%;
+  fill: none;
+  stroke: ${loaderColor};
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  transform: translate(5px, 5px);
+  animation: ${largeAnimated} 4s linear infinite;
+`
+
+export const MidiumLoader = styled.circle`
+  width: 1000%;
+  height: 100%;
+  fill: none;
+  stroke: ${loaderColor};
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 270;
+  stroke-dashoffset: 270;
+  transform: translate(5px, 5px);
+  animation: ${midiumAnimated} 4s linear infinite;
+`
+
+export const SmallLoader = styled.circle`
+  width: 1000%;
+  height: 100%;
+  fill: none;
+  stroke: ${loaderColor};
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  transform: translate(5px, 5px);
+  animation: ${smallAnimated} 4s linear infinite;
 `

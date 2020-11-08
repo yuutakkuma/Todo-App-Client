@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
 import Loading from '../../Loading'
+import { LoadingMode } from '../../Loading/type'
 
 import { Button } from './style'
 import { Props } from './type'
@@ -19,11 +20,7 @@ const BaseButton: FC<Props> = ({
     disabled={disabled}
     onClick={onClick}
   >
-    {isLoading ? (
-      <Loading width='20px' height='20px' circleColor='rgba(50, 190, 230, 1)' />
-    ) : (
-      title
-    )}
+    {isLoading ? <Loading mode={LoadingMode.SMALL} /> : title}
   </Button>
 )
 

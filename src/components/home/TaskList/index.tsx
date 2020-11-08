@@ -6,6 +6,7 @@ import Loading from '../../common/Loading'
 
 import { Container, Box, Absolute } from './style'
 import { Props } from './type'
+import { LoadingMode } from '../../common/Loading/type'
 
 const TaskList: FC<Props> = ({
   tasks,
@@ -16,12 +17,8 @@ const TaskList: FC<Props> = ({
 }) => (
   <>
     {isLoading && (
-      <Box width='90%' marginBottom='20px'>
-        <Loading
-          width='50px'
-          height='50px'
-          circleColor='rgba(45, 97, 135, 1)'
-        />
+      <Box width='100%' marginBottom='20px'>
+        <Loading mode={LoadingMode.MIDIUM} />
       </Box>
     )}
     {tasks
@@ -36,11 +33,7 @@ const TaskList: FC<Props> = ({
         >
           {deleteId === id && (
             <Absolute>
-              <Loading
-                width='50px'
-                height='50px'
-                circleColor='rgba(45, 97, 135, 1)'
-              />
+              <Loading mode={LoadingMode.SMALL} />
             </Absolute>
           )}
           <Box width='90%' tabletWidth='80%' mobileWidth='70%'>
