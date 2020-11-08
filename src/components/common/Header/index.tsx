@@ -14,14 +14,23 @@ const Header: FC<Props> = ({ onLogoutClick, onAccountDeleteClick }) => {
         <SideBar isOpen={sideBarIsOpen} onClick={() => setSideBarIsOpen(false)}>
           <Button
             type='button'
-            title='アカウント削除'
-            onClick={onAccountDeleteClick}
+            title='とじる'
+            onClick={() => setSideBarIsOpen(!sideBarIsOpen)}
+            justifyContent='left'
           />
           <Button
+            type='button'
+            title='アカウント削除'
+            onClick={onAccountDeleteClick}
             marginVertical='20px'
+            justifyContent='left'
+          />
+          <Button
             type='button'
             title='ログアウト'
             onClick={onLogoutClick}
+            marginVertical='20px'
+            justifyContent='left'
           />
         </SideBar>
         <Box justifyContent='flex-start'>

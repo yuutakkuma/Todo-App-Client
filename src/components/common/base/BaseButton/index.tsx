@@ -20,7 +20,7 @@ const BaseButton: FC<Props> = ({
     disabled={disabled}
     onClick={onClick}
   >
-    {isLoading ? <Loading mode={LoadingMode.SMALL} /> : title}
+    {isLoading ? <Loading mode={LoadingMode.SMALL} /> : <div>{title}</div>}
   </Button>
 )
 

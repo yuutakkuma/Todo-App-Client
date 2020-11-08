@@ -33,9 +33,11 @@ export const Box = styled.div<{
 export const Button = styled(BaseButton)<{
   marginHorizontal?: string
   marginVertical?: string
+  justifyContent?: string
 }>`
   width: 30%;
   height: 50px;
+  justify-content: ${({ justifyContent = 'center' }) => justifyContent};
   margin: ${({ marginVertical = '0px', marginHorizontal = '0px' }) =>
     marginVertical + ' ' + marginHorizontal};
   background-color: transparent;

@@ -10,11 +10,11 @@ export const Container = styled.div<{ isOpen?: boolean }>`
 `
 
 export const Bar = styled.div<{ isOpen?: boolean }>`
-  width: 50%;
+  width: 60%;
   height: 100%;
   padding-top: 20px;
   visibility: visible;
-  transform: translateX(${({ isOpen }) => (isOpen ? '0%' : '-100%')});
+  transform: translateX(${({ isOpen }) => (isOpen ? '0%' : '-101%')});
   transition: transform 0.5s;
   display: flex;
   flex-direction: column;
