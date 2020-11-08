@@ -12,6 +12,7 @@ import { LoadingMode } from './components/common/Loading/type'
 
 export const App: FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
+  const height = window.innerHeight
 
   useEffect(() => {
     client
@@ -34,10 +35,10 @@ export const App: FC = () => {
     return (
       <div
         style={{
+          height,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          height: '100vh'
+          justifyContent: 'center'
         }}
       >
         <Loading mode={LoadingMode.LARGE} />
@@ -46,11 +47,7 @@ export const App: FC = () => {
   }
   return (
     <ApolloProvider client={client}>
-      <Context.Provider
-        value={{
-          height: window.innerHeight
-        }}
-      >
+      <Context.Provider value={{ height }}>
         <Routes />
       </Context.Provider>
     </ApolloProvider>
