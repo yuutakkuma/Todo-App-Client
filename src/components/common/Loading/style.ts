@@ -9,9 +9,20 @@ const rotate = keyframes`
   }
 `
 
+const reverseRotate = keyframes`
+ 0% {
+    transform: translateY(0px)
+ }
+ 50% {
+    transform: translateY(5px)
+ }
+ 100% {
+    transform: translateY(0px)
+  }
+`
+
 const largeAnimated = keyframes`
-  0%,
-    100% {
+  0%, 100% {
       stroke-dashoffset: 440;
     }
     50% {
@@ -23,8 +34,7 @@ const largeAnimated = keyframes`
 `
 
 const midiumAnimated = keyframes`
-  0%,
-    100% {
+  0%, 100% {
       stroke-dashoffset: 270;
     }
     50% {
@@ -36,8 +46,7 @@ const midiumAnimated = keyframes`
 `
 
 const smallAnimated = keyframes`
-  0%,
-    100% {
+  0%, 100% {
       stroke-dashoffset: 60;
     }
     50% {
@@ -50,11 +59,24 @@ const smallAnimated = keyframes`
 
 const loaderColor = 'rgba(235, 235, 235, 1)'
 
-export const Container = styled.svg<{ width: string; height: string }>`
+export const Container = styled.div`
+  position: relative;
+`
+
+export const Frame = styled.svg<{ width: string; height: string }>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   position: relative;
   animation: ${rotate} 2s linear infinite;
+`
+
+export const Text = styled.div`
+  top: 40%;
+  left: 13%;
+  color: rgba(253, 253, 253, 0.5);
+  letter-spacing: 2px;
+  position: absolute;
+  animation: ${reverseRotate} 2s linear infinite;
 `
 
 export const LargeLoader = styled.circle`
@@ -75,7 +97,7 @@ export const MidiumLoader = styled.circle`
   height: 100%;
   fill: none;
   stroke: ${loaderColor};
-  stroke-width: 8;
+  stroke-width: 5;
   stroke-linecap: round;
   stroke-dasharray: 270;
   stroke-dashoffset: 270;
