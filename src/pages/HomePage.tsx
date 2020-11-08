@@ -106,7 +106,10 @@ const HomePage: FC = () => {
             }}
           />
         ) : (
-          <PromptMessage message='やることを追加しよう！' />
+          <PromptMessage
+            message='やることを追加しよう！'
+            isLoading={addTaskLoading}
+          />
         )}
         {getTaskError && (
           <Portal
