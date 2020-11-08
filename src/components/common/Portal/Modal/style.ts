@@ -17,6 +17,11 @@ export const Container = styled.div`
     width: 400px;
     height: 250px;
   }
+
+  @media screen and (max-width: 500px) {
+    width: 280px;
+    height: 250px;
+  }
 `
 
 export const Box = styled.div<{ height: string }>`
@@ -37,6 +42,10 @@ export const Heading = styled.div`
 
   @media screen and (max-width: 1000px) {
     font-size: 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 18px;
   }
 `
 

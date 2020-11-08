@@ -5,10 +5,10 @@ import { Props } from './type'
 
 const Modal: FC<Props> = ({ title, discription, onClick }) => (
   <Container>
-    <Box height='20%'>
+    <Box height='30%'>
       <Heading>{title}</Heading>
     </Box>
-    <Box height='60%'>
+    <Box height='50%'>
       <Discription>{discription}</Discription>
     </Box>
     <Box height='20%'>
