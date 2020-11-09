@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 
@@ -7,6 +7,7 @@ import {
   DeleteAccountMutationVariables,
   DeleteAccountDocument
 } from '../graphql/generated'
+import { Context } from '../lib/context'
 
 import Portal from '../components/common/Portal'
 import DeleteForm from '../components/auth/delete/Form'
@@ -14,11 +15,12 @@ import DeleteForm from '../components/auth/delete/Form'
 import { Main, Heading, Box, BackButton } from './styles/deleteAccount'
 
 const DeleteAccountPage: FC = () => {
+  const { dispatch, SetTokenAction } = useContext(Context)
   const [completed, setCompleted] = useState<boolean>(false)
   const [nickname, setNickname] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const { push } = useHistory()
+  const { push, replace } = useHistory()
 
   const [
     deleteAccount,
@@ -66,7 +68,8 @@ const DeleteAccountPage: FC = () => {
           title='アカウントを削除しました'
           discription='ご利用ありがとうございました。'
           onPress={() => {
-            push('/')
+            dispatch(SetTokenAction(''))
+            replace('/')
           }}
         />
       )}

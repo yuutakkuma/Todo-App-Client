@@ -8,12 +8,13 @@ import {
   TestUserLoginMutationVariables,
   TestUserLoginDocument
 } from '../graphql/generated'
+
 import Portal from '../components/common/Portal'
 
 import { Main, Box, Flex, Heading, Button } from './styles/top'
 
 const TopPage: FC = () => {
-  const { height } = useContext(Context)
+  const { height, dispatch, SetTokenAction } = useContext(Context)
   const [
     testLogin,
     { loading: testLoginLoading, error: testLoginError }
@@ -53,10 +54,7 @@ const TopPage: FC = () => {
               })
                 .then(({ data }) => {
                   if (data && data.testUserLogin) {
-                    localStorage.setItem(
-                      'token',
-                      data.testUserLogin.accessToken
-                    )
+                    dispatch(SetTokenAction(data.testUserLogin.accessToken))
                     push('home')
                   } else {
                     throw new Error('アクセストークンを取得出来ませんでした。')

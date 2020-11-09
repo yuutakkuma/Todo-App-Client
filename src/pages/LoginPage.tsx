@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 
@@ -7,6 +7,7 @@ import {
   LoginMutationVariables,
   LoginDocument
 } from '../graphql/generated'
+import { Context } from '../lib/context'
 
 import LoginForm from '../components/auth/login/Form'
 import Portal from '../components/common/Portal'
@@ -14,6 +15,7 @@ import Portal from '../components/common/Portal'
 import { Main, Heading, Box, BackButton } from './styles/login'
 
 const LoginPage: FC = () => {
+  const { dispatch, SetTokenAction } = useContext(Context)
   const [loggedIn, setLoggedIn] = useState<boolean>(false)
   const [tokenError, setTokenError] = useState<boolean>(false)
   const [email, setEmail] = useState<string>('')
@@ -45,7 +47,7 @@ const LoginPage: FC = () => {
             await login({ variables: { email, password } })
               .then(result => {
                 if (result.data && result.data.login) {
-                  localStorage.setItem('token', result.data.login.accessToken)
+                  dispatch(SetTokenAction(result.data.login.accessToken))
                   setEmail('')
                   setPassword('')
                   setLoggedIn(true)

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useMutation, useQuery } from '@apollo/client'
 
@@ -13,6 +13,7 @@ import {
   DeleteTodoMutationVariables,
   DeleteTodoDocument
 } from '../graphql/generated'
+import { Context } from '../lib/context'
 
 import Portal from '../components/common/Portal'
 import Header from '../components/common/Header'
@@ -24,6 +25,7 @@ import PromptMessage from '../components/home/PromptMessage'
 import { Container, Main, Box, Inner } from './styles/home'
 
 const HomePage: FC = () => {
+  const { dispatch, SetTokenAction } = useContext(Context)
   const [task, setTask] = useState<string>('')
   const [deleteId, setDeleteId] = useState<number | null>(null)
   const { push, replace } = useHistory()
@@ -57,7 +59,7 @@ const HomePage: FC = () => {
         <Header
           onAccountDeleteClick={() => push('deleteAccount')}
           onLogoutClick={() => {
-            localStorage.setItem('token', '')
+            dispatch(SetTokenAction(''))
             replace('/')
           }}
         />
@@ -114,7 +116,7 @@ const HomePage: FC = () => {
         {getTaskError && (
           <Portal
             title='タスクを取得出来ませんでした'
-            discription='リロードするか、再度ログインしてください。'
+            discription='再度ログインしてください。'
             onPress={() => window.location.reload()}
           />
         )}

@@ -1,9 +1,12 @@
-import { createContext } from 'react'
+import { createContext, Dispatch } from 'react'
+
+import { ActionType } from './reducer/action-type'
 
 interface State {
   height: number
+  token: string | null
+  dispatch: Dispatch<ActionType>
+  SetTokenAction: (token: string) => ActionType
 }
 
-const height = window.innerHeight
-
-export const Context = createContext<State>({ height })
+export const Context = createContext({} as State)
