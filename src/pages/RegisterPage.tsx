@@ -39,6 +39,7 @@ const RegisterPage: FC = () => {
           inputEmail={email}
           inputPassword={password}
           isLoading={registerLoading}
+          disabled={completed}
           onNicknameChange={event => setNickname(event.target.value)}
           onEmailChange={event => setEmail(event.target.value)}
           onPasswordChange={event => setPassword(event.target.value)}

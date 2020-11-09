@@ -40,6 +40,7 @@ const LoginPage: FC = () => {
           inputEmail={email}
           inputPassword={password}
           isLoading={loginLoading}
+          disabled={loggedIn}
           onEmailChange={event => setEmail(event.target.value)}
           onPasswordChange={event => setPassword(event.target.value)}
           onSubmit={async event => {

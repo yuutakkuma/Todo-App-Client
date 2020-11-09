@@ -5,6 +5,7 @@ export interface Props {
   inputEmail: string
   inputPassword: string
   isLoading?: boolean
+  disabled?: boolean
   onEmailChange: (event: ChangeEvent<HTMLInputElement>) => void
   onPasswordChange: (event: ChangeEvent<HTMLInputElement>) => void
   onSubmit: (event: FormEvent<HTMLFormElement>) => void

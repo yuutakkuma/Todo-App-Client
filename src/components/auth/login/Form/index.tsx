@@ -10,6 +10,7 @@ const LoginFrom: FC<Props> = ({
   inputEmail,
   inputPassword,
   isLoading,
+  disabled,
   onEmailChange,
   onPasswordChange,
   onSubmit,
@@ -31,7 +32,12 @@ const LoginFrom: FC<Props> = ({
       value={inputPassword}
       onChange={onPasswordChange}
     />
-    <FormButton type='submit' title='ログイン' isLoading={isLoading} />
+    <FormButton
+      type='submit'
+      title='ログイン'
+      isLoading={isLoading}
+      disabled={disabled}
+    />
   </Form>
 )
 
