@@ -23,7 +23,7 @@ export const Box = styled.div<{
   justify-content: flex-start;
   flex-grow: ${({ flex }) => flex};
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 80%;
   }
 `
@@ -34,7 +34,7 @@ export const Heading = styled.h1`
   letter-spacing: 10px;
   padding-left: 15px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     font-size: 25px;
   }
 
@@ -48,7 +48,7 @@ export const BackButton = styled(BaseButton)`
   height: 30px;
   font-size: 15px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 30%;
   }
 

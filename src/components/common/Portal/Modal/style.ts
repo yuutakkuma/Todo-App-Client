@@ -13,7 +13,7 @@ export const Container = styled.div`
   border-style: solid;
   background-color: rgba(45, 97, 135, 1);
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 768px) {
     width: 400px;
     height: 250px;
   }
@@ -40,7 +40,7 @@ export const Heading = styled.div`
   letter-spacing: 5px;
   padding: 0 20px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     font-size: 20px;
   }
 
@@ -57,7 +57,7 @@ export const Discription = styled.p`
   margin: 0;
   padding: 0 20px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     font-size: 15px;
   }
 `
@@ -74,7 +74,7 @@ export const Button = styled(BaseButton)`
     background-color: rgba(0, 0, 0, 0.1);
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     font-size: 25px;
   }
 `

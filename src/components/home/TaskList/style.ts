@@ -28,7 +28,7 @@ export const Box = styled.div<{
   justify-content: center;
   margin-bottom: ${({ marginBottom = '0px' }) => marginBottom};
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: ${({ tabletWidth }) => tabletWidth};
   }
 

@@ -26,7 +26,7 @@ export const Button = styled.button`
     transform: translate(0.3px, 0.3px);
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 55px;
     height: 55px;
   }

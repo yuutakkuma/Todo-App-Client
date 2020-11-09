@@ -24,7 +24,7 @@ export const Box = styled.div<{
   align-items: center;
   justify-content: ${({ justifyContent }) => justifyContent};
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 768px) {
     display: ${({ mediaDisplay = 'flex' }) => mediaDisplay};
     justify-content: center;
   }
@@ -49,11 +49,11 @@ export const Button = styled(BaseButton)<{
     background-color: rgba(0, 0, 0, 0.1);
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1024px) {
     width: 40%;
   }
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 768px) {
     width: 80%;
   }
 `
@@ -73,7 +73,7 @@ export const Heading = styled.h1`
 export const Hambuger = styled(HambugerButton)`
   display: none;
 
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 768px) {
     display: inline-flex;
     width: 80px;
     height: 50px;
